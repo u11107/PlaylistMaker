@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3772E7"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/Title"
+            android:textColor="@color/color_Playlist_text"
+            android:textSize="@dimen/pl_text_size" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="28dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/but_search"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/pl_layout_marginBottom"
+            android:layout_weight="1"
+            android:foreground="?attr/selectableItemBackground"
+            android:backgroundTint="@color/white"
+            android:text="@string/Search"
+            android:textColor="@color/color_text_and_ic_button"
+            android:textSize="@dimen/pl_text_size"
+            app:cornerRadius="@dimen/pl_cornerRadius"
+            app:icon="@drawable/search_ic"
+            app:iconGravity="textStart"
+            app:iconPadding="@dimen/pl_iconPadding"
+            app:iconTint="@color/color_text_and_ic_button" />
+
+
+        <Button
+            android:id="@+id/but_media"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/pl_layout_marginBottom"
+            android:layout_weight="1"
+            android:foreground="?attr/selectableItemBackground"
+            android:backgroundTint="@color/white"
+            android:text="@string/Media_lib"
+            android:textColor="@color/color_text_and_ic_button"
+            android:textSize="@dimen/pl_text_size"
+            app:cornerRadius="@dimen/pl_cornerRadius"
+            app:icon="@drawable/search_ic"
+            app:iconGravity="textStart"
+            app:iconPadding="@dimen/pl_iconPadding"
+            app:iconTint="@color/color_text_and_ic_button" />
+
+        <Button
+            android:id="@+id/but_setting"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:foreground="?attr/selectableItemBackground"
+            android:backgroundTint="@color/white"
+            android:text="@string/Setting"
+            android:textColor="@color/color_text_and_ic_button"
+            android:textSize="@dimen/pl_text_size"
+            app:cornerRadius="@dimen/pl_cornerRadius"
+            app:icon="@drawable/setting"
+            app:iconGravity="textStart"
+            app:iconPadding="@dimen/pl_iconPadding"
+            app:iconTint="@color/color_text_and_ic_button" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

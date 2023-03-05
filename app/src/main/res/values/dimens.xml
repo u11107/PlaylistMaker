@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="setting_text">300dp</dimen>
+    <dimen name="setting_inner_bottom_padding">21dp</dimen>
+    <dimen name="setting_inner_top_padding">21dp</dimen>
+    <dimen name="setting_inner_start_padding">16dp</dimen>
+    <dimen name="setting_text_size">16sp</dimen>
+    <dimen name="pl_cornerRadius">16dp</dimen>
+    <dimen name="pl_layout_marginBottom">16dp</dimen>
+    <dimen name="pl_iconPadding">10dp</dimen>
+    <dimen name="pl_text_size">22sp</dimen>
+</resources>
