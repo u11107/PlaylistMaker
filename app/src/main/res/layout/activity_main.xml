@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3772E7"
+    android:background="@color/color_main_background"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -21,7 +19,7 @@
             android:text="@string/Title"
             android:textColor="@color/color_Playlist_text"
             android:textSize="@dimen/pl_text_size" />
-    </FrameLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

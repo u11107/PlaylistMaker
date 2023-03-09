@@ -24,5 +24,6 @@ class MainActivity : AppCompatActivity() {
             val settingIntent = Intent(this, SettingActivity::class.java)
             startActivity(settingIntent)
         }
+
     }
 }

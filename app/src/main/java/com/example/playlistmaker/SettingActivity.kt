@@ -11,8 +11,7 @@ class SettingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_setting)
         val butBack = findViewById<Button>(R.id.button_setting_back)
         butBack.setOnClickListener {
-            val intentSettingBack = Intent(this, MainActivity::class.java)
-            startActivity(intentSettingBack)
+            finish()
         }
     }
 }

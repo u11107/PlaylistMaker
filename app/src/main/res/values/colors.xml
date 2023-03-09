@@ -10,4 +10,6 @@
     <color name="color_text_and_ic_button">#1A1B22</color>
     <color name="color_Playlist_text">#FFFFFF</color>
     <color name="color_setting_text">#000000</color>
+    <color name="color_main_background">#3772E7</color>
+    <color name="color_image">#AEAFB4</color>
 </resources>
