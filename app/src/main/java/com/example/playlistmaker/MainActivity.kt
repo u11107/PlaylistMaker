@@ -25,5 +25,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(settingIntent)
         }
 
+
     }
 }
