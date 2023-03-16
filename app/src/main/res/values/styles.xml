@@ -13,6 +13,10 @@
 
     <style name="settingButtonBack">
         <item name="iconTint">@color/color_setting_text</item>
+        <item name="android:layout_width">@dimen/settingButtonBack_layout_width</item>
+        <item name="android:layout_height">@dimen/settingButtonBack_layout_height</item>
+        <item name="android:layout_marginStart">@dimen/settingButtonBack_layout_marginStart</item>
+        <item name="android:layout_marginTop">@dimen/settingButtonBack_marginTop</item>
     </style>
 
     <style name="switchTheme">
@@ -65,4 +69,27 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">end</item>
     </style>
+
+    <style name="searchEditTextLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/pl_cornerRadius</item>
+        <item name="android:layout_marginEnd">@dimen/pl_cornerRadius</item>
+
+    </style>
+
+    <style name="searchEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">13dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingBottom">@dimen/search_editText_paddingBottom</item>
+        <item name="android:paddingTop">@dimen/search_editText_paddingTop</item>
+        <item name="android:drawablePadding">9dp</item>
+        <item name="android:lines">1</item>
+        <item name="android:maxLength">40</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+
 </resources>

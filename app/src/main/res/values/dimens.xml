@@ -9,4 +9,10 @@
     <dimen name="pl_layout_marginBottom">16dp</dimen>
     <dimen name="pl_iconPadding">10dp</dimen>
     <dimen name="pl_text_size">22sp</dimen>
+    <dimen name="settingButtonBack_layout_width">48dp</dimen>
+    <dimen name="settingButtonBack_layout_height">48dp</dimen>
+    <dimen name="settingButtonBack_layout_marginStart">4dp</dimen>
+    <dimen name="settingButtonBack_marginTop">4dp</dimen>
+    <dimen name="search_editText_paddingTop">8.5dp</dimen>
+    <dimen name="search_editText_paddingBottom">8.5dp</dimen>
 </resources>

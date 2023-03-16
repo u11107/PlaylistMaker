@@ -3,7 +3,9 @@ package com.example.playlistmaker
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +26,5 @@ class MainActivity : AppCompatActivity() {
             val settingIntent = Intent(this, SettingActivity::class.java)
             startActivity(settingIntent)
         }
-
-
     }
 }
