@@ -36,7 +36,7 @@
 
     </LinearLayout>
 
-    <RelativeLayout
+    <FrameLayout
         style="@style/searchEditTextLinearLayout"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         tools:ignore="MissingConstraints">
@@ -44,25 +44,22 @@
 
         <EditText
             android:id="@+id/search_editText"
-            android:background="@drawable/backgraund_radius_edittext"
-            android:drawableStart="@drawable/search_textedit_ic"
-            android:backgroundTint="@color/color_switch_trackTint"
-            android:hint="@string/search_text_edit"
-            tools:ignore="Autofill"
             style="@style/searchEditText"
-            />
+            android:background="@drawable/backgraund_radius_edittext"
+            android:backgroundTint="@color/color_switch_trackTint"
+            android:drawableStart="@drawable/search_textedit_ic"
+            android:hint="@string/search_text_edit"
+            tools:ignore="Autofill" />
 
         <ImageView
             android:id="@+id/clear_bt"
+            style="@style/searchIcCloseEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/close_ic"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
+            android:layout_gravity="end"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="14dp"
+            android:src="@drawable/close_ic"
             android:visibility="gone" />
-
-    </RelativeLayout>
-
-
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

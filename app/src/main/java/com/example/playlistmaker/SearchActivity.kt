@@ -50,17 +50,17 @@ class SearchActivity : AppCompatActivity() {
         searchEditText.addTextChangedListener(simpleTextWatcher)
     }
 
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        super.onSaveInstanceState(outState)
-//        val searchEditText = findViewById<EditText>(R.id.search_editText).text.toString()
-//        outState.putString(SEARCH_EDIT_TEXT, searchEditText)
-//    }
-//
-//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-//        super.onRestoreInstanceState(savedInstanceState)
-//        val searchEditText = findViewById<EditText>(R.id.search_editText)
-//        text = savedInstanceState.getString(SEARCH_EDIT_TEXT).toString()
-//        searchEditText.setText(text)
-//    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val searchEditText = findViewById<EditText>(R.id.search_editText).text.toString()
+        outState.putString(SEARCH_EDIT_TEXT, searchEditText)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val searchEditText = findViewById<EditText>(R.id.search_editText)
+        text = savedInstanceState.getString(SEARCH_EDIT_TEXT).toString()
+        searchEditText.setText(text)
+    }
 
 }
