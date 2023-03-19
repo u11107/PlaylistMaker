@@ -1,5 +1,6 @@
 package com.example.playlistmaker
 
+import android.content.Context
 import android.content.Intent
 import android.content.Intent.*
 import android.net.Uri
@@ -23,10 +24,9 @@ class SettingActivity : AppCompatActivity() {
         }
 
         shareApp.setOnClickListener {
-            val message = "https://practicum.yandex.ru/android-developer/"
             val sendIntent: Intent = Intent().apply {
                 action = ACTION_SEND
-                putExtra(EXTRA_TEXT, message)
+                putExtra(EXTRA_TEXT, getString(R.string.url_address))
                 type = "text/plain"
             }
             val shareIntent = createChooser(sendIntent, null)
@@ -34,25 +34,21 @@ class SettingActivity : AppCompatActivity() {
         }
 
         sendSupport.setOnClickListener {
-            val email = arrayOf("ren84@yandex.ru")
-            val themeMessage = "Сообщение разработчикам и разработчицам приложения Playlist Maker"
-            val message = "Спасибо разработчикам и разработчицам за крутое приложение!"
             val sendIntent: Intent = Intent().apply {
                 action = ACTION_SENDTO
                 data = Uri.parse("mailto:")
-                putExtra(EXTRA_EMAIL, email)
-                putExtra(EXTRA_SUBJECT, themeMessage)
-                putExtra(EXTRA_TEXT, message)
+                putExtra(EXTRA_EMAIL, arrayOf(getString(R.string.email_address)))
+                putExtra(EXTRA_SUBJECT, getString(R.string.themeMessage))
+                putExtra(EXTRA_TEXT, getString(R.string.message))
             }
             val sendEmail = createChooser(sendIntent, null)
             startActivity(sendEmail)
         }
 
         agreementUser.setOnClickListener {
-            val link = "https://yandex.ru/legal/practicum_offer/"
             val sendIntent: Intent = Intent().apply {
                 action = ACTION_VIEW
-                data = Uri.parse(link)
+                data = Uri.parse(getString(R.string.url_address_oferta))
             }
             val sendEmail = createChooser(sendIntent, null)
             startActivity(sendEmail)

@@ -1,10 +1,12 @@
 package com.example.playlistmaker
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -15,17 +17,13 @@ class SearchActivity : AppCompatActivity() {
         const val SEARCH_EDIT_TEXT = "SEARCH_EDIT_TEXT"
     }
 
-    var text:String = ""
+    var text: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         val butClear = findViewById<ImageView>(R.id.clear_bt)
         val searchEditText = findViewById<EditText>(R.id.search_editText)
         val searchBackBt = findViewById<Button>(R.id.search_bt_back)
-
-        butClear.setOnClickListener {
-            searchEditText.setText("")
-        }
 
 
         searchBackBt.setOnClickListener {
@@ -41,10 +39,20 @@ class SearchActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (!s.isNullOrEmpty()) {
                     butClear.visibility = View.VISIBLE
+                } else {
+                    butClear.visibility = View.GONE
                 }
             }
 
             override fun afterTextChanged(s: Editable?) {
+                if (!s.isNullOrEmpty()) {
+                    butClear.setOnClickListener {
+                        val inputMethodManager =
+                            getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                        inputMethodManager.hideSoftInputFromWindow(searchEditText.windowToken, 0)
+                        searchEditText.setText("")
+                    }
+                }
             }
         }
         searchEditText.addTextChangedListener(simpleTextWatcher)

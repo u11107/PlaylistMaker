@@ -21,18 +21,7 @@
             app:icon="@drawable/arrow_back"
             app:iconGravity="textStart" />
 
-        <TextView
-            style="@style/settingSettingText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="12dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/ys_display_medium"
-            android:text="@string/search_text_edit"
-            android:textFontWeight="500"
-            android:textSize="@dimen/pl_text_size"
-            tools:targetApi="p" />
+        <TextView style="@style/settingSettingText" />
 
     </LinearLayout>
 
@@ -54,12 +43,6 @@
         <ImageView
             android:id="@+id/clear_bt"
             style="@style/searchIcCloseEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="14dp"
-            android:src="@drawable/close_ic"
-            android:visibility="gone" />
+            tools:ignore="ContentDescription" />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
