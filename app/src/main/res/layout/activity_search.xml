@@ -35,7 +35,6 @@
             android:id="@+id/search_editText"
             style="@style/searchEditText"
             android:background="@drawable/backgraund_radius_edittext"
-            android:backgroundTint="@color/color_switch_trackTint"
             android:drawableStart="@drawable/search_textedit_ic"
             android:hint="@string/search_text_edit"
             tools:ignore="Autofill" />
