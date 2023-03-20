@@ -1,7 +1,6 @@
 package com.example.playlistmaker
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,7 +16,8 @@ class SearchActivity : AppCompatActivity() {
         const val SEARCH_EDIT_TEXT = "SEARCH_EDIT_TEXT"
     }
 
-    var text: String = ""
+    private var text: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
@@ -27,8 +27,14 @@ class SearchActivity : AppCompatActivity() {
 
 
         searchBackBt.setOnClickListener {
-            val mainIntent = Intent(this, MainActivity::class.java)
-            startActivity(mainIntent)
+            finish()
+        }
+
+        butClear.setOnClickListener {
+            val inputMethodManager =
+                getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(searchEditText.windowToken, 0)
+            searchEditText.setText("")
         }
 
         val simpleTextWatcher = object : TextWatcher {
@@ -37,6 +43,11 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                text = searchEditText.text.toString()
+                visibilityItem(s)
+            }
+
+            private fun visibilityItem(s: CharSequence?) {
                 if (!s.isNullOrEmpty()) {
                     butClear.visibility = View.VISIBLE
                 } else {
@@ -45,30 +56,25 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                if (!s.isNullOrEmpty()) {
-                    butClear.setOnClickListener {
-                        val inputMethodManager =
-                            getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-                        inputMethodManager.hideSoftInputFromWindow(searchEditText.windowToken, 0)
-                        searchEditText.setText("")
-                    }
-                }
+
             }
         }
         searchEditText.addTextChangedListener(simpleTextWatcher)
+
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val searchEditText = findViewById<EditText>(R.id.search_editText).text.toString()
-        outState.putString(SEARCH_EDIT_TEXT, searchEditText)
+        outState.putString(SEARCH_EDIT_TEXT, text)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
         val searchEditText = findViewById<EditText>(R.id.search_editText)
+        super.onRestoreInstanceState(savedInstanceState)
         text = savedInstanceState.getString(SEARCH_EDIT_TEXT).toString()
         searchEditText.setText(text)
     }
 
 }
+
