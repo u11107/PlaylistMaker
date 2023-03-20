@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/linearLayoutPl"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        style="@style/mainText_PlayList_maker" />
+
+    <LinearLayout
+        style="@style/mainLinearLayout">
+
+        <Button
+            android:id="@+id/but_search"
+            style="@style/mainButtonStyle"
+            android:text="@string/Search"
+            app:icon="@drawable/search_ic" />
+
+        <Button
+            android:id="@+id/but_media"
+            style="@style/mainButtonStyle"
+            android:text="@string/Media_lib"
+            app:icon="@drawable/search_ic" />
+
+        <Button
+            android:id="@+id/but_setting"
+            style="@style/mainButtonStyle"
+            android:text="@string/Setting"
+            app:icon="@drawable/setting" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

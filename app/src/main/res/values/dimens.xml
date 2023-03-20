@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="setting_text">300dp</dimen>
+    <dimen name="setting_inner_bottom_padding">21dp</dimen>
+    <dimen name="setting_inner_top_padding">21dp</dimen>
+    <dimen name="setting_inner_start_padding">16dp</dimen>
+    <dimen name="setting_text_size">16sp</dimen>
+    <dimen name="pl_cornerRadius">16dp</dimen>
+    <dimen name="pl_layout_marginBottom">16dp</dimen>
+    <dimen name="pl_iconPadding">10dp</dimen>
+    <dimen name="pl_text_size">22sp</dimen>
+    <dimen name="settingButtonBack_layout_width">48dp</dimen>
+    <dimen name="settingButtonBack_layout_height">48dp</dimen>
+    <dimen name="settingButtonBack_layout_marginStart">4dp</dimen>
+    <dimen name="settingButtonBack_marginTop">4dp</dimen>
+    <dimen name="search_editText_paddingTop">8.5dp</dimen>
+    <dimen name="search_editText_paddingBottom">8.5dp</dimen>
+    <dimen name="search_ic_layout_marginTop">12dp</dimen>
+    <dimen name="search_ic_layout_marginEnd">14dp</dimen>
+    <dimen name="main_text_Playlist_maker_layout_marginStart">16dp</dimen>
+    <dimen name="main_text_Playlist_maker_layout_marginTop">14dp</dimen>
+    <dimen name="main_text_Playlist_maker_layout_marginBottom">16dp</dimen>
+</resources>
