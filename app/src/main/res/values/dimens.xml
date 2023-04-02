@@ -20,4 +20,9 @@
     <dimen name="main_text_Playlist_maker_layout_marginStart">16dp</dimen>
     <dimen name="main_text_Playlist_maker_layout_marginTop">14dp</dimen>
     <dimen name="main_text_Playlist_maker_layout_marginBottom">16dp</dimen>
+    <dimen name="track_textSize">11sp</dimen>
+    <dimen name="track_cardView_imageAlbum">45dp</dimen>
+    <dimen name="track_cardView_image_margin">8dp</dimen>
+    <dimen name="track_ellipse_margin">5dp</dimen>
+
 </resources>

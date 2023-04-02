@@ -15,7 +15,7 @@
 
 
         <Button
-            android:id="@+id/search_bt_back"
+            android:id="@+id/searchBt"
             style="@style/settingButtonBack"
             android:background="@android:color/transparent"
             app:icon="@drawable/arrow_back"
@@ -26,13 +26,15 @@
     </LinearLayout>
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         style="@style/searchEditTextLinearLayout"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp">
 
 
         <EditText
-            android:id="@+id/search_editText"
+            android:id="@+id/searchEditText"
             style="@style/searchEditText"
             android:background="@drawable/backgraund_radius_edittext"
             android:drawableStart="@drawable/search_textedit_ic"
@@ -40,8 +42,24 @@
             tools:ignore="Autofill" />
 
         <ImageView
-            android:id="@+id/clear_bt"
+            android:id="@+id/clearBt"
             style="@style/searchIcCloseEditText"
             tools:ignore="ContentDescription" />
     </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
