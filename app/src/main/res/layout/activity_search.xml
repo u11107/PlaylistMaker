@@ -15,7 +15,7 @@
 
 
         <Button
-            android:id="@+id/searchBt"
+            android:id="@+id/searchBtBack"
             style="@style/settingButtonBack"
             android:background="@android:color/transparent"
             app:icon="@drawable/arrow_back"
@@ -51,15 +51,10 @@
         android:id="@+id/recView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

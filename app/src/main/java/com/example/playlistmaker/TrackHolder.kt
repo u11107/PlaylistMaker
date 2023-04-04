@@ -18,9 +18,8 @@ class TrackHolder(item: View):RecyclerView.ViewHolder(item) {
             .load(track.artworkUrl100)
             .placeholder(R.drawable.placeholder)
             .centerCrop()
-            .transform(RoundedCorners(10))
+            .transform(RoundedCorners(itemView.resources
+                .getDimensionPixelOffset(R.dimen.track_album_image_radius)))
             .into(albumIm)
-        albumIm.setImageResource(R.drawable.search_ic)
     }
-
 }

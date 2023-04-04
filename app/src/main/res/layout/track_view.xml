@@ -20,32 +20,42 @@
             tools:ignore="ContentDescription" />
 
         <LinearLayout
-            style="@style/track_LinerLayout">
+            style="@style/track_LinerLayout"
+            android:layout_width="250dp">
 
             <TextView
                 android:id="@+id/nameTrack"
+                android:lines="1"
+                android:ellipsize="end"
                 style="@style/track_nameTrack" />
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 tools:ignore="InefficientWeight">
 
                 <TextView
                     android:id="@+id/executor"
-                    style="@style/track_textView_secondary" />
+                    style="@style/track_textView_secondary"
+                    android:layout_width="54dp"
+                    android:ellipsize="end"
+                    android:lines="1" />
 
                 <ImageView
                     android:id="@+id/ellipse"
-                    app:srcCompat="@drawable/ellipse"
-                    style="@style/track_ellipse"/>
+                    style="@style/track_ellipse"
+                    app:srcCompat="@drawable/ellipse" />
 
 
                 <TextView
                     android:id="@+id/duration"
-                    style="@style/track_textView_secondary"  />
+                    style="@style/track_textView_secondary"
+                    android:layout_height="match_parent"
+
+                    android:ellipsize="end"
+                    android:lines="1" />
 
             </LinearLayout>
 
@@ -55,6 +65,7 @@
         <ImageView
             android:id="@+id/goBack"
             style="@style/settingIconImage"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="23dp"
             android:layout_marginEnd="24dp"
             app:srcCompat="@drawable/arrow"
