@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/albumIm"
+        style="@style/track_CardView_ImageAlbum"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        style="@style/track_LinerLayout"
+        android:layout_width="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/nameTrack"
+            style="@style/track_nameTrack"
+            android:ellipsize="end"
+            android:lines="1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/executor"
+                style="@style/track_textView_secondary"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:lines="1" />
+
+            <ImageView
+                android:id="@+id/ellipse"
+                style="@style/track_ellipse"
+                android:src="@drawable/ellipse"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/duration"
+                style="@style/track_textView_secondary"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:lines="1" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/goBack"
+        style="@style/settingIconImage"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/arrow"
+        tools:ignore="ContentDescription" />
+
+</LinearLayout>
