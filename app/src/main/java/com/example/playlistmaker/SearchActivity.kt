@@ -8,6 +8,8 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
+import com.example.playlistmaker.SearchActivity.Companion.SEARCH_EDIT_TEXT
 import com.example.playlistmaker.databinding.ActivitySearchBinding
 import com.example.playlistmaker.model.Track
 
@@ -69,28 +71,14 @@ class SearchActivity : AppCompatActivity() {
 
 
 
-
-        val simpleTextWatcher = object : TextWatcher {
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                text = binding.searchEditText.text.toString()
-                visibilityItem(s)
-            }
-
-            private fun visibilityItem(s: CharSequence?) {
-                if (!s.isNullOrEmpty()) {
+       val simpleTextWatcher = binding.searchEditText.doOnTextChanged { text, _, _, _ ->
+           this@SearchActivity.text = text.toString()
+           if (!text.isNullOrEmpty()) {
                     binding.clearBt.visibility = View.VISIBLE
                 } else {
                     binding.clearBt.visibility = View.GONE
                 }
             }
-
-            override fun afterTextChanged(s: Editable?) {
-            }
-        }
         binding.searchEditText.addTextChangedListener(simpleTextWatcher)
     }
 
