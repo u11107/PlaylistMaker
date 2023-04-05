@@ -129,22 +129,25 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:backgroundTint">@color/dark_theme_item</item>
         <item name="android:layout_height">wrap_content</item>
-
     </style>
 
+    <style name="recycler">
+        <item name="android:background">@color/dark_theme_item</item>
+    </style>
 
     <style name="track_CardView_ImageAlbum">
         <item name="android:layout_width">@dimen/track_cardView_imageAlbum</item>
         <item name="android:layout_height">@dimen/track_cardView_imageAlbum</item>
         <item name="android:layout_marginStart">13dp</item>
         <item name="android:layout_marginTop">@dimen/track_cardView_image_margin</item>
+        <item name="android:layout_marginEnd">@dimen/track_cardView_image_margin</item>
         <item name="android:layout_marginBottom">@dimen/track_cardView_image_margin</item>
         <item name="android:scaleType">centerCrop</item>
     </style>
 
     <style name="track_LinerLayout" parent="wrapContent">
         <item name="android:layout_gravity">center|start</item>
-        <item name="android:layout_marginStart">66dp</item>
+        <item name="android:layout_marginEnd">@dimen/track_cardView_image_margin</item>
         <item name="android:orientation">vertical</item>
     </style>
 
@@ -171,5 +174,8 @@
         <item name="android:layout_marginEnd">@dimen/track_ellipse_margin</item>
     </style>
 
+    <style name="search_const">
+        <item name="android:background">@color/dark_theme_item</item>
+    </style>
 
 </resources>

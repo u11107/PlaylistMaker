@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/search_const"
     tools:context=".SearchActivity">
 
     <LinearLayout
@@ -49,6 +50,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recView"
+        style="@style/recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
