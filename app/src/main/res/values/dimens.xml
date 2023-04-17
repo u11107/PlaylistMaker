@@ -25,5 +25,11 @@
     <dimen name="track_cardView_image_margin">8dp</dimen>
     <dimen name="track_ellipse_margin">5dp</dimen>
     <dimen name="track_album_image_radius">2dp</dimen>
+    <dimen name="textError">19sp</dimen>
+    <dimen name="textSize">14sp</dimen>
+    <dimen name="searchAct_BtUpdate_margin_Start_End">14dp</dimen>
+    <dimen name="searchAct_BtUpdate_margin_Top_Bot">10dp</dimen>
+    <dimen name="searchAct_BtUpdate_margin">14dp</dimen>
+    <dimen name="searchAct_BtUpdate_marginTop">24dp</dimen>
 
 </resources>

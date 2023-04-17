@@ -22,7 +22,7 @@
             android:id="@+id/but_media"
             style="@style/mainButtonStyle"
             android:text="@string/Media_lib"
-            app:icon="@drawable/search_ic" />
+            app:icon="@drawable/media_lib_ic" />
 
         <Button
             android:id="@+id/but_setting"

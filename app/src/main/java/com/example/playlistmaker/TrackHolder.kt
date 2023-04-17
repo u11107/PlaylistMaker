@@ -6,20 +6,26 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.playlistmaker.databinding.TrackVBinding
 import com.example.playlistmaker.model.Track
+import java.text.SimpleDateFormat
+import java.util.Locale
 
-class TrackHolder(item: View):RecyclerView.ViewHolder(item) {
+class TrackHolder(item: View) : RecyclerView.ViewHolder(item) {
     private val binding = TrackVBinding.bind(item)
 
-    fun bind(track:Track) = with(binding) {
+    fun bind(track: Track) = with(binding) {
         nameTrack.text = track.trackName
         executor.text = track.artistName
-        duration.text = track.trackTime
+        duration.text = SimpleDateFormat("mm:ss", Locale.getDefault()).format(track.trackTimeMillis)
         Glide.with(itemView.context)
             .load(track.artworkUrl100)
             .placeholder(R.drawable.placeholder)
             .centerCrop()
-            .transform(RoundedCorners(itemView.resources
-                .getDimensionPixelOffset(R.dimen.track_album_image_radius)))
+            .transform(
+                RoundedCorners(
+                    itemView.resources
+                        .getDimensionPixelOffset(R.dimen.track_album_image_radius)
+                )
+            )
             .into(albumIm)
     }
 }

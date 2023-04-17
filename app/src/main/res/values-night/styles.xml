@@ -131,7 +131,7 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="recycler">
+    <style name="recycler" parent="matchParent">
         <item name="android:background">@color/dark_theme_item</item>
     </style>
 
@@ -176,6 +176,53 @@
 
     <style name="search_const">
         <item name="android:background">@color/dark_theme_item</item>
+    </style>
+
+    <style name="searchAct_placeholderMessage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginTop">110dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="searchAct_noConnection" parent="wrapContent">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:src">@drawable/dark_mode</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="searchAct_nothingFoundImage" parent="wrapContent">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:src">@drawable/dark_model</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="searchAct_tvError">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:lineHeight" tools:ignore="NewApi">24dp</item>
+        <item name="android:textColor">@color/color_Playlist_text</item>
+        <item name="android:textFontWeight" tools:ignore="NewApi">400</item>
+        <item name="android:textSize">@dimen/textError</item>
+    </style>
+
+    <style name="searchAct_BtUpdate" parent="wrapContent">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/searchAct_BtUpdate_marginTop</item>
+        <item name="android:backgroundTint">@color/color_Playlist_text</item>
+        <item name="android:paddingStart">@dimen/searchAct_BtUpdate_margin</item>
+        <item name="android:paddingTop">@dimen/searchAct_BtUpdate_margin_Top_Bot</item>
+        <item name="android:paddingEnd">@dimen/searchAct_BtUpdate_margin</item>
+        <item name="android:paddingBottom">@dimen/searchAct_BtUpdate_margin_Top_Bot</item>
+        <item name="android:text">@string/btUpdate</item>
+        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:textColor">@color/dark_theme_item</item>
     </style>
 
 </resources>
