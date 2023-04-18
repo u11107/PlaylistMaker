@@ -74,6 +74,7 @@ class SearchActivity : AppCompatActivity() {
             inputMethodManager.hideSoftInputFromWindow(binding.searchEditText.windowToken, 0)
             binding.searchEditText.setText("")
             trackList.clear()
+            binding.placeholderMessage.visibility = View.GONE
             trackAdapter.notifyDataSetChanged()
         }
 
