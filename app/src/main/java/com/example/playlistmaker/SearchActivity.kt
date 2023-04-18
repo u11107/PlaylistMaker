@@ -66,11 +66,15 @@ class SearchActivity : AppCompatActivity() {
 
         binding.searchBtBack.setOnClickListener { finish() }
 
+
+
         binding.clearBt.setOnClickListener {
             val inputMethodManager =
                 getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(binding.searchEditText.windowToken, 0)
             binding.searchEditText.setText("")
+            trackList.clear()
+            trackAdapter.notifyDataSetChanged()
         }
 
         binding.buttonUpdate.setOnClickListener {
