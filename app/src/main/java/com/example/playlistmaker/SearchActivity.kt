@@ -103,11 +103,14 @@ class SearchActivity : AppCompatActivity() {
     private fun showMessage(text: String,button: Boolean) {
         if (text.isNotEmpty()) {
             binding.placeholderMessage.visibility = View.VISIBLE
+            binding.noConnection.visibility = View.GONE
+            binding.nothingFoundImage.visibility = View.VISIBLE
             trackList.clear()
             trackAdapter.notifyDataSetChanged()
-            binding.nothingFoundImage.visibility = View.VISIBLE
             binding.tvError.text = text
             if (button) {
+                binding.nothingFoundImage.visibility = View.GONE
+                binding.noConnection.visibility = View.VISIBLE
                 binding.buttonUpdate.visibility = View.VISIBLE
             } else {
                 binding.buttonUpdate.visibility = View.GONE
