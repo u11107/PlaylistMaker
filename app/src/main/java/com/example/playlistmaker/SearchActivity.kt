@@ -20,7 +20,6 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 class SearchActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchBinding
@@ -28,6 +27,7 @@ class SearchActivity : AppCompatActivity() {
     private var text: String = ""
     private val baseUrl = "http://itunes.apple.com"
     private val trackList = ArrayList<Track>()
+    private var historyList = ArrayList<Track>()
     private val interceptor = HttpLoggingInterceptor()
 
 
@@ -45,16 +45,26 @@ class SearchActivity : AppCompatActivity() {
         const val SEARCH_EDIT_TEXT = "SEARCH_EDIT_TEXT"
     }
 
+
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        trackAdapter = TrackAdapter(trackList)
+        trackAdapter = TrackAdapter()
         binding.recView.adapter = trackAdapter
+        trackAdapter.trackList = trackList
+        historyList.clear()
+        historyList = SearchHistory.fillInList()
+
 
         interceptor.level = HttpLoggingInterceptor.Level.BODY
 
+
+        binding.searchEditText.setOnFocusChangeListener { v, hasFocus ->
+            focusVisibility(hasFocus)
+        }
 
         binding.searchEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -62,11 +72,10 @@ class SearchActivity : AppCompatActivity() {
                 true
             }
             false
+
         }
 
         binding.searchBtBack.setOnClickListener { finish() }
-
-
 
         binding.clearBt.setOnClickListener {
             val inputMethodManager =
@@ -82,15 +91,46 @@ class SearchActivity : AppCompatActivity() {
             search()
         }
 
+        binding.btClearHistory.setOnClickListener {
+            SearchHistory.clear()
+            historyList.clear()
+            hideButtons()
+            trackAdapter.notifyDataSetChanged()
+        }
+
         val simpleTextWatcher = binding.searchEditText.doOnTextChanged { text, _, _, _ ->
             this@SearchActivity.text = text.toString()
             if (!text.isNullOrEmpty()) {
                 binding.clearBt.visibility = View.VISIBLE
+                history()
             } else {
                 binding.clearBt.visibility = View.GONE
             }
         }
         binding.searchEditText.addTextChangedListener(simpleTextWatcher)
+    }
+
+    private fun hideButtons() {
+        binding.tittleHistory.visibility = View.GONE
+        binding.btClearHistory.visibility = View.GONE
+    }
+
+    private fun history() {
+        binding.tittleHistory.visibility = View.GONE
+        binding.btClearHistory.visibility = View.GONE
+        trackAdapter.trackList = trackList
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun focusVisibility(hasFocus:Boolean){
+        binding.tittleHistory.visibility = if (hasFocus && binding.searchEditText
+                .text.isEmpty() && historyList.isNotEmpty()
+        ) View.VISIBLE else View.GONE
+        binding.btClearHistory.visibility = if (hasFocus && binding.searchEditText
+                .text.isEmpty() && historyList.isNotEmpty()
+        ) View.VISIBLE else View.GONE
+        trackAdapter.trackList = historyList
+        trackAdapter.notifyDataSetChanged()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -105,7 +145,8 @@ class SearchActivity : AppCompatActivity() {
         searchEditText.setText(text)
     }
 
-    private fun showMessage(text: String,button: Boolean) {
+    @SuppressLint("NotifyDataSetChanged")
+    private fun showMessage(text: String, button: Boolean) {
         if (text.isNotEmpty()) {
             binding.placeholderMessage.visibility = View.VISIBLE
             binding.noConnection.visibility = View.GONE
@@ -124,6 +165,7 @@ class SearchActivity : AppCompatActivity() {
             binding.placeholderMessage.visibility = View.GONE
         }
     }
+
 
     private fun search() {
         if (binding.searchEditText.text.isNotEmpty()) {
@@ -145,22 +187,25 @@ class SearchActivity : AppCompatActivity() {
                         if (trackList.isEmpty()) {
                             showMessage(
                                 getString(R.string.nothing_found),
-                                 false
+                                false
                             )
                         } else {
-                            showMessage("",  false)
+                            showMessage("", false)
                         }
                     }
+
                     override fun onFailure(call: Call<TrackResponse>, t: Throwable) {
                         showMessage(
                             getString(R.string.problem_internet),
-                             true
+                            true
                         )
                     }
                 })
         }
     }
 }
+
+
 
 
 

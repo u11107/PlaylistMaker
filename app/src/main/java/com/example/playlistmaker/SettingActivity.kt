@@ -1,29 +1,34 @@
 package com.example.playlistmaker
 
-import android.content.Context
 import android.content.Intent
-import android.content.Intent.*
+import android.content.Intent.ACTION_SEND
+import android.content.Intent.ACTION_SENDTO
+import android.content.Intent.ACTION_VIEW
+import android.content.Intent.EXTRA_EMAIL
+import android.content.Intent.EXTRA_SUBJECT
+import android.content.Intent.EXTRA_TEXT
+import android.content.Intent.createChooser
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
+import android.provider.Contacts.SettingsColumns.KEY
+import androidx.appcompat.app.AppCompatActivity
+import com.example.playlistmaker.databinding.ActivitySettingBinding
 
 
 class SettingActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySettingBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_setting)
-        val butBack = findViewById<Button>(R.id.button_setting_back)
-        val shareApp = findViewById<TextView>(R.id.share)
-        val sendSupport = findViewById<TextView>(R.id.sendSupport)
-        val agreementUser = findViewById<TextView>(R.id.agreementUser)
+        binding = ActivitySettingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        butBack.setOnClickListener {
+
+        binding.buttonBack.setOnClickListener {
             finish()
         }
 
-        shareApp.setOnClickListener {
+
+        binding.share.setOnClickListener {
             val sendIntent: Intent = Intent().apply {
                 action = ACTION_SEND
                 putExtra(EXTRA_TEXT, getString(R.string.url_address))
@@ -33,7 +38,7 @@ class SettingActivity : AppCompatActivity() {
             startActivity(shareIntent)
         }
 
-        sendSupport.setOnClickListener {
+        binding.sendSupport.setOnClickListener {
             val sendIntent: Intent = Intent().apply {
                 action = ACTION_SENDTO
                 data = Uri.parse("mailto:")
@@ -45,13 +50,21 @@ class SettingActivity : AppCompatActivity() {
             startActivity(sendEmail)
         }
 
-        agreementUser.setOnClickListener {
+        binding.agreementUser.setOnClickListener {
             val sendIntent: Intent = Intent().apply {
                 action = ACTION_VIEW
                 data = Uri.parse(getString(R.string.url_address_oferta))
             }
             val sendEmail = createChooser(sendIntent, null)
             startActivity(sendEmail)
+        }
+
+        binding.themeSwitch.setOnCheckedChangeListener { switcher, checked ->
+            (applicationContext as App).switchTheme(checked)
+        }
+
+        if ((applicationContext as App).darkTheme) {
+            binding.themeSwitch.isChecked = true;
         }
     }
 }

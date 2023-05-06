@@ -1,66 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    style="@style/search_const"
+<ScrollView android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SearchActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints">
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
 
 
-        <Button
-            android:id="@+id/searchBtBack"
-            style="@style/settingButtonBack"
-            android:background="@android:color/transparent"
-            app:icon="@drawable/arrow_back"
-            app:iconGravity="textStart" />
+            <Button
+                android:id="@+id/searchBtBack"
+                style="@style/settingButtonBack"
+                android:background="@android:color/transparent"
+                app:icon="@drawable/arrow_back"
+                app:iconGravity="textStart" />
 
-        <TextView style="@style/settingSettingText" />
+            <TextView style="@style/settingSettingText" />
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        style="@style/searchEditTextLinearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp">
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            style="@style/searchEditTextLinearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="16dp">
 
 
-        <EditText
-            android:id="@+id/searchEditText"
-            style="@style/searchEditText"
-            android:background="@drawable/backgraund_radius_edittext"
-            android:drawableStart="@drawable/search_textedit_ic"
-            android:hint="@string/search_text_edit"
-            android:imeOptions="actionDone"
-            android:singleLine="true"
-            tools:ignore="Autofill" />
+            <EditText
+                android:id="@+id/searchEditText"
+                style="@style/searchEditText"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/backgraund_radius_edittext"
+                android:drawableStart="@drawable/search_textedit_ic"
+                android:hint="@string/search_text_edit"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                tools:ignore="Autofill" />
 
-        <ImageView
-            android:id="@+id/clearBt"
-            style="@style/searchIcCloseEditText"
-            tools:ignore="ContentDescription" />
-    </FrameLayout>
+            <ImageView
+                android:id="@+id/clearBt"
+                style="@style/searchIcCloseEditText"
+                tools:ignore="ContentDescription" />
+        </FrameLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="124dp">
+
+        <TextView
+            android:id="@+id/tittleHistory"
+            style="@style/tittleHistory" />
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recView"
             style="@style/recycler"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/btClearHistory"
+            style="@style/btClearHistory"
+            app:cornerRadius="54dp" />
+
 
         <LinearLayout
             android:id="@+id/placeholderMessage"
@@ -89,6 +102,6 @@
                 app:cornerRadius="54dp" />
         </LinearLayout>
 
-    </FrameLayout>
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

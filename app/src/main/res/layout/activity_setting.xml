@@ -14,7 +14,7 @@
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/button_setting_back"
+            android:id="@+id/button_back"
             style="@style/settingButtonBack"
             android:layout_width="48dp"
             android:layout_height="48dp"
