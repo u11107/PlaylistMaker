@@ -19,6 +19,5 @@
     <string name="problem_internet">Проблемы с связью\n \nЗагрузка не удалась. Проверьте подключение к интернету</string>
     <string name="btUpdate">Обновить</string>
     <string name="ClearHistory">Очистить историю</string>
-    <string name="you_searched">Вы искали</string>
-
+    <string name="you_searched">История поиска</string>
 </resources>

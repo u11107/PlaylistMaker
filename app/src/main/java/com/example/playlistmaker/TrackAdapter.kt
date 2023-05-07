@@ -3,7 +3,8 @@ package com.example.playlistmaker
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.playlistmaker.SearchHistory.Companion.addTrack
+import com.example.playlistmaker.SearchHistory.addTrack
+
 
 import com.example.playlistmaker.model.Track
 

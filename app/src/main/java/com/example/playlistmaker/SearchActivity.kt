@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
+import com.example.playlistmaker.SearchActivity.Companion.SEARCH_EDIT_TEXT
 import com.example.playlistmaker.databinding.ActivitySearchBinding
 import com.example.playlistmaker.model.Track
 import okhttp3.OkHttpClient
@@ -84,6 +85,7 @@ class SearchActivity : AppCompatActivity() {
             binding.searchEditText.setText("")
             trackList.clear()
             binding.placeholderMessage.visibility = View.GONE
+            showHistory()
             trackAdapter.notifyDataSetChanged()
         }
 
@@ -122,13 +124,14 @@ class SearchActivity : AppCompatActivity() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun focusVisibility(hasFocus:Boolean){
-        binding.tittleHistory.visibility = if (hasFocus && binding.searchEditText
-                .text.isEmpty() && historyList.isNotEmpty()
-        ) View.VISIBLE else View.GONE
-        binding.btClearHistory.visibility = if (hasFocus && binding.searchEditText
-                .text.isEmpty() && historyList.isNotEmpty()
-        ) View.VISIBLE else View.GONE
+    private fun focusVisibility(hasFocus: Boolean) {
+        if(hasFocus && binding.searchEditText.text.isEmpty() && historyList.isNotEmpty()){
+            binding.tittleHistory.visibility = View.VISIBLE
+            binding.btClearHistory.visibility = View.VISIBLE
+        } else {
+            binding.tittleHistory.visibility = View.GONE
+            binding.btClearHistory.visibility = View.GONE
+        }
         trackAdapter.trackList = historyList
         trackAdapter.notifyDataSetChanged()
     }
@@ -164,6 +167,16 @@ class SearchActivity : AppCompatActivity() {
         } else {
             binding.placeholderMessage.visibility = View.GONE
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun showHistory(){
+            binding.tittleHistory.visibility = View.VISIBLE
+            binding.btClearHistory.visibility = View.VISIBLE
+            historyList = SearchHistory.fillInList()
+            trackAdapter.trackList = historyList
+            trackAdapter.notifyDataSetChanged()
+
     }
 
 
