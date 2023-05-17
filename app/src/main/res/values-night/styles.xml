@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="linearLayoutPl" parent="matchParent">
         <item name="android:background">@color/dark_theme_item</item>
         <item name="android:orientation">vertical</item>
@@ -35,9 +36,13 @@
     </style>
 
     <style name="mainText_PlayList_maker" parent="wrapContent">
-        <item name="android:layout_marginStart">@dimen/main_text_Playlist_maker_layout_marginStart</item>
-        <item name="android:layout_marginTop">@dimen/main_text_Playlist_maker_layout_marginTop</item>
-        <item name="android:layout_marginBottom">@dimen/main_text_Playlist_maker_layout_marginBottom</item>
+        <item name="android:layout_marginStart">@dimen/main_text_Playlist_maker_layout_marginStart
+        </item>
+        <item name="android:layout_marginTop">@dimen/main_text_Playlist_maker_layout_marginTop
+        </item>
+        <item name="android:layout_marginBottom">
+            @dimen/main_text_Playlist_maker_layout_marginBottom
+        </item>
         <item name="android:text">@string/Title</item>
         <item name="android:textColor">@color/color_Playlist_text</item>
         <item name="android:textSize">@dimen/pl_text_size</item>
@@ -54,7 +59,7 @@
     </style>
 
 
-    <style name="mainButtonStyle"  parent="Widget.MaterialComponents.Button.UnelevatedButton">
+    <style name="mainButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:fontFamily">@font/ys_display_medium</item>
         <item name="android:textFontWeight" tools:ignore="NewApi">500</item>
         <item name="android:textColor">@color/dark_theme_item</item>
@@ -254,4 +259,84 @@
         <item name="android:visibility">gone</item>
     </style>
 
+    <style name="audio_player_tvTittle" parent="wrapContent">
+        <item name="android:layout_marginBottom">17dp</item>
+        <item name="android:textColor">@color/color_image</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+    </style>
+
+    <style name="audio_player_tvDataTrack" parent="wrapContent">
+        <item name="android:layout_marginBottom">17dp</item>
+        <item name="android:textColor">@color/color_Playlist_text</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+    </style>
+
+    <style name="audio_player_playback_progress" parent="wrapContent">
+        <item name="android:layout_marginBottom">39dp</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textColor">@color/dark_theme_item</item>
+        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:lineHeight" tools:ignore="NewApi">16.41dp</item>
+    </style>
+
+    <style name="audio_player_add" parent="wrapContent">
+        <item name="android:layout_marginStart">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginEnd">@dimen/audio_player_margin63dp</item>
+        <item name="android:layout_marginBottom">@dimen/audio_player_margin84dp</item>
+        <item name="android:src">@drawable/add_dark_theme</item>
+    </style>
+
+    <style name="audio_player_play" parent="wrapContent">
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:src">@drawable/play_dark_theme</item>
+    </style>
+
+    <style name="audio_player_like" parent="wrapContent">
+        <item name="android:layout_marginStart">@dimen/audio_player_margin63dp</item>
+        <item name="android:layout_marginEnd">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginBottom">@dimen/audio_player_margin84dp</item>
+        <item name="android:src">@drawable/like_dark_theme</item>
+    </style>
+
+
+    <style name="audio_player_artist">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginEnd">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginBottom">38dp</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textColor">@color/color_Playlist_text</item>
+    </style>
+
+    <style name="audio_player_track">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginEnd">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textColor">@color/color_Playlist_text</item>
+        <item name="android:textSize">@dimen/pl_text_size</item>
+    </style>
+
+    <style name="audio_player_image">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_marginStart">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginEnd">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:layout_marginTop">84dp</item>
+    </style>
+
+
+    <style name="audio_player_btBack">
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:src">@drawable/back_dark_theme</item>
+    </style>
 </resources>

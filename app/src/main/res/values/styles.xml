@@ -252,7 +252,83 @@
         <item name="android:visibility">gone</item>
     </style>
 
+______________
+
+    <style name="audio_player_tvTittle" parent="wrapContent">
+        <item name="android:layout_marginBottom">17dp</item>
+        <item name="android:textColor">@color/color_image</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+    </style>
+
+    <style name="audio_player_tvDataTrack" parent="wrapContent">
+        <item name="android:layout_marginBottom">17dp</item>
+        <item name="android:textColor">@color/dark_theme_item</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+    </style>
+
+    <style name="audio_player_playback_progress" parent="wrapContent">
+        <item name="android:layout_marginBottom">39dp</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textColor">@color/dark_theme_item</item>
+        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:lineHeight" tools:ignore="NewApi">16.41dp</item>
+    </style>
+
+    <style name="audio_player_add" parent="wrapContent">
+        <item name="android:layout_marginStart">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginEnd">@dimen/audio_player_margin63dp</item>
+        <item name="android:layout_marginBottom">@dimen/audio_player_margin84dp</item>
+    </style>
+
+    <style name="audio_player_play" parent="wrapContent">
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+
+    <style name="audio_player_like" parent="wrapContent">
+        <item name="android:layout_marginStart">@dimen/audio_player_margin63dp</item>
+        <item name="android:layout_marginEnd">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginBottom">@dimen/audio_player_margin84dp</item>
+    </style>
 
 
+    <style name="audio_player_artist">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginEnd">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginBottom">38dp</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textColor">@color/dark_theme_item</item>
+    </style>
+
+    <style name="audio_player_track">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginEnd">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textColor">@color/dark_theme_item</item>
+        <item name="android:textSize">@dimen/pl_text_size</item>
+    </style>
+
+    <style name="audio_player_image">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_marginStart">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginEnd">@dimen/audio_player_margin8dp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:layout_marginTop">84dp</item>
+    </style>
+
+
+    <style name="audio_player_btBack">
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
 
 </resources>

@@ -11,6 +11,7 @@ class App : Application() {
         const val EXAMPLE_PREFERENCES = "example_preferences"
         const val KEY_THEME = "key"
         lateinit var sharedMemory: SharedPreferences
+        const val TRACK = "track"
     }
 
     var darkTheme = false
