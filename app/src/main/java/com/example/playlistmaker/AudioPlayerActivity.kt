@@ -33,10 +33,11 @@ class AudioPlayerActivity() : AppCompatActivity() {
         tittleTrackArtist.text = track.artistName
         trackTime.text =
             SimpleDateFormat("mm:ss", Locale.getDefault()).format(track.trackTimeMillis)
-        if (track.collectionName.isNotEmpty()) {
-            trackAlb.text = track.collectionName
+        if (track.collectionName.isNullOrEmpty()) {
+            trackAlb.visibility = View.GONE
+            albumTrack.visibility = View.GONE
         } else {
-            trackAlb.text = " "
+            trackAlb.text = track.collectionName
         }
 
         trackYear.text = track.getReleaseDateOnlyYear()
