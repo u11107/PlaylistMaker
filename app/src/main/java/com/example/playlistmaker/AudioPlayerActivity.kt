@@ -25,19 +25,20 @@ class AudioPlayerActivity() : AppCompatActivity() {
         }
 
         val track = intent.getParcelableExtra<Track>(TRACK)!!
-        fillingThePlayer(track)
-    }
 
-    private fun fillingThePlayer(track: Track) = with(binding) {
+        goToPlayer(track)
+    }
+    private fun goToPlayer(track: Track) = with(binding) {
         tittleTrackName.text = track.trackName
         tittleTrackArtist.text = track.artistName
         trackTime.text =
             SimpleDateFormat("mm:ss", Locale.getDefault()).format(track.trackTimeMillis)
-        if (track.collectionName.isEmpty()) {
-            trackAlb.visibility = View.GONE
-        } else {
+        if (track.collectionName.isNotEmpty()) {
             trackAlb.text = track.collectionName
+        } else {
+            trackAlb.text = " "
         }
+
         trackYear.text = track.getReleaseDateOnlyYear()
         trackGenre.text = track.primaryGenreName
         trackCountry.text = track.country

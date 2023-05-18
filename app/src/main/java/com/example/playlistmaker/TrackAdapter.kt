@@ -20,12 +20,12 @@ class TrackAdapter() : RecyclerView.Adapter<TrackHolder>() {
     }
 
     override fun onBindViewHolder(holder: TrackHolder, position: Int) {
-        holder.bind(trackList[position])
+        val trackPosition  = trackList[position]
+        holder.bind(trackPosition)
         holder.itemView.setOnClickListener {
-            addTrack(trackList[position])
-            val track  = trackList[position]
+            addTrack(trackPosition)
             val intent = Intent(it.context, AudioPlayerActivity::class.java)
-            intent.putExtra(TRACK, track)
+            intent.putExtra(TRACK, trackPosition)
             it.context.startActivity(intent)
         }
     }
@@ -33,4 +33,6 @@ class TrackAdapter() : RecyclerView.Adapter<TrackHolder>() {
     override fun getItemCount(): Int {
         return trackList.size
     }
+
+
 }
