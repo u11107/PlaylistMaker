@@ -31,5 +31,9 @@
     <dimen name="searchAct_BtUpdate_margin_Top_Bot">10dp</dimen>
     <dimen name="searchAct_BtUpdate_margin">14dp</dimen>
     <dimen name="searchAct_BtUpdate_marginTop">24dp</dimen>
+    <dimen name="radius_album">8dp</dimen>
+    <dimen name="audio_player_margin8dp">8dp</dimen>
+    <dimen name="audio_player_margin63dp">63dp</dimen>
+    <dimen name="audio_player_margin84dp">84dp</dimen>
 
 </resources>

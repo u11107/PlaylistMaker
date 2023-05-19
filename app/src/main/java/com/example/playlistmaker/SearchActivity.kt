@@ -2,15 +2,17 @@ package com.example.playlistmaker
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
-import com.example.playlistmaker.SearchActivity.Companion.SEARCH_EDIT_TEXT
+import com.example.playlistmaker.App.Companion.TRACK
 import com.example.playlistmaker.databinding.ActivitySearchBinding
 import com.example.playlistmaker.model.Track
 import okhttp3.OkHttpClient
@@ -59,9 +61,7 @@ class SearchActivity : AppCompatActivity() {
         historyList.clear()
         historyList = SearchHistory.fillInList()
 
-
         interceptor.level = HttpLoggingInterceptor.Level.BODY
-
 
         binding.searchEditText.setOnFocusChangeListener { v, hasFocus ->
             focusVisibility(hasFocus)
@@ -73,7 +73,6 @@ class SearchActivity : AppCompatActivity() {
                 true
             }
             false
-
         }
 
         binding.searchBtBack.setOnClickListener { finish() }
@@ -93,12 +92,14 @@ class SearchActivity : AppCompatActivity() {
             search()
         }
 
+
         binding.btClearHistory.setOnClickListener {
             SearchHistory.clear()
             historyList.clear()
             hideButtons()
             trackAdapter.notifyDataSetChanged()
         }
+
 
         val simpleTextWatcher = binding.searchEditText.doOnTextChanged { text, _, _, _ ->
             this@SearchActivity.text = text.toString()
@@ -111,6 +112,7 @@ class SearchActivity : AppCompatActivity() {
         }
         binding.searchEditText.addTextChangedListener(simpleTextWatcher)
     }
+
 
     private fun hideButtons() {
         binding.tittleHistory.visibility = View.GONE
@@ -125,7 +127,7 @@ class SearchActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun focusVisibility(hasFocus: Boolean) {
-        if(hasFocus && binding.searchEditText.text.isEmpty() && historyList.isNotEmpty()){
+        if (hasFocus && binding.searchEditText.text.isEmpty() && historyList.isNotEmpty()) {
             binding.tittleHistory.visibility = View.VISIBLE
             binding.btClearHistory.visibility = View.VISIBLE
         } else {
@@ -170,12 +172,12 @@ class SearchActivity : AppCompatActivity() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun showHistory(){
-            binding.tittleHistory.visibility = View.VISIBLE
-            binding.btClearHistory.visibility = View.VISIBLE
-            historyList = SearchHistory.fillInList()
-            trackAdapter.trackList = historyList
-            trackAdapter.notifyDataSetChanged()
+    private fun showHistory() {
+        binding.tittleHistory.visibility = View.VISIBLE
+        binding.btClearHistory.visibility = View.VISIBLE
+        historyList = SearchHistory.fillInList()
+        trackAdapter.trackList = historyList
+        trackAdapter.notifyDataSetChanged()
 
     }
 
