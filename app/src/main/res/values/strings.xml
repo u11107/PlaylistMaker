@@ -25,4 +25,5 @@
     <string name="year">Год</string>
     <string name="ganre">Жанр</string>
     <string name="country">Страна</string>
+    <string name="time_start_position">00:00</string>
 </resources>

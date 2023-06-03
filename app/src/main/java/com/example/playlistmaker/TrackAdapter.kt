@@ -1,15 +1,13 @@
 package com.example.playlistmaker
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.playlistmaker.App.Companion.TRACK
 import com.example.playlistmaker.SearchHistory.addTrack
 import com.example.playlistmaker.model.Track
 
 
-class TrackAdapter() : RecyclerView.Adapter<TrackHolder>() {
+class TrackAdapter(private val clickListener: MovieClickListener) : RecyclerView.Adapter<TrackHolder>() {
 
     var trackList = ArrayList<Track>()
 
@@ -24,9 +22,7 @@ class TrackAdapter() : RecyclerView.Adapter<TrackHolder>() {
         holder.bind(trackPosition)
         holder.itemView.setOnClickListener {
             addTrack(trackPosition)
-            val intent = Intent(it.context, AudioPlayerActivity::class.java)
-            intent.putExtra(TRACK, trackPosition)
-            it.context.startActivity(intent)
+            clickListener.onMovieClick(trackList[position])
         }
     }
 
@@ -34,5 +30,8 @@ class TrackAdapter() : RecyclerView.Adapter<TrackHolder>() {
         return trackList.size
     }
 
+    fun interface MovieClickListener {
+        fun onMovieClick(track: Track)
+    }
 
 }
