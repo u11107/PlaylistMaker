@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.playlistmaker.App.Companion.TRACK
+import com.example.playlistmaker.App.Companion.formatTime
 import com.example.playlistmaker.App.Companion.themeDark
 import com.example.playlistmaker.databinding.ActivityAudioPlayerBinding
 import com.example.playlistmaker.model.Track
@@ -32,7 +33,12 @@ class AudioPlayerActivity() : AppCompatActivity() {
     private val mediaPlayer = MediaPlayer()
     private var playerState = STATE_DEFAULT
     private val handler = Handler(Looper.getMainLooper())
-    private lateinit var runnable : Runnable
+    private val runnable: Runnable by lazy {
+        Runnable {
+            binding.durationTrackTv.text = formatTime(mediaPlayer.currentPosition.toLong())
+            handler.postDelayed(runnable, DELAY_MILLIS)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,15 +58,7 @@ class AudioPlayerActivity() : AppCompatActivity() {
         binding.btPlay.setOnClickListener {
             playbackControl()
         }
-
         binding.durationTrackTv.setText(R.string.time_start_position)
-
-
-        runnable = Runnable {
-            val formatTime = SimpleDateFormat("mm:ss", Locale.getDefault()).format(mediaPlayer.currentPosition)
-            binding.durationTrackTv.text = formatTime
-            handler.postDelayed(runnable, DELAY_MILLIS)
-        }
     }
 
     override fun onPause() {
@@ -71,16 +69,13 @@ class AudioPlayerActivity() : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         mediaPlayer.release()
-        if(this::runnable.isInitialized) {
-            handler.removeCallbacks(runnable)
-        }
+        handler.removeCallbacks(runnable)
     }
 
     private fun goToPlayer(track: Track) = with(binding) {
         tittleTrackName.text = track.trackName
         tittleTrackArtist.text = track.artistName
-        trackTime.text =
-            SimpleDateFormat("mm:ss", Locale.getDefault()).format(track.trackTimeMillis)
+        trackTime.text = formatTime(track.trackTimeMillis)
         if (track.collectionName.isNullOrEmpty()) {
             trackAlb.visibility = View.GONE
             albumTrack.visibility = View.GONE
@@ -107,37 +102,25 @@ class AudioPlayerActivity() : AppCompatActivity() {
             playerState = STATE_PREPARED
         }
         mediaPlayer.setOnCompletionListener {
-            if(!themeDark) {
-                binding.btPlay.setImageResource(R.drawable.play)
-            } else {
-                binding.btPlay.setImageResource(R.drawable.play_dark_theme)
-            }
+            binding.btPlay.setImageResource(R.drawable.play)
             playerState = STATE_PREPARED
             binding.durationTrackTv.setText(R.string.time_start_position)
-            if(this::runnable.isInitialized) {
-                handler.removeCallbacks(runnable)
-            }
+            handler.removeCallbacks(runnable)
+
         }
     }
 
     private fun startPlayer() {
         mediaPlayer.start()
-        if(!themeDark) {
-            binding.btPlay.setImageResource(R.drawable.pause)
-        } else {
-            binding.btPlay.setImageResource(R.drawable.pause_dark_theme)
-        }
+        binding.btPlay.setImageResource(R.drawable.pause)
         playerState = STATE_PLAYING
         handler.post(runnable)
     }
 
     private fun pausePlayer() {
         mediaPlayer.pause()
-        if(!themeDark) {
-            binding.btPlay.setImageResource(R.drawable.play)
-        } else {
-            binding.btPlay.setImageResource(R.drawable.play_dark_theme)
-        }
+        binding.btPlay.setImageResource(R.drawable.play)
+        handler.removeCallbacks(runnable)
         playerState = STATE_PAUSED
     }
 

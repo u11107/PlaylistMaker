@@ -3,6 +3,8 @@ package com.example.playlistmaker
 import android.app.Application
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class App : Application() {
 
@@ -12,6 +14,9 @@ class App : Application() {
         lateinit var sharedMemory: SharedPreferences
         const val TRACK = "track"
         var themeDark = false
+        fun formatTime(millis : Long) : String {
+            return SimpleDateFormat("mm:ss", Locale.getDefault()).format(millis)
+        }
     }
 
     var darkTheme = false
@@ -37,5 +42,6 @@ class App : Application() {
             .putBoolean(KEY_THEME, darkTheme)
             .apply()
     }
+
 
 }

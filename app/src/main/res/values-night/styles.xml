@@ -296,7 +296,7 @@
 
     <style name="audio_player_play" parent="wrapContent">
         <item name="android:layout_marginBottom">12dp</item>
-        <item name="android:src">@drawable/play_dark_theme</item>
+       <item name="android:tint">@color/white</item>
     </style>
 
     <style name="audio_player_like" parent="wrapContent">
