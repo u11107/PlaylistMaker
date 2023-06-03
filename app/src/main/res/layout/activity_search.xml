@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +25,9 @@
                 app:icon="@drawable/arrow_back"
                 app:iconGravity="textStart" />
 
+
             <TextView style="@style/settingSettingText" />
+
 
         </LinearLayout>
 
@@ -54,6 +56,15 @@
                 tools:ignore="ContentDescription" />
         </FrameLayout>
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="148dp"
+            android:indeterminateTint="@color/background_progressBar"
+            android:visibility="gone" />
+
 
         <TextView
             android:id="@+id/tittleHistory"
@@ -66,8 +77,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayout">
-        </androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
 
         <Button
             android:id="@+id/btClearHistory"
@@ -103,5 +114,6 @@
         </LinearLayout>
 
     </LinearLayout>
+
 
 </ScrollView>

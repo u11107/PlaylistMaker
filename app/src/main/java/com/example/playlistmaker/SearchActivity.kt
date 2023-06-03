@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -13,8 +15,10 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import com.example.playlistmaker.App.Companion.TRACK
+import com.example.playlistmaker.SearchActivity.Companion.SEARCH_EDIT_TEXT
 import com.example.playlistmaker.databinding.ActivitySearchBinding
 import com.example.playlistmaker.model.Track
+import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -43,19 +47,23 @@ class SearchActivity : AppCompatActivity() {
         .addConverterFactory(GsonConverterFactory.create()).build()
 
     private val trackApi = retrofit.create(TrackApi::class.java)
-
-    companion object {
-        const val SEARCH_EDIT_TEXT = "SEARCH_EDIT_TEXT"
-    }
-
-
+    private var isClickAllowed = true
+    private val handler = Handler(Looper.getMainLooper())
+    private val runnable = Runnable { search() }
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        trackAdapter = TrackAdapter()
+        trackAdapter = TrackAdapter {
+            if(clickDebounce()) {
+                val intent = Intent(this, AudioPlayerActivity::class.java)
+                intent.putExtra(TRACK, Gson().toJson(it))
+                startActivity(intent)
+            }
+        }
+
         binding.recView.adapter = trackAdapter
         trackAdapter.trackList = trackList
         historyList.clear()
@@ -92,7 +100,6 @@ class SearchActivity : AppCompatActivity() {
             search()
         }
 
-
         binding.btClearHistory.setOnClickListener {
             SearchHistory.clear()
             historyList.clear()
@@ -100,23 +107,33 @@ class SearchActivity : AppCompatActivity() {
             trackAdapter.notifyDataSetChanged()
         }
 
-
         val simpleTextWatcher = binding.searchEditText.doOnTextChanged { text, _, _, _ ->
             this@SearchActivity.text = text.toString()
             if (!text.isNullOrEmpty()) {
                 binding.clearBt.visibility = View.VISIBLE
+                searchDebounce()
                 history()
             } else {
                 binding.clearBt.visibility = View.GONE
             }
         }
         binding.searchEditText.addTextChangedListener(simpleTextWatcher)
+
     }
 
 
     private fun hideButtons() {
         binding.tittleHistory.visibility = View.GONE
         binding.btClearHistory.visibility = View.GONE
+    }
+
+    private fun clickDebounce() : Boolean {
+        val current = isClickAllowed
+        if (isClickAllowed) {
+            isClickAllowed = false
+            handler.postDelayed({ isClickAllowed = true }, CLICK_DEBOUNCE_DELAY)
+        }
+        return current
     }
 
     private fun history() {
@@ -184,6 +201,9 @@ class SearchActivity : AppCompatActivity() {
 
     private fun search() {
         if (binding.searchEditText.text.isNotEmpty()) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.recView.visibility = View.GONE
+            binding.nothingFoundImage.visibility = View.GONE
             trackApi.search(binding.searchEditText.text.toString())
                 .enqueue(object : Callback<TrackResponse> {
                     @SuppressLint("NotifyDataSetChanged")
@@ -193,6 +213,8 @@ class SearchActivity : AppCompatActivity() {
                     ) {
                         Log.d("TRACK", "onResponse $response")
                         if (response.code() == 200) {
+                            binding.progressBar.visibility = View.GONE
+                            binding.recView.visibility = View.VISIBLE
                             trackList.clear()
                         }
                         if (response.body()?.results?.isNotEmpty() == true) {
@@ -204,6 +226,9 @@ class SearchActivity : AppCompatActivity() {
                                 getString(R.string.nothing_found),
                                 false
                             )
+                            binding.progressBar.visibility = View.GONE
+                            binding.nothingFoundImage.visibility = View.VISIBLE
+
                         } else {
                             showMessage("", false)
                         }
@@ -214,9 +239,21 @@ class SearchActivity : AppCompatActivity() {
                             getString(R.string.problem_internet),
                             true
                         )
+                        binding.progressBar.visibility = View.GONE
                     }
                 })
         }
+    }
+
+    private fun searchDebounce() {
+        handler.removeCallbacks(runnable)
+        handler.postDelayed(runnable, SEARCH_DEBOUNCE_DELAY)
+    }
+
+    companion object {
+        const val SEARCH_EDIT_TEXT = "SEARCH_EDIT_TEXT"
+        private const val CLICK_DEBOUNCE_DELAY = 1000L
+        private const val SEARCH_DEBOUNCE_DELAY = 2000L
     }
 }
 
