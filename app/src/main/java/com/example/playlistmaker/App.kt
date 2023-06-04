@@ -13,7 +13,6 @@ class App : Application() {
         const val KEY_THEME = "key"
         lateinit var sharedMemory: SharedPreferences
         const val TRACK = "track"
-        var themeDark = false
         fun formatTime(millis : Long) : String {
             return SimpleDateFormat("mm:ss", Locale.getDefault()).format(millis)
         }
@@ -25,7 +24,6 @@ class App : Application() {
         sharedMemory = getSharedPreferences(EXAMPLE_PREFERENCES, MODE_PRIVATE)
         darkTheme = sharedMemory.getBoolean(KEY_THEME, false)
         switchTheme(darkTheme)
-        themeDark = darkTheme
     }
 
 
@@ -42,6 +40,4 @@ class App : Application() {
             .putBoolean(KEY_THEME, darkTheme)
             .apply()
     }
-
-
 }
