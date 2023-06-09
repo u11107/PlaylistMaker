@@ -59,7 +59,7 @@ class SearchActivity : AppCompatActivity() {
         trackAdapter = TrackAdapter {
             if(clickDebounce()) {
                 val intent = Intent(this, AudioPlayerActivity::class.java)
-                intent.putExtra(TRACK, Gson().toJson(it))
+                intent.putExtra(TRACK, it)
                 startActivity(intent)
             }
         }

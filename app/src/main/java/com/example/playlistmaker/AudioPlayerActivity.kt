@@ -1,6 +1,7 @@
 package com.example.playlistmaker
 
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -12,7 +13,6 @@ import com.example.playlistmaker.App.Companion.TRACK
 import com.example.playlistmaker.App.Companion.formatTime
 import com.example.playlistmaker.databinding.ActivityAudioPlayerBinding
 import com.example.playlistmaker.model.Track
-import com.google.gson.Gson
 
 
 class AudioPlayerActivity() : AppCompatActivity() {
@@ -30,6 +30,46 @@ class AudioPlayerActivity() : AppCompatActivity() {
     private var playerState = STATE_DEFAULT
     private val handler = Handler(Looper.getMainLooper())
     private val runnable: Runnable by lazy {
+        Runnable {
+            binding.durationTrackTv.text = formatTime(mediaPlayer.currentPosition.toLong())
+            handler.postDelayed(runnable, DELAY_MILLIS)
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityAudioPlayerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btBack.setOnClickListener {
+            finish()
+        }
+        val track =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                intent.getParcelableExtra(TRACK, Track::class.java)
+            } else {
+                intent.getParcelableExtra(TRACK)
+            } as Track
+
+        goToPlayer(track)
+        preparePlayer(track.previewUrl)
+
+        binding.btPlay.setOnClickListener {
+            playbackControl()
+        }
+        binding.durationTrackTv.setText(R.string.time_start_position)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        pausePlayer()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer.release()
+        handler.removeCallbacks(runnable)
+    }
 
     private fun goToPlayer(track: Track) = with(binding) {
         tittleTrackName.text = track.trackName
