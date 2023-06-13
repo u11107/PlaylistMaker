@@ -1,4 +1,4 @@
-package com.example.playlistmaker
+package com.example.playlistmaker.presentation.search
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -11,14 +11,17 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import com.example.playlistmaker.App.Companion.TRACK
-import com.example.playlistmaker.SearchActivity.Companion.SEARCH_EDIT_TEXT
+import com.example.playlistmaker.R
+import com.example.playlistmaker.presentation.adapter.TrackAdapter
+import com.example.playlistmaker.data.SearchHistory
+import com.example.playlistmaker.data.dto.TrackResponse
+import com.example.playlistmaker.data.network.TrackApi
 import com.example.playlistmaker.databinding.ActivitySearchBinding
-import com.example.playlistmaker.model.Track
-import com.google.gson.Gson
+import com.example.playlistmaker.domain.model.Track
+import com.example.playlistmaker.presentation.player.AudioPlayerActivity
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
