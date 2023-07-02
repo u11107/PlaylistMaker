@@ -1,4 +1,4 @@
-package com.example.playlistmaker
+package com.example.playlistmaker.presentation.setting
 
 import android.content.Intent
 import android.content.Intent.ACTION_SEND
@@ -10,8 +10,9 @@ import android.content.Intent.EXTRA_TEXT
 import android.content.Intent.createChooser
 import android.net.Uri
 import android.os.Bundle
-import android.provider.Contacts.SettingsColumns.KEY
 import androidx.appcompat.app.AppCompatActivity
+import com.example.playlistmaker.App
+import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.ActivitySettingBinding
 
 

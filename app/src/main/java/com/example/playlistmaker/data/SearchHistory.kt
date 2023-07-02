@@ -1,6 +1,7 @@
-package com.example.playlistmaker
+package com.example.playlistmaker.data
 
-import com.example.playlistmaker.model.Track
+import com.example.playlistmaker.App
+import com.example.playlistmaker.domain.model.Track
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
