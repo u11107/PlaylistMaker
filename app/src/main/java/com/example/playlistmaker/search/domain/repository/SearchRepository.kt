@@ -1,9 +1,9 @@
-package com.example.playlistmaker.search.domain
+package com.example.playlistmaker.search.domain.repository
 
 import com.example.playlistmaker.search.domain.model.NetworkError
 import com.example.playlistmaker.search.domain.model.Track
 
-interface SearchInteractor {
+interface SearchRepository {
     fun searchTracks(query: String, onSuccess: (List<Track>) -> Unit, onError: (NetworkError) -> Unit)
     fun getHistory(): List<Track>
     fun saveHistory(tracks: List<Track>)

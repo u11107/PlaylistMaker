@@ -6,15 +6,15 @@ import com.example.playlistmaker.player.domain.impl.PlayerInteractorImpl
 import com.example.playlistmaker.search.data.impl.SearchRepositoryImpl
 import com.example.playlistmaker.search.data.network.RetrofitNetworkClient
 import com.example.playlistmaker.search.data.storage.SharedPrefsHistoryStorage
-import com.example.playlistmaker.search.domain.SearchInteractor
+import com.example.playlistmaker.search.domain.interactor.SearchInteractor
 import com.example.playlistmaker.search.domain.impl.SearchInteractorImpl
 import com.example.playlistmaker.setting.data.impl.SettingsRepositoryImpl
 import com.example.playlistmaker.setting.data.storage.SharedPrefsThemeStorage
-import com.example.playlistmaker.setting.domain.SettingsInteractor
+import com.example.playlistmaker.setting.domain.interactor.SettingsInteractor
 import com.example.playlistmaker.setting.domain.impl.SettingsInteractorImpl
 import com.example.playlistmaker.sharing.data.impl.ExternalNavigatorImpl
 import com.example.playlistmaker.sharing.domain.impl.SharingInteractorImpl
-import com.example.playlistmaker.sharing.domain.model.SharingInteractor
+import com.example.playlistmaker.sharing.domain.interactor.SharingInteractor
 
 object Creator {
 

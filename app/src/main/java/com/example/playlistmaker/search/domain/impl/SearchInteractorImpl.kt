@@ -1,8 +1,8 @@
 package com.example.playlistmaker.search.domain.impl
 
 import com.example.playlistmaker.search.domain.model.Track
-import com.example.playlistmaker.search.data.SearchRepository
-import com.example.playlistmaker.search.domain.SearchInteractor
+import com.example.playlistmaker.search.domain.repository.SearchRepository
+import com.example.playlistmaker.search.domain.interactor.SearchInteractor
 import com.example.playlistmaker.search.domain.model.NetworkError
 
 class SearchInteractorImpl(private val repository: SearchRepository): SearchInteractor {

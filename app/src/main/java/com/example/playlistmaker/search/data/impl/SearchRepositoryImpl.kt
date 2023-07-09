@@ -1,14 +1,14 @@
 package com.example.playlistmaker.search.data.impl
 
 import com.example.playlistmaker.search.domain.model.Track
-import com.example.playlistmaker.search.data.SearchRepository
+import com.example.playlistmaker.search.domain.repository.SearchRepository
 import com.example.playlistmaker.search.data.network.NetworkClient
 import com.example.playlistmaker.search.data.storage.SearchHistoryStorage
 import com.example.playlistmaker.search.domain.model.NetworkError
 
 class SearchRepositoryImpl(
     private val networkClient: NetworkClient, private val
-                           searchHistoryStorage: SearchHistoryStorage):SearchRepository {
+                           searchHistoryStorage: SearchHistoryStorage): SearchRepository {
 
     override fun searchTracks(query: String, onSuccess: (List<Track>) -> Unit, onError: (NetworkError) -> Unit) {
         networkClient.doRequest(query, onSuccess, onError)

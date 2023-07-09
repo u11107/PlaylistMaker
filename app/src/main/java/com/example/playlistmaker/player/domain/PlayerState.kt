@@ -1,4 +1,4 @@
-package com.example.playlistmaker.player.ui.model
+package com.example.playlistmaker.player.domain
 
 enum class PlayerState {
     STATE_PREPARED,

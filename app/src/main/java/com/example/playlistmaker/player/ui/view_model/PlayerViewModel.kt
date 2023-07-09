@@ -10,8 +10,8 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.playlistmaker.util.App.Companion.formatTime
 import com.example.playlistmaker.util.Creator
-import com.example.playlistmaker.player.domain.PlayerInteractor
-import com.example.playlistmaker.player.ui.model.PlayerState
+import com.example.playlistmaker.player.domain.interactor.PlayerInteractor
+import com.example.playlistmaker.player.domain.PlayerState
 
 class PlayerViewModel(val playerInteractor: PlayerInteractor) : ViewModel() {
 

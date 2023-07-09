@@ -1,4 +1,4 @@
-package com.example.playlistmaker.sharing.domain.model
+package com.example.playlistmaker.sharing.domain.interactor
 
 interface  SharingInteractor {
     fun shareApp()

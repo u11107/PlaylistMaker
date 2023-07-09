@@ -11,7 +11,7 @@ import com.example.playlistmaker.util.App.Companion.TRACK
 import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.ActivityAudioPlayerBinding
 import com.example.playlistmaker.search.domain.model.Track
-import com.example.playlistmaker.player.ui.model.PlayerState
+import com.example.playlistmaker.player.domain.PlayerState
 import com.example.playlistmaker.player.ui.view_model.PlayerViewModel
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -42,7 +42,7 @@ class AudioPlayerActivity() : AppCompatActivity() {
             } else {
                 intent.getParcelableExtra(TRACK)
             } as Track
-        goToPlayer(track)
+        initViews(track)
         playerVIewModel.prepare(track.previewUrl)
         playerVIewModel.observeState().observe(this) { state ->
             binding.btPlay.setOnClickListener {
@@ -50,7 +50,7 @@ class AudioPlayerActivity() : AppCompatActivity() {
             }
             if (state == PlayerState.STATE_COMPLETE) {
                 binding.durationTrackTv.text = getString(R.string.time_start_position)
-                startPlayer()
+                pausePlayer()
             }
         }
         playerVIewModel.observeTime().observe(this) {
@@ -58,17 +58,7 @@ class AudioPlayerActivity() : AppCompatActivity() {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        pausePlayer()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        playerVIewModel.release()
-    }
-
-    private fun goToPlayer(track: Track) = with(binding) {
+    private fun initViews(track: Track) = with(binding) {
         tittleTrackName.text = track.trackName
         tittleTrackArtist.text = track.artistName
         trackTime.text = SimpleDateFormat("mm:ss", Locale.getDefault())
@@ -93,13 +83,11 @@ class AudioPlayerActivity() : AppCompatActivity() {
 
     private fun controller(state: PlayerState) {
         when (state) {
-            PlayerState.STATE_PREPARED, PlayerState.STATE_COMPLETE, PlayerState.STATE_PAUSED -> {
-                playerVIewModel.play()
+            PlayerState.STATE_PREPARED, PlayerState.STATE_PAUSED, PlayerState.STATE_COMPLETE -> {
                 startPlayer()
             }
 
             PlayerState.STATE_PLAYING -> {
-                playerVIewModel.pause()
                 pausePlayer()
             }
         }
@@ -107,13 +95,22 @@ class AudioPlayerActivity() : AppCompatActivity() {
 
     private fun startPlayer() {
         binding.btPlay.setImageResource(R.drawable.pause)
+        playerVIewModel.play()
     }
 
     private fun pausePlayer() {
         binding.btPlay.setImageResource(R.drawable.play)
+        playerVIewModel.pause()
     }
 
-    private fun playbackControl() {
+    override fun onPause() {
+        super.onPause()
         pausePlayer()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        playerVIewModel.release()
+    }
+
 }
