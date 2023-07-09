@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.player.AudioPlayerActivity">
+    tools:context=".player.ui.activity.AudioPlayerActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -122,7 +122,8 @@
         app:layout_constraintBottom_toTopOf="@+id/durationTrack"
         app:layout_constraintEnd_toStartOf="@+id/btPlay"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:srcCompat="@drawable/add_track" />
+        app:srcCompat="@drawable/add_track"
+        android:importantForAccessibility="no" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -130,7 +131,8 @@
         app:layout_constraintBottom_toTopOf="@+id/trackTime"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toEndOf="@+id/btPlay"
-        app:srcCompat="@drawable/like" />
+        app:srcCompat="@drawable/like"
+        android:importantForAccessibility="no" />
 
     <ImageView
         android:id="@+id/btPlay"
@@ -139,7 +141,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:srcCompat="@drawable/play"
-         />
+        android:importantForAccessibility="no" />
 
     <TextView
         android:id="@+id/tittleTrackArtist"
@@ -168,13 +170,15 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/btBack"
         style="@style/audio_player_btBack"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow_back" />
+        app:srcCompat="@drawable/arrow_back"
+        tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
