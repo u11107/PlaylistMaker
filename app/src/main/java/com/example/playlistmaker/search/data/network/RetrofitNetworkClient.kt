@@ -4,16 +4,8 @@ import com.example.playlistmaker.search.domain.model.NetworkError
 import com.example.playlistmaker.search.domain.model.Track
 import retrofit2.Call
 import retrofit2.Callback
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitNetworkClient:NetworkClient {
-
-    private val api = Retrofit.Builder()
-        .baseUrl(baseUrl)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build().create(TrackApi::class.java)
-
+class RetrofitNetworkClient(private val api: TrackApi):NetworkClient {
 
     override fun doRequest(
         query: String,
@@ -42,9 +34,5 @@ class RetrofitNetworkClient:NetworkClient {
                 onError.invoke(NetworkError.CONNECTION_ERROR)
             }
         })
-    }
-
-    companion object {
-        const val baseUrl = "https://itunes.apple.com"
     }
 }
