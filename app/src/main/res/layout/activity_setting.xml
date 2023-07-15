@@ -9,7 +9,7 @@
         style="@style/ToolbarColor"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="24dp"
         app:navigationIcon="@drawable/arrow_back">
 
         <TextView
@@ -28,7 +28,6 @@
         style="@style/TextViewStyle_Settings"
         android:layout_height="64dp"
         android:layout_marginHorizontal="@dimen/main_text_Playlist_maker_16dp"
-        android:layout_marginBottom="24dp"
         android:text="@string/dark_theme"
         tools:ignore="UseSwitchCompatOrMaterialXml,VisualLintButtonSize" />
 
@@ -37,7 +36,6 @@
         style="@style/TextViewStyle_Settings"
         android:layout_height="64dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="24dp"
         android:text="@string/share"
         app:drawableRightCompat="@drawable/share" />
 
@@ -46,7 +44,6 @@
         style="@style/TextViewStyle_Settings"
         android:layout_height="64dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="24dp"
         android:text="@string/write_support"
         app:drawableRightCompat="@drawable/support" />
 
@@ -55,7 +52,6 @@
         style="@style/TextViewStyle_Settings"
         android:layout_height="64dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="24dp"
         android:text="@string/terms_of_use"
         app:drawableRightCompat="@drawable/arrow" />
 
