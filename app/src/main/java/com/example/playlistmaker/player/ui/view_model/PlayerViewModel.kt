@@ -50,7 +50,7 @@ class PlayerViewModel(val playerInteractor: PlayerInteractor) : ViewModel() {
     }
 
     fun release() {
-        playerInteractor.release()
+        playerInteractor.reset()
         handler.removeCallbacks(time)
     }
 

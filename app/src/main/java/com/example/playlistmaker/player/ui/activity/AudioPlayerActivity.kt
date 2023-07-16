@@ -25,7 +25,6 @@ class AudioPlayerActivity() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAudioPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.btBack.setOnClickListener {
             finish()
         }
@@ -36,6 +35,7 @@ class AudioPlayerActivity() : AppCompatActivity() {
             } else {
                 intent.getParcelableExtra(TRACK)
             } as Track
+
         goToPlayer(track)
         playerVIewModel.prepare(track.previewUrl)
         playerVIewModel.observeState().observe(this) { state ->

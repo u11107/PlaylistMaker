@@ -29,8 +29,8 @@ class PlayerRepositoryImpl(private val mediaPlayer: MediaPlayer): PlayerReposito
         stateCallback?.invoke(PlayerState.STATE_PAUSED)
     }
 
-    override fun release() {
-        mediaPlayer.release()
+    override fun reset() {
+        mediaPlayer.reset()
     }
 
     override fun getPosition(): Long {

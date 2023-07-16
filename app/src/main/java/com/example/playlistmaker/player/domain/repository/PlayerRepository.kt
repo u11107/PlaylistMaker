@@ -6,7 +6,7 @@ interface PlayerRepository {
     fun preparePlayer(url: String)
     fun startPlayer()
     fun pausePlayer()
-    fun release()
+    fun reset()
     fun getPosition() : Long
     fun setOnStateChangeListener(callback: (PlayerState) -> Unit)
 }
