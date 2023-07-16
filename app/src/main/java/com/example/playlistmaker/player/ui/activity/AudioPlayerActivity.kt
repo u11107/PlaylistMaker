@@ -36,7 +36,7 @@ class AudioPlayerActivity() : AppCompatActivity() {
                 intent.getParcelableExtra(TRACK)
             } as Track
 
-        goToPlayer(track)
+        initViews(track)
         playerVIewModel.prepare(track.previewUrl)
         playerVIewModel.observeState().observe(this) { state ->
             binding.btPlay.setOnClickListener {
@@ -52,7 +52,7 @@ class AudioPlayerActivity() : AppCompatActivity() {
         }
     }
 
-    private fun goToPlayer(track: Track) = with(binding) {
+    private fun initViews(track: Track) = with(binding) {
         tittleTrackName.text = track.trackName
         tittleTrackArtist.text = track.artistName
         trackTime.text = SimpleDateFormat("mm:ss", Locale.getDefault())
