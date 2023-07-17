@@ -7,8 +7,6 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.TrackVBinding
 import com.example.playlistmaker.search.domain.model.Track
-import com.example.playlistmaker.util.App
-import com.example.playlistmaker.util.App.Companion.formatTime
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -18,7 +16,8 @@ class TrackHolder(item: View) : RecyclerView.ViewHolder(item) {
     fun bind(track: Track) = with(binding) {
         nameTrack.text = track.trackName
         executor.text = track.artistName
-        duration.text = track.trackTimeMillis.formatTime()
+        duration.text = SimpleDateFormat("mm:ss", Locale.getDefault())
+            .format(track.trackTimeMillis)
         Glide.with(itemView.context)
             .load(track.artworkUrl100)
             .placeholder(R.drawable.placeholder)

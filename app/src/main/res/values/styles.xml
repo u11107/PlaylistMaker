@@ -232,7 +232,7 @@
     <style name="track_CardView_ImageAlbum">
         <item name="android:layout_width">@dimen/track_cardView_imageAlbum_45</item>
         <item name="android:layout_height">@dimen/track_cardView_imageAlbum_45</item>
-        <item name="android:layout_marginStart">13dp</item>
+
         <item name="android:layout_marginTop">@dimen/track_cardView_image_margin_8</item>
         <item name="android:layout_marginBottom">@dimen/track_cardView_image_margin_8</item>
         <item name="android:layout_marginEnd">@dimen/track_cardView_image_margin_8</item>

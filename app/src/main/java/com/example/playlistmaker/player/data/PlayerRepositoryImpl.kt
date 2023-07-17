@@ -4,9 +4,8 @@ import android.media.MediaPlayer
 import com.example.playlistmaker.player.domain.repository.PlayerRepository
 import com.example.playlistmaker.player.domain.PlayerState
 
-class PlayerRepositoryImpl: PlayerRepository {
+class PlayerRepositoryImpl(private val mediaPlayer: MediaPlayer): PlayerRepository {
 
-    private val mediaPlayer = MediaPlayer()
     private var stateCallback: ((PlayerState) -> Unit)? = null
 
     override fun preparePlayer(url: String) {
@@ -30,8 +29,8 @@ class PlayerRepositoryImpl: PlayerRepository {
         stateCallback?.invoke(PlayerState.STATE_PAUSED)
     }
 
-    override fun release() {
-        mediaPlayer.release()
+    override fun reset() {
+        mediaPlayer.reset()
     }
 
     override fun getPosition(): Long {

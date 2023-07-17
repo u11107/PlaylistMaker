@@ -222,7 +222,6 @@
     <style name="track_CardView_ImageAlbum">
         <item name="android:layout_width">@dimen/track_cardView_imageAlbum_45</item>
         <item name="android:layout_height">@dimen/track_cardView_imageAlbum_45</item>
-        <item name="android:layout_marginStart">13dp</item>
         <item name="android:layout_marginTop">@dimen/track_cardView_image_margin_8</item>
         <item name="android:layout_marginBottom">@dimen/track_cardView_image_margin_8</item>
         <item name="android:layout_marginEnd">@dimen/track_cardView_image_margin_8</item>
@@ -349,7 +348,7 @@
     <style name="audio_player_playback_progress" parent="wrapContent">
         <item name="android:layout_marginBottom">39dp</item>
         <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:textColor">@color/dark_theme_item</item>
+        <item name="android:textColor">@color/color_Playlist_text</item>
         <item name="android:textSize">@dimen/textSize_14sp</item>
         <item name="android:lineHeight" tools:ignore="NewApi">16.41dp</item>
     </style>

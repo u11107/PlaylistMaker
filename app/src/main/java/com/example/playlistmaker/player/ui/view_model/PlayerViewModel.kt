@@ -5,13 +5,9 @@ import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.playlistmaker.util.App.Companion.formatTime
-import com.example.playlistmaker.util.Creator
-import com.example.playlistmaker.player.domain.interactor.PlayerInteractor
 import com.example.playlistmaker.player.domain.PlayerState
+import com.example.playlistmaker.player.domain.interactor.PlayerInteractor
+import com.example.playlistmaker.util.App.Companion.formatTime
 
 class PlayerViewModel(val playerInteractor: PlayerInteractor) : ViewModel() {
 
@@ -54,16 +50,11 @@ class PlayerViewModel(val playerInteractor: PlayerInteractor) : ViewModel() {
     }
 
     fun release() {
-        playerInteractor.release()
+        playerInteractor.reset()
         handler.removeCallbacks(time)
     }
 
     companion object {
         private const val DELAY_MILLIS = 1000L
-        fun getViewModelFactory(): ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                PlayerViewModel(Creator.providePlayerInteractor())
-            }
-        }
     }
 }

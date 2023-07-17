@@ -4,7 +4,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.playlistmaker.R
@@ -13,27 +12,22 @@ import com.example.playlistmaker.player.domain.PlayerState
 import com.example.playlistmaker.player.ui.view_model.PlayerViewModel
 import com.example.playlistmaker.search.domain.model.Track
 import com.example.playlistmaker.util.App.Companion.TRACK
-import com.example.playlistmaker.util.App.Companion.formatTime
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 
 class AudioPlayerActivity() : AppCompatActivity() {
     private lateinit var binding: ActivityAudioPlayerBinding
-    private lateinit var playerVIewModel: PlayerViewModel
+    private val playerVIewModel by viewModel<PlayerViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAudioPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.btBack.setOnClickListener {
             finish()
         }
-
-        playerVIewModel = ViewModelProvider(
-            this, PlayerViewModel
-                .getViewModelFactory()
-        )[PlayerViewModel::class.java]
-
 
         val track =
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -41,6 +35,7 @@ class AudioPlayerActivity() : AppCompatActivity() {
             } else {
                 intent.getParcelableExtra(TRACK)
             } as Track
+
         initViews(track)
         playerVIewModel.prepare(track.previewUrl)
         playerVIewModel.observeState().observe(this) { state ->
@@ -60,7 +55,8 @@ class AudioPlayerActivity() : AppCompatActivity() {
     private fun initViews(track: Track) = with(binding) {
         tittleTrackName.text = track.trackName
         tittleTrackArtist.text = track.artistName
-            trackTime.text = track.trackTimeMillis.formatTime()
+        trackTime.text = SimpleDateFormat("mm:ss", Locale.getDefault())
+            .format(track.trackTimeMillis)
         if (track.collectionName.isNullOrEmpty()) {
             trackAlb.visibility = View.GONE
             albumTrack.visibility = View.GONE

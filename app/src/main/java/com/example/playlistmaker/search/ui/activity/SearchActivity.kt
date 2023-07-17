@@ -6,7 +6,6 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.ViewModelProvider
 import com.example.playlistmaker.databinding.ActivitySearchBinding
 import com.example.playlistmaker.player.ui.activity.AudioPlayerActivity
 import com.example.playlistmaker.search.domain.model.NetworkError
@@ -15,11 +14,12 @@ import com.example.playlistmaker.search.ui.adapter.TrackAdapter
 import com.example.playlistmaker.search.ui.model.SearchState
 import com.example.playlistmaker.search.ui.view_model.SearchViewModel
 import com.example.playlistmaker.util.App.Companion.TRACK
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchBinding
-    private lateinit var viewModel: SearchViewModel
+    private val viewModel by viewModel<SearchViewModel>()
 
     private var searchInputQuery = ""
 
@@ -41,8 +41,6 @@ class SearchActivity : AppCompatActivity() {
             binding.clearImageView.visibility = clearButtonVisibility(text)
             text?.let { viewModel.searchDebounce(it.toString()) }
         }
-
-        viewModel = ViewModelProvider(this, SearchViewModel.getViewModelFactory(this))[SearchViewModel::class.java]
         viewModel.stateLiveData.observe(this) {
             render(it)
         }
