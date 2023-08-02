@@ -26,7 +26,7 @@
             android:exported="false"
              />
         <activity
-            android:name=".media.MediaActivity"
+            android:name=".media.activity.MediaActivity"
             android:exported="false" />
         <activity
             android:name=".main.MainActivity"

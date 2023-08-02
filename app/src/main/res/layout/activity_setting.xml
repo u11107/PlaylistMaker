@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/background_settings">
@@ -14,12 +15,13 @@
 
         <TextView
             style="@style/textColor"
-            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_width="wrap_content"
             android:fontFamily="@font/ys_display_regular"
             android:gravity="center_vertical"
             android:text="@string/setting_tittle"
-            android:textSize="24sp" />
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
     </com.google.android.material.appbar.MaterialToolbar>
 
