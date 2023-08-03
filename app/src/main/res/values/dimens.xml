@@ -2,23 +2,13 @@
 <resources>
     <dimen name="setting_text">300dp</dimen>
     <dimen name="setting_inner_21">21dp</dimen>
-<!--    <dimen name="setting_inner_top_padding">21dp</dimen>-->
-<!--    <dimen name="setting_inner_start_padding">16dp</dimen>-->
     <dimen name="setting_text_size_16sp">16sp</dimen>
-<!--    <dimen name="pl_cornerRadius">16dp</dimen>-->
-<!--    <dimen name="pl_layout_marginBottom">16dp</dimen>-->
     <dimen name="pl_iconPadding_10">10dp</dimen>
     <dimen name="pl_text_size">22sp</dimen>
     <dimen name="setting_layout_48">48dp</dimen>
-<!--    <dimen name="settingButtonBack_layout_height">48dp</dimen>-->
     <dimen name="settingButton_margin_4">4dp</dimen>
-<!--    <dimen name="settingButtonBack_marginTop">4dp</dimen>-->
     <dimen name="search_editText_padding_8.5">8.5dp</dimen>
-<!--    <dimen name="search_editText_paddingBottom">8.5dp</dimen>-->
     <dimen name="search_ic_layout_margin_12">12dp</dimen>
-<!--    <dimen name="search_ic_layout_marginEnd">14dp</dimen>-->
-<!--    <dimen name="main_text_Playlist_maker_layout_marginStart">16dp</dimen>-->
-<!--    <dimen name="main_text_Playlist_maker_layout_marginTop">14dp</dimen>-->
     <dimen name="main_text_Playlist_maker_16dp">16dp</dimen>
     <dimen name="track_textSize_11sp">11sp</dimen>
     <dimen name="track_cardView_imageAlbum_45">45dp</dimen>
@@ -27,7 +17,6 @@
     <dimen name="track_album_image_radius_2">2dp</dimen>
     <dimen name="textError_19sp">19sp</dimen>
     <dimen name="textSize_14sp">14sp</dimen>
-<!--    <dimen name="searchAct_BtUpdate_margin_Start_End">14dp</dimen>-->
     <dimen name="searchAct_BtUpdate_margin_Top_Bot">10dp</dimen>
     <dimen name="search_margin_14">14dp</dimen>
     <dimen name="margin_24">24dp</dimen>
