@@ -19,18 +19,9 @@
             android:name=".player.ui.activity.AudioPlayerActivity"
             android:exported="false" />
         <activity
-            android:name=".setting.ui.activity.SettingsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".search.ui.fragment.SearchActivity"
-            android:exported="false"
-             />
-        <activity
-            android:name=".media.activity.MediaActivity"
-            android:exported="false" />
-        <activity
             android:name=".main.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
