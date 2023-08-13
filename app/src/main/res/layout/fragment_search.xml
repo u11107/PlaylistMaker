@@ -1,15 +1,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/background_settings">
+    style="@style/background_settings"
+    tools:context=".search.ui.fragment.SearchFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/settings_toolbar"
         style="@style/ToolbarColor"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginBottom="8dp"
-        app:navigationIcon="@drawable/arrow_back">
+        android:layout_marginBottom="8dp">
 
         <TextView
             style="@style/textColor"

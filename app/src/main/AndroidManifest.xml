@@ -22,7 +22,7 @@
             android:name=".setting.ui.activity.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".search.ui.activity.SearchActivity"
+            android:name=".search.ui.fragment.SearchActivity"
             android:exported="false"
              />
         <activity
