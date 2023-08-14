@@ -3,15 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/background_settings">
+    style="@style/background_settings"
+    tools:context=".setting.ui.activity.SettingFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/settings_toolbar"
         style="@style/ToolbarColor"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginBottom="24dp"
-        app:navigationIcon="@drawable/arrow_back">
+        android:layout_marginBottom="24dp">
 
         <TextView
             style="@style/textColor"
@@ -22,7 +22,6 @@
             android:text="@string/setting_tittle"
             android:textSize="22sp"
             android:textStyle="bold" />
-
     </com.google.android.material.appbar.MaterialToolbar>
 
     <Switch

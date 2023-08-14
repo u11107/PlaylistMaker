@@ -19,3 +19,5 @@ class MediaPageAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
         }
     }
 }
+
+

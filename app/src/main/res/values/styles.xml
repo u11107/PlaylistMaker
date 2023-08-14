@@ -446,5 +446,15 @@
         <item name="android:textColor">@color/dark_theme_item</item>
     </style>
 
-
+    <style name="buttonNavigation">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/color_Playlist_text</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="itemIconTint">@drawable/menu_item_color</item>
+        <item name="itemTextColor">@drawable/menu_item_color</item>
+        <item name="menu">@menu/menu</item>
+    </style>
 </resources>
