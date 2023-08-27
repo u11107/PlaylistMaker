@@ -1,10 +1,11 @@
 package com.example.playlistmaker.search.domain.repository
 
-import com.example.playlistmaker.search.domain.model.NetworkError
 import com.example.playlistmaker.search.domain.model.Track
+import com.example.playlistmaker.util.Resource
+import kotlinx.coroutines.flow.Flow
 
 interface SearchRepository {
-    fun searchTracks(query: String, onSuccess: (List<Track>) -> Unit, onError: (NetworkError) -> Unit)
+    fun searchTracks(expression: String): Flow<Resource<List<Track>>>
     fun getHistory(): List<Track>
     fun saveHistory(tracks: List<Track>)
 }
