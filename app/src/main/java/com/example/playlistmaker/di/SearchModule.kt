@@ -32,7 +32,7 @@ val searchModule = module {
     }
 
     single<NetworkClient> {
-        RetrofitNetworkClient(api = get())
+        RetrofitNetworkClient(api = get(), context = get())
     }
 
     single<SearchHistoryStorage> {

@@ -1,38 +1,47 @@
 package com.example.playlistmaker.search.data.network
 
-import com.example.playlistmaker.search.domain.model.NetworkError
-import com.example.playlistmaker.search.domain.model.Track
-import retrofit2.Call
-import retrofit2.Callback
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import com.example.playlistmaker.util.STATUS_CODE_BAD_REQUEST
+import com.example.playlistmaker.util.STATUS_CODE_NO_NETWORK_CONNECTION
+import com.example.playlistmaker.util.STATUS_CODE_SERVER_ERROR
+import com.example.playlistmaker.util.STATUS_CODE_SUCCESS
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
-class RetrofitNetworkClient(private val api: TrackApi):NetworkClient {
+class RetrofitNetworkClient(private val api: TrackApi, private val context: Context):NetworkClient {
 
-    override fun doRequest(
-        query: String,
-        onSuccess: (List<Track>) -> Unit,
-        onError: (NetworkError) -> Unit
-    ) {
-        api.search(query).enqueue(object : Callback<TrackResponse> {
-            override fun onResponse(
-                call: Call<TrackResponse>,
-                response: retrofit2.Response<TrackResponse>,
-            ) {
-                when (response.code()) {
-                    200 -> {
-                        if (response.body()?.results?.isNotEmpty() == true) {
-                            onSuccess.invoke(response.body()?.results!!)
-                        } else {
-                            onError.invoke(NetworkError.EMPTY_RESULT)
-                        }
-                    }
-                    else ->
-                        onError.invoke(NetworkError.CONNECTION_ERROR)
-                }
+    override suspend fun doRequest(dto: Any): Response {
+        if (!isConnected()) {
+            return Response().apply { resultCode = STATUS_CODE_NO_NETWORK_CONNECTION }
+        }
+
+        if (dto !is TrackSearchRequest) {
+            return Response().apply { resultCode = STATUS_CODE_BAD_REQUEST }
+        }
+
+        return withContext(Dispatchers.IO) {
+            try {
+                val response = api.search(dto.expression)
+                response.apply { resultCode = STATUS_CODE_SUCCESS }
+            } catch (e: Throwable) {
+                Response().apply { resultCode = STATUS_CODE_SERVER_ERROR }
             }
+        }
+    }
 
-            override fun onFailure(call: Call<TrackResponse>, t: Throwable) {
-                onError.invoke(NetworkError.CONNECTION_ERROR)
+    private fun isConnected(): Boolean {
+        val connectivityManager = context.getSystemService(
+            Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+        if (capabilities != null) {
+            when {
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> return true
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> return true
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> return true
             }
-        })
+        }
+        return false
     }
 }

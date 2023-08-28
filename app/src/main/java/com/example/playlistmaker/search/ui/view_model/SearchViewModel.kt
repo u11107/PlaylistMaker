@@ -1,21 +1,22 @@
 package com.example.playlistmaker.search.ui.view_model
 
-import android.os.Handler
-import android.os.Looper
-import android.os.SystemClock
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.playlistmaker.search.domain.interactor.SearchInteractor
+import com.example.playlistmaker.search.domain.model.NetworkError
 import com.example.playlistmaker.search.domain.model.Track
 import com.example.playlistmaker.search.ui.model.SearchState
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SearchViewModel(
     private val searchInteractor: SearchInteractor,
 ) : ViewModel() {
 
     private val historyList = ArrayList<Track>()
-    private val handler = Handler(Looper.getMainLooper())
     private var isClickAllowed = true
 
     private val stateLive = MutableLiveData<SearchState>()
@@ -23,8 +24,8 @@ class SearchViewModel(
 
     private var latestSearchText: String? = null
 
-    private val clickLiveData = MutableLiveData<Boolean>()
-    fun observeClick(): LiveData<Boolean> = clickLiveData
+
+    private var searchJob: Job? = null
 
     init {
         historyList.addAll(searchInteractor.getHistory())
@@ -39,16 +40,41 @@ class SearchViewModel(
     fun search(query: String) {
         if (query.isEmpty()) return
 
-        stateLive.postValue(SearchState.Loading)
+        renderState(SearchState.Loading)
 
-        searchInteractor.searchTracks(query,
-            onSuccess = { trackList ->
-                stateLive.postValue(SearchState.SearchedTracks(trackList))
-            },
-            onError = { error ->
-                stateLive.postValue(SearchState.SearchError(error))
+        viewModelScope.launch {
+            searchInteractor.searchTracks(query)
+                .collect { pair ->
+                    processResult(pair.first, pair.second)
+                }
+        }
+    }
+
+    private fun processResult(searchTracks: List<Track>?, errorMessage: String?) {
+        val tracks = mutableListOf<Track>()
+        if (searchTracks != null) {
+            tracks.addAll(searchTracks)
+        }
+
+        when {
+            errorMessage != null -> {
+                renderState(
+                    SearchState.SearchError(error = NetworkError.CONNECTION_ERROR)
+                )
             }
-        )
+
+            tracks.isEmpty() -> {
+                renderState(SearchState.SearchError(error = NetworkError.EMPTY_RESULT))
+            }
+
+            else -> {
+                renderState(SearchState.SearchedTracks(tracks))
+            }
+        }
+    }
+
+    private fun renderState(state: SearchState) {
+        stateLive.postValue(state)
     }
 
     fun clearHistory() {
@@ -74,32 +100,31 @@ class SearchViewModel(
         if (latestSearchText == changedText) {
             return
         }
-
         this.latestSearchText = changedText
-        handler.removeCallbacksAndMessages(SEARCH_REQUEST_TOKEN)
+        searchJob?.cancel()
+        searchJob = viewModelScope.launch {
+            delay(SEARCH_DEBOUNCE_DELAY)
+            search(changedText)
+        }
 
-        val searchRunnable = Runnable { search(changedText) }
-
-        val postTime = SystemClock.uptimeMillis() + SEARCH_DEBOUNCE_DELAY
-        handler.postAtTime(
-            searchRunnable,
-            SEARCH_REQUEST_TOKEN,
-            postTime,
-        )
     }
 
-    fun clickDebounce() : Boolean {
+    fun clickDebounce(): Boolean {
         val current = isClickAllowed
         if (isClickAllowed) {
             isClickAllowed = false
-            handler.postDelayed({ isClickAllowed = true }, CLICK_DEBOUNCE_DELAY)
+
+            searchJob = viewModelScope.launch {
+                delay(CLICK_DEBOUNCE_DELAY)
+                isClickAllowed = true
+            }
+
         }
         return current
     }
 
     companion object {
         private const val maxHistorySize = 10
-        private val SEARCH_REQUEST_TOKEN = Any()
         private const val CLICK_DEBOUNCE_DELAY = 1000L
         private const val SEARCH_DEBOUNCE_DELAY = 2000L
     }
