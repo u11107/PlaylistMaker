@@ -60,6 +60,6 @@ class PlayerViewModel(val playerInteractor: PlayerInteractor) : ViewModel() {
     }
 
     companion object {
-        private const val DELAY_MILLIS = 1000L
+        private const val DELAY_MILLIS = 300L
     }
 }
