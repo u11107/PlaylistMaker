@@ -10,13 +10,13 @@ import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.example.playlistmaker.databinding.FragmentSearchBinding
-import com.example.playlistmaker.player.ui.activity.AudioPlayerActivity
+import com.example.playlistmaker.player.ui.activity.PlayerActivity
 import com.example.playlistmaker.search.domain.model.NetworkError
 import com.example.playlistmaker.search.domain.model.Track
 import com.example.playlistmaker.search.ui.adapter.TrackAdapter
 import com.example.playlistmaker.search.ui.model.SearchState
 import com.example.playlistmaker.search.ui.view_model.SearchViewModel
-import com.example.playlistmaker.util.App
+import com.example.playlistmaker.util.TRACK
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -102,8 +102,8 @@ class SearchFragment : Fragment() {
     private fun showPlayer(track: Track) {
         if (viewModel.clickDebounce()) {
             viewModel.addTrackToHistory(track)
-            val intent = Intent(requireContext(), AudioPlayerActivity::class.java).apply {
-                putExtra(App.TRACK, track)
+            val intent = Intent(requireContext(), PlayerActivity::class.java).apply {
+                putExtra(TRACK, track)
             }
             viewModel.clickDebounce()
             startActivity(intent)

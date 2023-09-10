@@ -4,7 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".media.fragment.FavoritesTracksFragment">
+    tools:context=".media.ui.fragment.FavoritesTracksFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favouriteTracksRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/padding_16"
+        android:layout_marginTop="@dimen/marginTop_16"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/track_v" />
 
     <TextView
         android:id="@+id/nothingFound"

@@ -24,5 +24,7 @@
     <dimen name="audio_player_margin8dp">8dp</dimen>
     <dimen name="audio_player_margin63dp">63dp</dimen>
     <dimen name="audio_player_margin84dp">84dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+    <dimen name="marginTop_16">16dp</dimen>
 
 </resources>

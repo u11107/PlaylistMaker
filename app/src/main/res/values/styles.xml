@@ -276,7 +276,7 @@
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="problem_network" >
+    <style name="problem_network">
         <item name="android:layout_width">120dp</item>
         <item name="android:src">@drawable/internet</item>
         <item name="android:layout_height">120dp</item>
@@ -415,7 +415,7 @@
         <item name="android:layout_marginTop">@dimen/main_text_Playlist_maker_16dp</item>
     </style>
 
-    <style name="audio_player_tvTittle" >
+    <style name="audio_player_tvTittle">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">0</item>
@@ -439,8 +439,7 @@
         <item name="tabMode">fixed</item>
     </style>
 
-    <style name="viewPager" parent="matchParent">
-    </style>
+    <style name="viewPager" parent="matchParent"></style>
 
     <style name="textColor">
         <item name="android:textColor">@color/dark_theme_item</item>
@@ -456,5 +455,9 @@
         <item name="itemIconTint">@drawable/menu_item_color</item>
         <item name="itemTextColor">@drawable/menu_item_color</item>
         <item name="menu">@menu/menu</item>
+    </style>
+
+    <style name="player_toolbar">
+        <item name="android:background">@color/white</item>
     </style>
 </resources>

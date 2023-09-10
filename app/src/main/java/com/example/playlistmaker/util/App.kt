@@ -3,6 +3,7 @@ package com.example.playlistmaker.util
 import android.app.Application
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
+import com.example.playlistmaker.di.dbModule
 import com.example.playlistmaker.di.mediaModule
 import com.example.playlistmaker.di.playerModule
 import com.example.playlistmaker.di.searchModule
@@ -18,10 +19,7 @@ import java.util.Locale
 class App : Application() {
 
     companion object {
-        const val EXAMPLE_PREFERENCES = "example_preferences"
-        const val KEY_THEME = "key"
         lateinit var sharedMemory: SharedPreferences
-        const val TRACK = "track"
         fun Long.formatTime() : String {
             return SimpleDateFormat("mm:ss", Locale.getDefault()).format(this)
         }
@@ -34,7 +32,7 @@ class App : Application() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@App)
-            modules(listOf(playerModule, searchModule, settingsModule, sharingModule, mediaModule))
+            modules(listOf(playerModule, searchModule, settingsModule, sharingModule, mediaModule, dbModule))
         }
 
         sharedMemory = getSharedPreferences(EXAMPLE_PREFERENCES, MODE_PRIVATE)
