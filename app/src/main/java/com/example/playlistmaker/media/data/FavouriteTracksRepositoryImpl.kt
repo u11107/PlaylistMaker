@@ -1,8 +1,8 @@
 package com.example.playlistmaker.media.data
 
-import com.example.playlistmaker.db.AppDatabase
-import com.example.playlistmaker.db.TrackDbConverter
-import com.example.playlistmaker.db.TrackEntity
+import com.example.playlistmaker.data.AppDatabase
+import com.example.playlistmaker.data.db.TrackDbConverter
+import com.example.playlistmaker.data.db.TrackEntity
 import com.example.playlistmaker.media.domain.api.FavouriteTracksRepository
 import com.example.playlistmaker.search.domain.model.Track
 import kotlinx.coroutines.flow.Flow

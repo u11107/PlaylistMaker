@@ -1,8 +1,8 @@
-package com.example.playlistmaker.db
+package com.example.playlistmaker.data.db
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.playlistmaker.db.TrackEntity.Companion.TABLE_NAME
+import com.example.playlistmaker.data.db.TrackEntity.Companion.TABLE_NAME
 
 @Entity(tableName = TABLE_NAME)
 data class TrackEntity(

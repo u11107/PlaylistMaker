@@ -1,7 +1,9 @@
-package com.example.playlistmaker.db
+package com.example.playlistmaker.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.example.playlistmaker.data.db.TrackDao
+import com.example.playlistmaker.data.db.TrackEntity
 
 @Database(
     version = 1,

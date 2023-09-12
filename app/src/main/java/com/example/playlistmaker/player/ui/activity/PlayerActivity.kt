@@ -54,7 +54,7 @@ class PlayerActivity : AppCompatActivity() {
         viewModel.observeIsFavourite().observe(this) {
                 isFavorite ->
             playerBinding.btLike.setImageResource(
-                if (isFavorite) R.drawable.ic_like else R.drawable.like
+                if (isFavorite) R.drawable.ic_like_button_favourite else R.drawable.like_button
             )
         }
 

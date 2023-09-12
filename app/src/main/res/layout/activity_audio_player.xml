@@ -144,7 +144,6 @@
         app:layout_constraintBottom_toTopOf="@+id/trackTime"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toEndOf="@+id/btPlay"
-        app:srcCompat="@drawable/like"
         android:importantForAccessibility="no" />
 
     <ImageView
@@ -185,14 +184,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/backgrounds/scenic"
         tools:ignore="ContentDescription" />
-
-<!--    <ImageView-->
-<!--        android:id="@+id/btBack"-->
-<!--        style="@style/audio_player_btBack"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/guideline"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:srcCompat="@drawable/arrow_back"-->
-<!--        tools:ignore="ContentDescription" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

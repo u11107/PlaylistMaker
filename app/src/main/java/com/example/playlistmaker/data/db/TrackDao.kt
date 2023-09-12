@@ -1,4 +1,4 @@
-package com.example.playlistmaker.db
+package com.example.playlistmaker.data.db
 
 import androidx.room.Dao
 import androidx.room.Insert

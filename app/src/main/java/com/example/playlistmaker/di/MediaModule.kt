@@ -1,6 +1,6 @@
 package com.example.playlistmaker.di
 
-import com.example.playlistmaker.db.TrackDbConverter
+import com.example.playlistmaker.data.db.TrackDbConverter
 import com.example.playlistmaker.media.data.FavouriteTracksRepositoryImpl
 import com.example.playlistmaker.media.domain.api.FavouriteTracksInteractor
 import com.example.playlistmaker.media.domain.api.FavouriteTracksRepository
