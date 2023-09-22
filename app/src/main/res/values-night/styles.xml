@@ -468,4 +468,8 @@
         <item name="menu">@menu/menu</item>
     </style>
 
+    <style name="player_toolbar">
+        <item name="navigationIconTint">@color/white</item>
+    </style>
+
 </resources>

@@ -1,4 +1,4 @@
-package com.example.playlistmaker.media.fragment
+package com.example.playlistmaker.media.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.playlistmaker.databinding.FragmentPlaylistBinding
-import com.example.playlistmaker.media.viewmodel.PlayListViewModel
+import com.example.playlistmaker.media.ui.viewModel.FavouriteTracksViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PlaylistFragment : Fragment() {
+class PlaylistsFragment : Fragment() {
 
     private lateinit var binding: FragmentPlaylistBinding
-
-    private val playListViewModel: PlayListViewModel by viewModel()
+    private val viewModel by viewModel<FavouriteTracksViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,11 +23,6 @@ class PlaylistFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() =
-            PlaylistFragment().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
+        fun newInstance() = PlaylistsFragment().apply {}
     }
 }

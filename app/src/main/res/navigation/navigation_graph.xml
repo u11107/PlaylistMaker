@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mediaFragment"
-        android:name="com.example.playlistmaker.media.fragment.MediaFragment"
+        android:name="com.example.playlistmaker.media.ui.fragment.MediaFragment"
         android:label="fragment_media"
         tools:layout="@layout/fragment_media" />
     <fragment
@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_search" />
     <activity
         android:id="@+id/audioPlayerActivity"
-        android:name="com.example.playlistmaker.player.ui.activity.AudioPlayerActivity"
+        android:name="com.example.playlistmaker.player.ui.activity.PlayerActivity"
         android:label="activity_audio_player"
         tools:layout="@layout/activity_audio_player" />
 </navigation>
