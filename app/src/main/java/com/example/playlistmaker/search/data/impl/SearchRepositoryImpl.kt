@@ -11,8 +11,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class SearchRepositoryImpl(
-    private val networkClient: NetworkClient, private val
-    searchHistoryStorage: SearchHistoryStorage
+    private val networkClient: NetworkClient,
+    private val storage: SearchHistoryStorage
 ) : SearchRepository {
     override fun searchTracks(expression: String): Flow<Resource<List<Track>>> = flow {
 
@@ -51,10 +51,10 @@ class SearchRepositoryImpl(
 
 
     override fun getHistory(): List<Track> {
-        return searchHistoryStorage.getHistory()
+        return storage.getHistory()
     }
 
     override fun saveHistory(tracks: List<Track>) {
-        searchHistoryStorage.saveHistory(tracks)
+        storage.saveHistory(tracks)
     }
 }

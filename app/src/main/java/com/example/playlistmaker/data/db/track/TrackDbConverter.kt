@@ -1,4 +1,4 @@
-package com.example.playlistmaker.data.db
+package com.example.playlistmaker.data.db.track
 
 import com.example.playlistmaker.search.domain.model.Track
 import java.util.Calendar

@@ -9,8 +9,11 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.FragmentSearchBinding
-import com.example.playlistmaker.player.ui.activity.PlayerActivity
+import com.example.playlistmaker.player.ui.fragment.PlayerActivity
+import com.example.playlistmaker.player.ui.fragment.PlayerFragment
 import com.example.playlistmaker.search.domain.model.NetworkError
 import com.example.playlistmaker.search.domain.model.Track
 import com.example.playlistmaker.search.ui.adapter.TrackAdapter
@@ -102,11 +105,10 @@ class SearchFragment : Fragment() {
     private fun showPlayer(track: Track) {
         if (viewModel.clickDebounce()) {
             viewModel.addTrackToHistory(track)
-            val intent = Intent(requireContext(), PlayerActivity::class.java).apply {
-                putExtra(TRACK, track)
-            }
-            viewModel.clickDebounce()
-            startActivity(intent)
+            findNavController().navigate(
+                R.id.action_searchFragment_to_playerFragment,
+                PlayerFragment.createArgs(track)
+            )
         }
     }
 

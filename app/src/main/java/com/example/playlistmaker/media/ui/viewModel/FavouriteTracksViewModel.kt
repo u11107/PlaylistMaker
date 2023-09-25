@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.playlistmaker.media.domain.api.FavouriteTracksInteractor
-import com.example.playlistmaker.media.ui.models.FavouriteTracksState
+import com.example.playlistmaker.media.ui.model.FavouriteTracksState
 import com.example.playlistmaker.util.CLICK_DEBOUNCE_DELAY_MILLIS
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

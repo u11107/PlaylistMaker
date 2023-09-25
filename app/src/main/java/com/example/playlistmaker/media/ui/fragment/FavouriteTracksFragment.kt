@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.FragmentFavoritesTracksBinding
-import com.example.playlistmaker.media.ui.models.FavouriteTracksState
+import com.example.playlistmaker.media.ui.model.FavouriteTracksState
 import com.example.playlistmaker.media.ui.viewModel.FavouriteTracksViewModel
-import com.example.playlistmaker.player.ui.activity.PlayerActivity
+import com.example.playlistmaker.player.ui.fragment.PlayerActivity
+import com.example.playlistmaker.player.ui.fragment.PlayerFragment
 import com.example.playlistmaker.search.domain.model.Track
 import com.example.playlistmaker.search.ui.adapter.TrackAdapter
 import com.example.playlistmaker.util.TRACK
@@ -18,17 +21,18 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavouriteTracksFragment : Fragment() {
 
-    private lateinit var binding: FragmentFavoritesTracksBinding
+    private var _binding: FragmentFavoritesTracksBinding? = null
+    private val binding get() = _binding!!
     private val viewModel by viewModel<FavouriteTracksViewModel>()
 
     private val favoritesTracksAdapter = TrackAdapter {
-        showPlayer(it)
+        showPlayer(track = it)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFavoritesTracksBinding.inflate(inflater, container, false)
+        _binding = FragmentFavoritesTracksBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -62,10 +66,10 @@ class FavouriteTracksFragment : Fragment() {
 
     private fun showPlayer(track: Track) {
         if (viewModel.clickDebounce()) {
-            val intent = Intent(requireContext(), PlayerActivity::class.java).apply {
-                putExtra(TRACK, track)
-            }
-            startActivity(intent)
+            findNavController().navigate(
+                R.id.action_mediaFragment_to_playerFragment,
+                PlayerFragment.createArgs(track)
+            )
         }
     }
 
@@ -76,5 +80,10 @@ class FavouriteTracksFragment : Fragment() {
 
     companion object {
         fun newInstance() = FavouriteTracksFragment().apply {}
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

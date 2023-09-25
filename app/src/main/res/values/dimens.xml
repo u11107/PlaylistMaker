@@ -26,5 +26,25 @@
     <dimen name="audio_player_margin84dp">84dp</dimen>
     <dimen name="padding_16">16dp</dimen>
     <dimen name="marginTop_16">16dp</dimen>
+    <dimen name="padding_24">24dp</dimen>
+    <dimen name="corner_radius_8">8dp</dimen>
+    <dimen name="marginBottom_32">32dp</dimen>
+    <dimen name="margin_horizontal_17">17dp</dimen>
+    <dimen name="margin_horizontal">16dp</dimen>
+    <dimen name="marginTop_32">32dp</dimen>
+    <dimen name="layout_width_48">48dp</dimen>
+    <dimen name="layout_height_48">48dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="marginTop_24">24dp</dimen>
+    <dimen name="marginTop_30">30dp</dimen>
+    <dimen name="corner_radius_54">54dp</dimen>
+    <dimen name="textSize_19">19sp</dimen>
+    <dimen name="marginTop_8">8dp</dimen>
+    <dimen name="marginTop_12">12dp</dimen>
+    <dimen name="marginBottom_17">17dp</dimen>
+    <dimen name="marginStart_8">8dp</dimen>
+    <dimen name="marginBottom_28">28dp</dimen>
+    <dimen name="constraintGuide_16">16dp</dimen>
+    <dimen name="constraintGuide_24">24dp</dimen>
 
 </resources>

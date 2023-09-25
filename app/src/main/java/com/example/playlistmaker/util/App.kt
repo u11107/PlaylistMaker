@@ -19,6 +19,7 @@ import java.util.Locale
 class App : Application() {
 
     companion object {
+        const val PLAYLIST_MAKER_SHARED_PREFS = "playlist_maker_shared_prefs"
         lateinit var sharedMemory: SharedPreferences
         fun Long.formatTime() : String {
             return SimpleDateFormat("mm:ss", Locale.getDefault()).format(this)
@@ -29,13 +30,22 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        startKoin {
+        org.koin.core.context.startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@App)
-            modules(listOf(playerModule, searchModule, settingsModule, sharingModule, mediaModule, dbModule))
+            modules(
+                listOf(
+                    playerModule,
+                    searchModule,
+                    settingsModule,
+                    sharingModule,
+                    mediaModule,
+                    dbModule
+                )
+            )
         }
 
-        sharedMemory = getSharedPreferences(EXAMPLE_PREFERENCES, MODE_PRIVATE)
+        sharedMemory = getSharedPreferences(PLAYLIST_MAKER_SHARED_PREFS, MODE_PRIVATE)
         darkTheme = sharedMemory.getBoolean(KEY_THEME, false)
         switchTheme(darkTheme)
     }

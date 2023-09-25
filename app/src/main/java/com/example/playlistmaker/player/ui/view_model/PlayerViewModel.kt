@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.playlistmaker.media.domain.api.FavouriteTracksInteractor
+import com.example.playlistmaker.media.domain.api.PlaylistInteractor
+import com.example.playlistmaker.media.ui.model.Playlist
 import com.example.playlistmaker.player.domain.PlayerState
 import com.example.playlistmaker.player.domain.interactor.PlayerInteractor
 import com.example.playlistmaker.search.domain.model.Track
@@ -16,7 +18,8 @@ import kotlinx.coroutines.launch
 
 class PlayerViewModel(
     private val playerInteractor: PlayerInteractor,
-    private val favouriteTracksInteractor: FavouriteTracksInteractor
+    private val favouriteTracksInteractor: FavouriteTracksInteractor,
+    private val playlistInteractor: PlaylistInteractor
 ) : ViewModel() {
 
     private var timerJob: Job? = null
@@ -30,6 +33,12 @@ class PlayerViewModel(
 
     private val isFavouriteLiveData = MutableLiveData<Boolean>()
     fun observeIsFavourite(): LiveData<Boolean> = isFavouriteLiveData
+
+    private val _playlists = MutableLiveData<List<Playlist>>()
+    val playlists: LiveData<List<Playlist>> = _playlists
+
+    private val _isAlreadyInPlaylist = MutableLiveData<Pair<String, Boolean>>()
+    val isAlreadyInPlaylist: LiveData<Pair<String, Boolean>> = _isAlreadyInPlaylist
 
     init {
         playerInteractor.setOnStateChangeListener { state ->
@@ -88,6 +97,22 @@ class PlayerViewModel(
                 favouriteTracksInteractor.addToFavorites(track)
                 isFavouriteLiveData.postValue(true)
                 true
+            }
+        }
+    }
+
+    fun fillData() {
+        viewModelScope.launch {
+            playlistInteractor.getPlaylists().collect {
+                _playlists.postValue(it)
+            }
+        }
+    }
+
+    fun addTrackToPlayList(track: Track, playlist: Playlist) {
+        viewModelScope.launch {
+            playlistInteractor.addTrackToPlayList(track, playlist).collect {
+                _isAlreadyInPlaylist.postValue(Pair(playlist.title, it))
             }
         }
     }

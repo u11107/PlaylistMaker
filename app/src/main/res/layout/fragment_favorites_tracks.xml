@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".media.ui.fragment.FavoritesTracksFragment">
+    tools:context=".media.ui.fragment.FavouriteTracksFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favouriteTracksRecycler"
