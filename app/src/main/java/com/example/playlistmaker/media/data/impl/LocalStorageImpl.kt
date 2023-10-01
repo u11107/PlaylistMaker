@@ -11,28 +11,48 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 
+
 class LocalStorageImpl(val context: Context) : LocalStorage {
-    override suspend fun saveImageToPrivateStorage(uri: Uri) {
-
-        val filePath = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), DIRECTORY)
-
-        if (!filePath.exists()) {
-            filePath.mkdirs()
-        }
-        val file = File(filePath, IMAGE_NAME)
-        val inputStream = context.contentResolver.openInputStream(uri)
-        val outputStream = withContext(Dispatchers.IO) {
-            FileOutputStream(file)
-        }
-
-        BitmapFactory
-            .decodeStream(inputStream)
-            .compress(Bitmap.CompressFormat.JPEG, QUALITY_IMAGE, outputStream)
-    }
-
     companion object {
         private const val QUALITY_IMAGE = 30
         private const val DIRECTORY = "playlist"
-        private const val IMAGE_NAME = "imageName"
+        private const val IMAGE_NAME = "image"
+    }
+
+    override suspend fun saveImageToPrivateStorage(uri: Uri) {
+        withContext(Dispatchers.IO) {
+            val filePath =
+                File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), DIRECTORY)
+
+            if (!filePath.exists()) {
+                filePath.mkdirs()
+            }
+
+            val imageNumber = System.currentTimeMillis()
+            val imageName = "$IMAGE_NAME$imageNumber.jpg"
+            val file = File(filePath, imageName)
+            val inputStream = context.contentResolver.openInputStream(uri)
+
+            try {
+                inputStream?.use { input ->
+                    val bitmap = BitmapFactory.decodeStream(input)
+                    val outputStream = FileOutputStream(file)
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, QUALITY_IMAGE, outputStream)
+                    outputStream.close()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
