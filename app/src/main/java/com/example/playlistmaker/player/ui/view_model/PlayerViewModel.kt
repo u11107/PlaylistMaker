@@ -109,13 +109,33 @@ class PlayerViewModel(
         }
     }
 
-    fun addTrackToPlayList(track: Track, playlist: Playlist) {
+    fun addTrackToPlayList(track: Track, playlist: Playlist, function: () -> Unit) {
         viewModelScope.launch {
             playlistInteractor.addTrackToPlayList(track, playlist).collect {
                 _isAlreadyInPlaylist.postValue(Pair(playlist.title, it))
             }
         }
     }
+
+//    suspend fun addTrackToPlayList(track: Track, playlist: Playlist, function: () -> Unit): Boolean {
+//        return try {
+//            val isSuccess = playlistInteractor.addTrackToPlayList(track, playlist).first()
+//            if (isSuccess) {
+//                // Операция выполнена успешно
+//                playlistInteractor.addTrackToPlayList(track, playlist).collect { result ->
+//                    _isAlreadyInPlaylist.postValue(Pair(playlist.title, result))
+//                }
+//            } else {
+//                // Операция завершилась неудачей
+//            }
+//            isSuccess // Возвращаем результат операции
+//        } catch (e: Exception) {
+//            // Обработка исключений, если не удалось выполнить операцию
+//            false
+//        }
+//    }
+
+
 
     companion object {
         const val DELAY_TIME_MILLIS = 300L

@@ -1,6 +1,5 @@
 package com.example.playlistmaker.media.ui.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +10,9 @@ import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.FragmentFavoritesTracksBinding
 import com.example.playlistmaker.media.ui.model.FavouriteTracksState
 import com.example.playlistmaker.media.ui.viewModel.FavouriteTracksViewModel
-import com.example.playlistmaker.player.ui.fragment.PlayerActivity
 import com.example.playlistmaker.player.ui.fragment.PlayerFragment
 import com.example.playlistmaker.search.domain.model.Track
 import com.example.playlistmaker.search.ui.adapter.TrackAdapter
-import com.example.playlistmaker.util.TRACK
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

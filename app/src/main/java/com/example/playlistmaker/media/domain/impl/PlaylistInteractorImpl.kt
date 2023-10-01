@@ -5,7 +5,10 @@ import com.example.playlistmaker.media.domain.api.PlaylistInteractor
 import com.example.playlistmaker.media.domain.api.PlaylistRepository
 import com.example.playlistmaker.media.ui.model.Playlist
 import com.example.playlistmaker.search.domain.model.Track
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 class PlaylistInteractorImpl(private val playlistRepository: PlaylistRepository) :
     PlaylistInteractor {
@@ -26,8 +29,30 @@ class PlaylistInteractorImpl(private val playlistRepository: PlaylistRepository)
         playlistRepository.updatePlaylists(playlist)
     }
 
+//    override suspend fun addTrackToPlayList(track: Track, playlist: Playlist): Flow<Boolean> =
+//        playlistRepository.addTrackToPlayList(track, playlist)
+
     override suspend fun addTrackToPlayList(track: Track, playlist: Playlist): Flow<Boolean> =
-        playlistRepository.addTrackToPlayList(track, playlist)
+        flow {
+            val gson = GsonBuilder().create()
+            val arrayTrackType = object : TypeToken<ArrayList<Long>>() {}.type
+
+            val playlistTracks =
+                gson.fromJson(playlist.trackList, arrayTrackType) ?: arrayListOf<Long>()
+
+            if (!playlistTracks.contains(track.trackId.toLong())) {
+                playlistTracks.add(track.trackId.toLong())
+                playlist.trackList = gson.toJson(playlistTracks)
+
+                playlist.size++
+                updatePlaylists(playlist)
+
+                emit(true)
+            } else {
+                emit(false)
+            }
+        }
+
 
     override suspend fun saveImageToPrivateStorage(uri: Uri) {
         playlistRepository.saveImageToPrivateStorage(uri)

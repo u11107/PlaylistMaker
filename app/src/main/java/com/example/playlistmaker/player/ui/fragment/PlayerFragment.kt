@@ -1,12 +1,13 @@
 package com.example.playlistmaker.player.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -33,6 +34,8 @@ class PlayerFragment : Fragment() {
 
     private val bottomSheetPlaylistsAdapter = PlaylistsAdapter(viewObject = ViewObjects.Vertical)
 
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,11 +51,11 @@ class PlayerFragment : Fragment() {
         initObservers()
         initAdapters()
 
+
         val track = requireArguments().getSerializable(TRACK) as Track
-        val bottomSheetBehavior =
-            BottomSheetBehavior.from(playerBinding.bottomSheetLinear).apply {
-                state = BottomSheetBehavior.STATE_HIDDEN
-            }
+        bottomSheetBehavior = BottomSheetBehavior.from(playerBinding.bottomSheetLinear).apply {
+            state = BottomSheetBehavior.STATE_HIDDEN
+        }
 
         bottomSheetBehavior.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
@@ -81,8 +84,9 @@ class PlayerFragment : Fragment() {
         }
 
         bottomSheetPlaylistsAdapter.onPlayListClicked = {
-            viewModel.addTrackToPlayList(track, it)
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            viewModel.addTrackToPlayList(track, it) {
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            }
         }
 
         playerBinding.addButton.setOnClickListener {
@@ -91,6 +95,7 @@ class PlayerFragment : Fragment() {
         }
         showTrack(track)
     }
+
 
     private fun initListeners() {
         playerBinding.toolbarInclude.toolbar.apply {
@@ -126,16 +131,29 @@ class PlayerFragment : Fragment() {
             }
         }
         viewModel.isAlreadyInPlaylist.observe(viewLifecycleOwner) {
+
             val message =
-                if (it.second) "Добавлено в плейлист ${it.first}" else "Трек уже добавлен в плейлист ${it.first}"
+                if (it.second) {
+                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+                    "Добавлено в плейлист ${it.first}"
+                } else {
+                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+                    "Трек уже добавлен в плейлист ${it.first}"
+
+                }
 
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         }
+
+
         viewModel.playlists.observe(viewLifecycleOwner) {
             bottomSheetPlaylistsAdapter.playlists = it as ArrayList<Playlist>
             viewModel.fillData()
         }
+
+
     }
+
 
     private fun showTrack(track: Track) {
         playerBinding.apply {
@@ -186,6 +204,10 @@ class PlayerFragment : Fragment() {
         }
     }
 
+    private fun closeBottomSheet() {
+        val bottomSheetBehavior = BottomSheetBehavior.STATE_HIDDEN
+    }
+
     private fun setPlayIcon() {
         playerBinding.playButton.setImageResource(R.drawable.play)
     }
@@ -211,3 +233,4 @@ class PlayerFragment : Fragment() {
         }
     }
 }
+
