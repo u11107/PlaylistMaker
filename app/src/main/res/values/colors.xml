@@ -7,17 +7,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="dark_theme_item">#1A1B22</color>
-    <color name="color_Playlist_text">#FFFFFF</color>
-    <color name="color_setting_text">#000000</color>
-    <color name="color_main_background">#3772E7</color>
-    <color name="color_image">#AEAFB4</color>
-    <color name="color_switchDarkTheme">#3772E7</color>
-    <color name="color_switch_trackTint">#959FAE</color>
-    <color name="color_editText_back">#E6E8EB</color>
-    <color name="background_progressBar">#6200EE</color>
-    <color name="switcher">#3772E7</color>
-    <color name="main_grey_color">#AEAFB4</color>
-    <color name="second_grey_color">#E6E8EB</color>
-    <color name="bottom_sheet_view">#99000000</color>
+    <color name="blue">#3772E7</color>
+    <color name="track_color">#E6E8EB</color>
+    <color name="thumb_tint">#AEAFB4</color>
+    <color name="ripple_color">#1f000000</color>
+    <color name="settings_icons">#AEAFB4</color>
+    <color name="background">@color/white</color>
+    <color name="toolbar_text_color">@color/black</color>
+    <color name="search_view_background">#E6E8EB</color>
+    <color name="search_hint_color">#AEAFB4</color>
+    <color name="black_light_white_night">#FF000000</color>
+    <color name="white_light_black_night">#FFFFFFFF</color>
+    <color name="media_play_button">#1A1B22</color>
+    <color name="gray">#AEAFB4</color>
+    <color name="media_icons_background">#1A1B22</color>
+    <color name="tab_indicator">#1A1B22</color>
+
 </resources>

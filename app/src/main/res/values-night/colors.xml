@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="settings_icons">@color/white</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="thumb_tint">#3772E7</color>
+    <color name="track_color">#483772E7</color>
+    <color name="background">#1A1B22</color>
+    <color name="toolbar_text_color">@color/white</color>
+    <color name="search_view_background">#FFFFFF</color>
+    <color name="search_hint_color">@color/black</color>
+    <color name="black_light_white_night">#FFFFFFFF</color>
+    <color name="white_light_black_night">#FF000000</color>
+    <color name="media_play_button">@color/white</color>
+    <color name="media_icons_background">#FFFFFF</color>
+    <color name="tab_indicator">@color/white</color>
+
+</resources>

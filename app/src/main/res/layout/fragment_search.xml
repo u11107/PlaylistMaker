@@ -1,70 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/background_settings"
-    tools:context=".search.ui.fragment.SearchFragment">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context=".search.ui.SearchFragment">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/settings_toolbar"
-        style="@style/ToolbarColor"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/search_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="@dimen/size_16">
 
         <TextView
-            style="@style/textColor"
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:fontFamily="@font/ys_display_regular"
-            android:gravity="center_vertical"
-            android:text="@string/search_text_edit"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-    </com.google.android.material.appbar.MaterialToolbar>
-
-    <FrameLayout
-        android:id="@+id/search_frame_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/inputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginHorizontal="@dimen/main_text_Playlist_maker_16dp"
-            android:background="@drawable/backgraund_radius_edittext"
-            android:drawableStart="@drawable/search_textedit_ic"
-            android:drawablePadding="@dimen/track_cardView_image_margin_8"
-            android:drawableTint="@color/color_image"
-            android:fontFamily="@font/ys_display_regular"
-            android:hint="@string/search_text_edit"
-            android:imeOptions="actionDone"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:maxLength="255"
-            android:maxLines="1"
-            android:padding="@dimen/track_cardView_image_margin_8"
-            android:paddingStart="12dp"
-            android:paddingEnd="32dp"
-            android:singleLine="true"
-            android:textColor="@color/dark_theme_item"
-            android:textColorHint="@color/color_image"
-            android:textCursorDrawable="@drawable/color_coursor"
-            tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck,VisualLintTextFieldSize" />
-
-        <ImageView
-            android:id="@+id/clearImageView"
+            android:id="@+id/search_screen_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="12dp"
-            android:padding="@dimen/main_text_Playlist_maker_16dp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/ys_display_medium"
+            android:text="@string/search"
+            android:textSize="@dimen/main_text_size"
+            app:fontWeight="500" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/start_padding_settings_menu_items">
+
+        <EditText
+            android:id="@+id/search_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints="@string/search"
+            android:background="@drawable/bg_search_view_rounded"
+            android:drawableStart="@drawable/ic_search_small"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/ys_display_regular"
+            android:hint="@string/search"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLength="30"
+            android:paddingStart="@dimen/size_12"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/search_hint_color"
+            android:textCursorDrawable="@drawable/blue_cursor"
+            android:textSize="@dimen/settings_text_size"
+            android:visibility="visible"
+            app:drawableTint="@color/search_hint_color"
+            app:fontWeight="400"
+            tools:ignore="RtlSymmetry,TouchTargetSizeCheck" />
+
+        <ImageView
+            android:id="@+id/clear_text_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="@dimen/size_12"
+            android:background="@drawable/ic_baseline_clear"
+            android:contentDescription="@string/clear_button"
             android:visibility="gone"
-            app:srcCompat="@drawable/bt_clear"
-            app:tint="@color/color_image"
-            tools:ignore="ContentDescription,ImageContrastCheck" />
+            app:tint="@color/search_hint_color" />
 
     </FrameLayout>
 
@@ -72,84 +72,107 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/size_24" />
+
+        <FrameLayout
+            android:id="@+id/search_error_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/size_24"
+            android:visibility="gone"
+            app:fontFamily="@font/ys_display_medium">
+
+            <ImageView
+                android:id="@+id/search_error_image"
+                android:layout_width="@dimen/size_120"
+                android:layout_height="@dimen/size_120"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/size_86"
+                android:contentDescription="@string/unsuccessful_search_image" />
+
+            <TextView
+                android:id="@+id/search_error_text"
+                android:layout_width="@dimen/size_312"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/size_224"
+                android:fontFamily="@font/ys_display_medium"
+                android:gravity="center_horizontal"
+                android:textSize="19sp"
+                app:fontWeight="@dimen/font_weight_settings" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/refresh_search_button"
+                android:layout_marginTop="@dimen/size_332"
+                android:text="@string/refresh_search"
+
+                style="@style/SearchScreenSupportButtons"
+                app:backgroundTint="@color/black_light_white_night"
+                app:cornerRadius="@dimen/support_search_buttons_corner_radius"
+                app:shapeAppearance="@style/ShapeAppearance.App.SmallComponent" />
+
+        </FrameLayout>
+
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/progress_bar"
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:layout_gravity="center"
-            android:indeterminateTint="@color/switcher"
-            android:visibility="gone"/>
+            android:indeterminateTint="@color/blue"
+            android:visibility="gone" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/searchRecycler"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/search_history_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingTop="24dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-        <TextView
-            android:id="@+id/nothingFound"
-            style="@style/placeholder_not_found"
-            android:layout_marginTop="88dp"
-            android:text="@string/nothing_found"
-            android:visibility="gone"
-            />
-
-        <LinearLayout
-            android:id="@+id/internetProblem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="80dp"
-            android:orientation="vertical"
-            android:visibility="gone"
-            >
-
-            <ImageView
-                style="@style/problem_network"
-                android:layout_gravity="center_horizontal"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                style="@style/placeholder_internet_problem"
-                android:text="@string/problem_internet" />
-
-            <TextView
-                android:id="@+id/errorText"
-                style="@style/placeholder_internet_problem"
-                android:text="@string/check_internet" />
-
-            <Button
-                android:id="@+id/refreshButton"
-                style="@style/refresh_button"
-                android:text="@string/btUpdate"
-                app:cornerRadius="54dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/searchHistory_layout"
-            style="@style/searchHistory_layout"
+            android:layout_height="match_parent"
             android:visibility="gone">
 
             <TextView
-                style="@style/searchHistory_textView"
-                android:text="@string/you_searched" />
+                android:id="@+id/search_history_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/size_52"
+                android:fontFamily="@font/ys_display_medium"
+                android:gravity="center_horizontal"
+                android:text="@string/looked_for"
+                android:textSize="19sp"
+                app:fontWeight="@dimen/font_weight_main"
+                app:layout_constraintBottom_toTopOf="@id/search_history_recycler_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_chainStyle="packed" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/searchHistoryRecycler"
-                style="@style/searchHistory_recyclerView"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                android:id="@+id/search_history_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintBottom_toTopOf="@id/clear_search_history_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_history_text_view" />
 
-            <Button
-                android:id="@+id/clearHistoryButton"
-                style="@style/refresh_button"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/ys_display_medium"
-                android:text="@string/ClearHistory"
-                app:cornerRadius="54dp" />
-        </LinearLayout>
+            <TextView
+                android:id="@+id/clear_search_history_button"
+                style="@style/SearchScreenSupportButtons"
+                android:layout_marginTop="@dimen/size_12"
+                android:background="@drawable/bg_rounded_button"
+                android:text="@string/clear_search_history"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_history_recycler_view" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </FrameLayout>
+
 </LinearLayout>
-
-

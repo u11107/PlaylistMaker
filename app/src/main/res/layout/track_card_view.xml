@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size_64"
+    android:backgroundTint="@color/background"
+    card_view:cardElevation="0dp">
+
+    <ImageView
+        android:id="@+id/album_artwork"
+        android:layout_width="@dimen/size_45"
+        android:layout_height="@dimen/size_45"
+        android:layout_marginVertical="@dimen/size_8"
+        android:layout_marginStart="@dimen/size_12"
+        android:contentDescription="@string/artwork_content_description" />
+
+    <TextView
+        style="@style/TrackName_TrackCardVIew"
+        android:id="@+id/track_name"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_68"
+        android:layout_marginTop="@dimen/size_14"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="@dimen/settings_text_size" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/size_68"
+        android:layout_marginBottom="@dimen/size_14">
+
+        <TextView
+            android:id="@+id/artist_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_4"
+            android:ellipsize="end"
+            android:maxWidth="@dimen/size_224"
+            android:maxLines="1"
+            android:textColor="@color/settings_icons"
+            android:textSize="@dimen/small_text_size" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/size_4"
+            android:background="@drawable/ic_small_ellipse"
+            android:backgroundTint="@color/settings_icons"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/track_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/settings_icons"
+            android:textSize="@dimen/small_text_size" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/on_track_chosen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginEnd="@dimen/size_20"
+        android:background="@drawable/ic_arrow_forward"
+        android:backgroundTint="@color/settings_icons"
+        tools:ignore="ContentDescription" />
+
+</androidx.cardview.widget.CardView>
