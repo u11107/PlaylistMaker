@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:shape="rectangle"
+    app:layout_constraintDimensionRatio="h,1:1">
+
+    <item android:drawable="@drawable/ic_add_photo"
+        android:height="@dimen/size_100"
+        android:width="@dimen/size_100"
+        android:gravity="center"/>
+    <item android:drawable="@drawable/bg_dashed_outline"
+        android:height="@dimen/size_312"
+        android:width="@dimen/size_312"/>
+
+</layer-list>

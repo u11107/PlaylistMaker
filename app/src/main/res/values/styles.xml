@@ -1,463 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
-    <style name="linearLayoutPl" parent="matchParent">
-        <item name="android:background">@color/color_main_background</item>
-        <item name="android:orientation">vertical</item>
-    </style>
-
-    <style name="ToolbarColor">
-        <item name="navigationIconTint">@color/dark_theme_item</item>
-    </style>
-
-    <style name="refresh_button" parent="wrapContent">
-        <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:backgroundTint">@color/black</item>
-        <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:padding">16dp</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-
-    <style name="placeholder_internet_problem">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:fontFamily">@font/ys_display_regular</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">19sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:layout_marginTop">8dp</item>
-    </style>
-
-    <style name="searchHistory_layout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:orientation">vertical</item>
-    </style>
-
-    <style name="searchHistory_textView">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:fontFamily">@font/ys_display_regular</item>
-        <item name="android:layout_marginTop">24dp</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">19sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="placeholder_not_found" parent="wrapContent">
-        <item name="android:fontFamily">@font/ys_display_regular</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">19sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:layout_marginTop">80dp</item>
-        <item name="drawableTopCompat">@drawable/light_mode</item>
-    </style>
-
-    <style name="searchHistory_recyclerView">
-        <item name="android:layout_width">match_parent</item>
+    <style name="MainButtonsStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_height">0dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:paddingHorizontal" tools:ignore="NewApi">16dp</item>
-        <item name="android:paddingTop">24dp</item>
-    </style>
-
-
-    <style name="background_settings">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:background">#F5F5F5</item>
-        <item name="android:orientation">vertical</item>
-    </style>
-
-    <style name="settingSettingText">
-        <item name="android:textColor">@color/color_setting_text</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginStart">12dp</item>
+        <item name="android:layout_marginStart">@dimen/minimum</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:text">@string/search_text_edit</item>
-        <item name="android:textFontWeight" tools:ignore="NewApi">500</item>
-        <item name="android:textSize">@dimen/pl_text_size</item>
-    </style>
-
-
-    <style name="settingButtonBack">
-        <item name="iconTint">@color/color_setting_text</item>
-        <item name="android:layout_width">@dimen/setting_layout_48</item>
-        <item name="android:layout_height">@dimen/setting_layout_48</item>
-        <item name="android:layout_marginStart">@dimen/settingButton_margin_4</item>
-        <item name="android:layout_marginTop">@dimen/settingButton_margin_4</item>
-    </style>
-
-    <style name="switchTheme" parent="wrapContent">
-        <item name="android:thumbTint">@color/color_image</item>
-        <item name="android:trackTint">@color/color_switch_trackTint</item>
-        <item name="android:layout_gravity">end</item>
-        <item name="android:layout_marginEnd">6dp</item>
-        <item name="android:paddingBottom">7dp</item>
-    </style>
-
-    <style name="mainText_PlayList_maker" parent="wrapContent">
-        <item name="android:layout_marginStart">@dimen/main_text_Playlist_maker_16dp
-        </item>
-        <item name="android:layout_marginTop">@dimen/search_margin_14
-        </item>
-        <item name="android:layout_marginBottom">
-            @dimen/main_text_Playlist_maker_16dp
-        </item>
-        <item name="android:text">@string/Title</item>
-        <item name="android:textColor">@color/color_Playlist_text</item>
-        <item name="android:textSize">@dimen/pl_text_size</item>
-    </style>
-
-    <style name="mainLinearLayout" parent="matchParent">
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginStart">18dp</item>
-        <item name="android:layout_marginTop">24dp</item>
-        <item name="android:layout_marginEnd">18dp</item>
-        <item name="android:layout_marginBottom">28dp</item>
-        <item name="android:orientation">vertical</item>
-    </style>
-
-    <style name="mainButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
-        <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:textFontWeight" tools:ignore="NewApi">500</item>
-        <item name="android:textColor">@color/dark_theme_item</item>
-        <item name="android:textSize">@dimen/pl_text_size</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginBottom">@dimen/main_text_Playlist_maker_16dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:backgroundTint">@color/white</item>
-        <item name="cornerRadius">@dimen/main_text_Playlist_maker_16dp</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:foreground">"@drawable/ic_ripple_effect"</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">@dimen/corner_radius_main</item>
         <item name="iconGravity">textStart</item>
-        <item name="iconPadding">@dimen/pl_iconPadding_10</item>
-        <item name="iconTint">@color/dark_theme_item</item>
+        <item name="iconPadding">@dimen/main_icon_padding</item>
+        <item name="iconTint">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/vertical_margin_main_buttons</item>
+        <item name="fontWeight">500</item>
+        <item name="android:textSize">@dimen/main_text_size</item>
+        <item name="fontFamily">@font/ys_display_medium</item>
     </style>
 
-    <style name="settingFrame" parent="matchParent">
-        <item name="android:paddingTop">@dimen/setting_inner_21</item>
-        <item name="android:paddingBottom">@dimen/setting_inner_21</item>
-    </style>
-
-    <style name="settingText">
-        <item name="android:textFontWeight" tools:targetApi="p">400</item>
-        <item name="android:fontFamily">@font/ys_display_regular</item>
-        <item name="android:layout_width">@dimen/setting_text</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/color_setting_text</item>
-        <item name="android:textSize">@dimen/setting_text_size_16sp</item>
-    </style>
-
-    <style name="settingIconImage" parent="wrapContent">
-        <item name="android:drawableTint">@color/color_image</item>
-        <item name="android:layout_gravity">end</item>
-    </style>
-
-    <style name="searchEditTextLinearLayout">
+    <style name="SettingsTextStyle">
+        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/main_text_Playlist_maker_16dp</item>
-        <item name="android:layout_marginEnd">@dimen/main_text_Playlist_maker_16dp</item>
+        <item name="android:paddingStart">@dimen/start_padding_settings_menu_items</item>
+        <item name="android:paddingTop">@dimen/vertical_padding_settings_menu_items</item>
+        <item name="android:paddingBottom">@dimen/vertical_padding_settings_menu_items</item>
+        <item name="android:textSize">@dimen/settings_text_size</item>
+        <item name="drawableTint">@color/settings_icons</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
+        <item name="fontWeight">400</item>
     </style>
 
-
-    <style name="TextViewStyle_Settings">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:fontFamily">@font/ys_display_regular</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:textColor">@color/color_setting_text</item>
-        <item name="android:textSize">16sp</item>
+    <style name="ThemeSwitchTextStyle">
+        <item name="android:textSize">@dimen/settings_text_size</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
+        <item name="fontWeight">400</item>
     </style>
 
-    <style name="searchEditText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingStart">13dp</item>
-        <item name="android:paddingEnd">12dp</item>
-        <item name="android:paddingBottom">@dimen/search_editText_padding_8.5</item>
-        <item name="android:paddingTop">@dimen/search_editText_padding_8.5</item>
-        <item name="android:drawablePadding">9dp</item>
-        <item name="android:lines">1</item>
-        <item name="android:maxLength">40</item>
-        <item name="android:backgroundTint">@color/color_editText_back</item>
-        <item name="android:inputType">text</item>
-    </style>
-
-    <style name="searchIcCloseEditText" parent="wrapContent">
-        <item name="android:layout_gravity">end</item>
-        <item name="android:layout_marginTop">@dimen/search_ic_layout_margin_12</item>
-        <item name="android:layout_marginEnd">@dimen/search_margin_14</item>
-        <item name="android:visibility">gone</item>
-        <item name="android:src">@drawable/close_ic</item>
-    </style>
-
-    <style name="wrapContent">
+    <style name="SearchScreenSupportButtons">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="matchParent">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-    </style>
-
-    <style name="match_wrap">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="wrap_match">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">match_parent</item>
-    </style>
-
-    <style name="track_CardView_ImageAlbum">
-        <item name="android:layout_width">@dimen/track_cardView_imageAlbum_45</item>
-        <item name="android:layout_height">@dimen/track_cardView_imageAlbum_45</item>
-
-        <item name="android:layout_marginTop">@dimen/track_cardView_image_margin_8</item>
-        <item name="android:layout_marginBottom">@dimen/track_cardView_image_margin_8</item>
-        <item name="android:layout_marginEnd">@dimen/track_cardView_image_margin_8</item>
-        <item name="android:scaleType">centerCrop</item>
-    </style>
-
-    <style name="track_LinerLayout" parent="wrapContent">
-        <item name="android:layout_gravity">center|start</item>
-        <item name="android:layout_marginEnd">@dimen/track_cardView_image_margin_8</item>
-        <item name="android:orientation">vertical</item>
-    </style>
-
-    <style name="track_nameTrack" parent="wrapContent">
-        <item name="android:layout_marginBottom">1dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:fontFamily">@font/ys_display_regular</item>
-        <item name="android:text">TextView</item>
-        <item name="android:textColor">@color/color_setting_text</item>
-        <item name="android:textSize">@dimen/setting_text_size_16sp</item>
-    </style>
-
-    <style name="track_textView_secondary" parent="wrapContent">
-        <item name="android:fontFamily">@font/ys_display_regular</item>
-        <item name="android:text">TextView</item>
-        <item name="android:textSize">@dimen/track_textSize_11sp</item>
-    </style>
-
-    <style name="track_ellipse" parent="wrapContent">
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginStart">@dimen/track_ellipse_margin_5</item>
-        <item name="android:layout_marginEnd">@dimen/track_ellipse_margin_5</item>
-    </style>
-
-    <style name="searchAct_placeholderMessage">
-        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:layout_marginStart">24dp</item>
-        <item name="android:layout_marginTop">110dp</item>
-        <item name="android:layout_marginEnd">24dp</item>
-        <item name="android:orientation">vertical</item>
+        <item name="android:letterSpacing">@dimen/zero_letter_spacing</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:paddingTop">@dimen/size_10</item>
+        <item name="android:paddingBottom">@dimen/size_10</item>
+        <item name="android:paddingStart">@dimen/size_14</item>
+        <item name="android:paddingEnd">@dimen/size_14</item>
+        <item name="android:textColor">@color/white_light_black_night</item>
+        <item name="android:textSize">@dimen/support_search_buttons_text_size</item>
     </style>
 
-    <style name="problem_network">
-        <item name="android:layout_width">120dp</item>
-        <item name="android:src">@drawable/internet</item>
-        <item name="android:layout_height">120dp</item>
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">@dimen/support_search_buttons_corner_radius</item>
     </style>
 
-    <style name="searchAct_nothingFoundImage" parent="wrapContent">
-        <item name="android:layout_gravity">center</item>
-        <item name="android:src">@drawable/light_mode</item>
-        <item name="android:visibility">gone</item>
+    <style name="MediaSubtitles">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">@dimen/media_subtitles_text_size</item>
+        <item name="android:layout_marginBottom">@dimen/size_16</item>
+        <item name="fontWeight">@dimen/font_weight_settings</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
     </style>
 
+    <style name="MediaFeatures">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">end</item>
+        <item name="android:textColor">@color/black_light_white_night</item>
+        <item name="android:textSize">@dimen/media_subtitles_text_size</item>
+        <item name="android:layout_marginBottom">@dimen/size_16</item>
+        <item name="fontWeight">@dimen/font_weight_settings</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
+    </style>
 
-    <style name="searchAct_tvError">
+    <style name="CustomTabText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">@dimen/support_search_buttons_text_size</item>
+    </style>
+
+    <style name="PlaylistCardViewText">
+        <item name="android:textSize">@dimen/pl_card_text_size</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
+        <item name="android:textColor">@color/media_play_button</item>
+        <item name="android:gravity">start</item>
+        <item name="fontWeight">400</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="TrackName_TrackCardVIew">
+        <item name="android:textSize">@dimen/settings_text_size</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
+        <item name="fontWeight">400</item>
+    </style>
+
+    <style name="NumberOfTracks_TrackCardVIew">
+        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
+        <item name="fontWeight">400</item>
+    </style>
+
+    <!-- Dialog -->
+    <style name="AppTheme_MyMaterialAlertDialog" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="materialAlertDialogTitleTextStyle">
+            @style/AppTheme.MyMaterialAlertDialog.Title.Text
+        </item>
+        <item name="materialAlertDialogBodyTextStyle">
+            @style/AppTheme.MyMaterialAlertDialog.Body.Text
+        </item>
+
+        <item name="buttonBarPositiveButtonStyle">@style/AppTheme.MyMaterialAlertDialog.Button
+        </item>
+        <item name="buttonBarNegativeButtonStyle">@style/AppTheme.MyMaterialAlertDialog.Button
+        </item>
+    </style>
+
+    <style name="AppTheme.MyMaterialAlertDialog.Title.Text" parent="@style/MaterialAlertDialog.MaterialComponents.Title.Text">
+
+    </style>
+
+    <style name="AppTheme.MyMaterialAlertDialog.Body.Text" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:textSize">@dimen/settings_text_size</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
+    </style>
+
+    <style name="AppTheme.MyMaterialAlertDialog.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textSize">@dimen/settings_text_size</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+    <!-- Dialog Ends -->
+
+    <style name="FloatingHintStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textSize">@dimen/pl_card_text_size</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
+        <item name="fontWeight">400</item>
+        <item name="boxStrokeColor">@color/pl_creation_edit_text</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/edit_text_view_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/edit_text_view_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/edit_text_view_radius</item>
+        <item name="boxCornerRadiusTopStart">@dimen/edit_text_view_radius</item>
+    </style>
+
+    <style name="TextInputEditTextStyle">
+        <item name="android:textSize">@dimen/settings_text_size</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:imeOptions">actionDone|flagNoExtractUi</item>
+    </style>
+
+    <style name="PlaylistDetailsTextStyle">
+        <item name="android:textSize">@dimen/playlist_details_text_size</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
+        <item name="fontWeight">@dimen/font_weight_playlist_other</item>
+        <item name="android:textColor">@color/black_alt</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="PlaylistNameTextStyle">
+        <item name="android:textSize">@dimen/playlist_name_text_size</item>
+        <item name="fontFamily">@font/ys_display_bold</item>
+        <item name="fontWeight">@dimen/font_weight_playlist_name</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_width">@dimen/size_0</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="PlaylistMenuTextStyle">
+        <item name="android:textSize">@dimen/playlist_menu_text_size</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
+        <item name="fontWeight">@dimen/font_weight_playlist_menu</item>
+        <item name="android:textColor">@color/black_light_white_night</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:gravity">center</item>
-        <item name="android:lineHeight" tools:ignore="NewApi">24dp</item>
-        <item name="android:textColor">@color/dark_theme_item</item>
-        <item name="android:textFontWeight" tools:ignore="NewApi">400</item>
-        <item name="android:textSize">@dimen/textError_19sp</item>
+        <item name="android:paddingTop">@dimen/vertical_padding_playlist_menu_items</item>
+        <item name="android:paddingBottom">@dimen/vertical_padding_playlist_menu_items</item>
+        <item name="android:paddingStart">@dimen/start_padding_playlist_menu_items</item>
     </style>
 
-    <style name="searchAct_BtUpdate" parent="wrapContent">
-        <item name="android:layout_gravity">center</item>
-        <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:lineHeight">16dp</item>
-        <item name="android:layout_marginTop">@dimen/margin_24</item>
-        <item name="android:backgroundTint">@color/dark_theme_item</item>
-        <item name="android:paddingStart">@dimen/search_margin_14</item>
-        <item name="android:paddingTop">@dimen/searchAct_BtUpdate_margin_Top_Bot</item>
-        <item name="android:paddingEnd">@dimen/search_margin_14</item>
-        <item name="android:paddingBottom">@dimen/searchAct_BtUpdate_margin_Top_Bot</item>
-        <item name="android:text">@string/btUpdate</item>
-        <item name="android:textSize">@dimen/textSize_14sp</item>
-    </style>
-
-    _____
-
-
-    <style name="tittleHistory">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">26dp</item>
-        <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:gravity">center</item>
-        <item name="android:text">@string/you_searched</item>
-        <item name="android:textColor">@color/dark_theme_item</item>
-        <item name="android:textSize">@dimen/textError_19sp</item>
-        <item name="android:visibility">gone</item>
-    </style>
-
-    <style name="btClearHistory" parent="wrapContent">
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginTop">24dp</item>
-        <item name="android:backgroundTint">@color/dark_theme_item</item>
-        <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:text">@string/ClearHistory</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:visibility">gone</item>
-    </style>
-
-
-    <style name="audio_player_tvDataTrack">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">17dp</item>
-        <item name="android:textColor">@color/dark_theme_item</item>
-        <item name="android:textSize">13sp</item>
-        <item name="android:fontFamily">@font/ys_display_regular</item>
-    </style>
-
-    <style name="audio_player_playback_progress" parent="wrapContent">
-        <item name="android:layout_marginBottom">39dp</item>
-        <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:textColor">@color/dark_theme_item</item>
-        <item name="android:textSize">@dimen/textSize_14sp</item>
-        <item name="android:lineHeight" tools:ignore="NewApi">16.41dp</item>
-    </style>
-
-    <style name="audio_player_add" parent="wrapContent">
-        <item name="android:layout_marginStart">@dimen/audio_player_margin8dp</item>
-        <item name="android:layout_marginEnd">@dimen/audio_player_margin63dp</item>
-        <item name="android:layout_marginBottom">@dimen/audio_player_margin84dp</item>
-    </style>
-
-    <style name="audio_player_play" parent="wrapContent">
-        <item name="android:layout_marginBottom">@dimen/search_ic_layout_margin_12</item>
-    </style>
-
-    <style name="audio_player_like" parent="wrapContent">
-        <item name="android:layout_marginStart">@dimen/audio_player_margin63dp</item>
-        <item name="android:layout_marginEnd">@dimen/audio_player_margin8dp</item>
-        <item name="android:layout_marginBottom">@dimen/audio_player_margin84dp</item>
-    </style>
-
-
-    <style name="audio_player_artist">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/audio_player_margin8dp</item>
-        <item name="android:layout_marginEnd">@dimen/audio_player_margin8dp</item>
-        <item name="android:layout_marginBottom">38dp</item>
-        <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:textColor">@color/dark_theme_item</item>
-    </style>
-
-    <style name="audio_player_track">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/audio_player_margin8dp</item>
-        <item name="android:layout_marginEnd">@dimen/audio_player_margin8dp</item>
-        <item name="android:layout_marginBottom">12dp</item>
-        <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:textColor">@color/dark_theme_item</item>
-        <item name="android:textSize">@dimen/pl_text_size</item>
-    </style>
-
-    <style name="audio_player_image">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_marginStart">@dimen/audio_player_margin8dp</item>
-        <item name="android:layout_marginEnd">@dimen/audio_player_margin8dp</item>
-        <item name="android:layout_marginBottom">24dp</item>
-        <item name="android:layout_marginTop">84dp</item>
-    </style>
-
-    <style name="audio_player_btBack">
-        <item name="android:layout_width">@dimen/main_text_Playlist_maker_16dp</item>
-        <item name="android:layout_height">@dimen/main_text_Playlist_maker_16dp</item>
-        <item name="android:layout_marginStart">@dimen/settingButton_margin_4</item>
-        <item name="android:layout_marginTop">@dimen/main_text_Playlist_maker_16dp</item>
-    </style>
-
-    <style name="audio_player_tvTittle">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">0</item>
-        <item name="android:layout_marginBottom">17dp</item>
-        <item name="android:textColor">@color/color_image</item>
-        <item name="android:textSize">13sp</item>
-        <item name="android:fontFamily">@font/ys_display_regular</item>
-    </style>
-
-    <style name="font_style">
-        <item name="android:fontFamily">@font/ys_display_regular</item>
-        <item name="android:textSize">@dimen/textSize_14sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="tabLayout" parent="match_wrap">
-        <item name="android:background">#F5F5F5</item>
-        <item name="tabTextAppearance">@style/font_style</item>
-        <item name="tabTextColor">@color/black</item>
-        <item name="tabIndicatorColor">@color/black</item>
-        <item name="tabMode">fixed</item>
-    </style>
-
-    <style name="viewPager" parent="matchParent"></style>
-
-    <style name="textColor">
-        <item name="android:textColor">@color/dark_theme_item</item>
-    </style>
-
-    <style name="buttonNavigation">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/color_Playlist_text</item>
-        <item name="layout_constraintBottom_toBottomOf">parent</item>
-        <item name="layout_constraintEnd_toEndOf">parent</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
-        <item name="itemIconTint">@drawable/menu_item_color</item>
-        <item name="itemTextColor">@drawable/menu_item_color</item>
-        <item name="menu">@menu/menu</item>
-    </style>
-
-    <style name="player_toolbar">
-        <item name="android:background">@color/white</item>
-    </style>
 </resources>
