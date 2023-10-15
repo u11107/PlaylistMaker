@@ -9,7 +9,7 @@
     <string name="user_agreement">Пользовательское соглашение</string>
     <string name="media_activity">Media activity</string>
     <string name="practicum_android_link">https://practicum.yandex.ru/android-developer/</string>
-    <string name="feedback_addressee_mail">eenot84@yandex.ru.ru</string>
+    <string name="feedback_addressee_mail">eenot84@yandex.ru</string>
     <string name="feedback_subject">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
     <string name="feedback_message_text">Спасибо разработчикам и разработчицам за крутое приложение!</string>
     <string name="practicum_term_link">https://yandex.ru/legal/practicum_offer/</string>
@@ -27,7 +27,8 @@
     <string name="looked_for">Вы искали</string>
     <string name="clear_search_history">Очистить историю</string>
     <string name="media_duration">Длительность</string>
-    <string name="media_album">Альбом</string>
+    <string name="track_cover">Обложка трека</string>
+    <string name="playlist_cover">Обложка плейлиста</string>
     <string name="back_arrow_description">Стрелка назад</string>
     <string name="media_year">Год</string>
     <string name="media_genre">Жанр</string>
@@ -55,5 +56,36 @@
     <string name="read_image_rationale">Необходимо разрешение для чтения файлов из общего хранилища</string>
     <string name="playlist">Плейлист</string>
     <string name="created">создан</string>
-
+    <string name="media_album">Альбом</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
+    <string name="delete_playlist_question">Хотите удалить плейлист</string>
+    <string name="delete_track_title">Удалить трек</string>
+    <string name="delete_track_message">Хотите удалить трек?</string>
+    <string name="delete">Удалить</string>
+    <string name="no_tracks_to_share">В этом плейлисте нет списка треков, которым можно поделиться</string>
+    <string name="share">Поделиться</string>
+    <string name="edit_info">Редактировать информацию</string>
+    <string name="delete_playlist">Удалить плейлист</string>
+    <string name="want_to_delete_playlist">Хотите удалить плейлист</string>
+    <string name="edit">Редактировать</string>
+    <string name="save">Сохранить</string>
+    <string name="saved">сохранен</string>
+    <string name="no_tracks_in_playlist">В этом плейлисте нет треков</string>
+    <plurals name="plurals_tracks">
+        <item quantity="zero">0 треков</item>
+        <item quantity="one">%1$d трек</item>
+        <item quantity="two">%1$d трека</item>
+        <item quantity="few">%1$d трека</item>
+        <item quantity="many">%1$d треков</item>
+        <item quantity="other">%1$d треков</item>
+    </plurals>
+    <plurals name="plurals_minutes">
+        <item quantity="zero">0 минут</item>
+        <item quantity="one">%1$d минута</item>
+        <item quantity="two">%1$d минуты</item>
+        <item quantity="few">%1$d минуты</item>
+        <item quantity="many">%1$d минут</item>
+        <item quantity="other">%1$d минут</item>
+    </plurals>
 </resources>

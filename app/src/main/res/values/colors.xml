@@ -19,8 +19,11 @@
     <color name="black_light_white_night">#FF000000</color>
     <color name="white_light_black_night">#FFFFFFFF</color>
     <color name="media_play_button">#1A1B22</color>
+    <color name="black_alt">#1A1B22</color>
     <color name="gray">#AEAFB4</color>
     <color name="media_icons_background">#1A1B22</color>
     <color name="tab_indicator">#1A1B22</color>
+    <color name="light_gray">#E6E8EB</color>
+    <color name="gray_overlay">#801A1B22</color>
 
 </resources>

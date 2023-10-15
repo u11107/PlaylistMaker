@@ -4,87 +4,69 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.appcompat.widget.Toolbar
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.practicum.playlistmaker.R
+import com.practicum.playlistmaker.databinding.FragmentPlayerBinding
 import com.practicum.playlistmaker.player.ui.playlists_adapter.PlaylistsSmallAdapter
 import com.practicum.playlistmaker.player.view_model.PlayerViewModel
 import com.practicum.playlistmaker.player.view_model.PlaylistsInPlayerState
 import com.practicum.playlistmaker.player.view_model.ToastState
-import com.practicum.playlistmaker.playlists_creation.domain.model.Playlist
+import com.practicum.playlistmaker.playlist_creation.domain.model.Playlist
 import com.practicum.playlistmaker.search.domain.model.Track
+import com.practicum.playlistmaker.utils.DateUtils
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class PlayerFragment : Fragment() {
 
-    private lateinit var currentPlaybackTime: TextView
-    private lateinit var playImageView: ImageView
     private lateinit var track: Track
-    private lateinit var favoriteImageView: ImageView
-    private lateinit var playlistsRecyclerView: RecyclerView
-
+    private lateinit var binding: FragmentPlayerBinding
     private var playlistsAdapter = PlaylistsSmallAdapter {
         viewModel.onPlaylistClicked(it)
     }
-
     private val viewModel: PlayerViewModel by viewModel {
         parametersOf(track)
     }
+    private val gson: Gson by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_player, container, false)
+    ): View {
+        binding = FragmentPlayerBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        track = Gson().fromJson(
+        track = gson.fromJson(
             requireArguments().getString(TRACK_ARG),
             object : TypeToken<Track>() {}.type
         )
 
-        val toolbar = view.findViewById<Toolbar>(R.id.player_toolbar)
-        val coverImageView: ImageView = view.findViewById(R.id.cover_image)
-        val trackName: TextView = view.findViewById(R.id.track_name)
-        val artistName: TextView = view.findViewById(R.id.artist_name)
-        val trackDuration: TextView = view.findViewById(R.id.track_duration)
-        val album: TextView = view.findViewById(R.id.album)
-        val trackAlbum: TextView = view.findViewById(R.id.track_album)
-        val trackYear: TextView = view.findViewById(R.id.track_year)
-        val trackGenre: TextView = view.findViewById(R.id.track_genre)
-        val trackCountry: TextView = view.findViewById(R.id.track_country)
-        val addToPlaylist: ImageView = view.findViewById(R.id.add_to_playlist)
-        val createPlaylist: TextView = view.findViewById(R.id.create_playlist)
-        val bottomSheetContainer: ViewGroup = view.findViewById(R.id.bottom_sheet_container)
-        val greyOverlay: View = view.findViewById(R.id.overlay)
-
-        val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetContainer).apply {
+        val bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetContainer).apply {
             state = BottomSheetBehavior.STATE_HIDDEN
         }
 
         bottomSheetBehavior.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
-                when (newState) {
-                    BottomSheetBehavior.STATE_HIDDEN -> greyOverlay.visibility = View.GONE
-                    else -> greyOverlay.visibility = View.VISIBLE
+                binding.playerOverlay.visibility = when (newState) {
+                    BottomSheetBehavior.STATE_HIDDEN -> View.GONE
+                    else -> View.VISIBLE
                 }
             }
 
@@ -92,54 +74,51 @@ class PlayerFragment : Fragment() {
             }
         })
 
-        currentPlaybackTime = view.findViewById(R.id.current_playback_time)
-        favoriteImageView = view.findViewById(R.id.favorite_image)
-        playImageView = view.findViewById(R.id.play_image)
-        playlistsRecyclerView =
-            view.findViewById<RecyclerView>(R.id.playlists_recycler_view).apply {
+        with(binding) {
+            playlistsRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = playlistsAdapter
             }
-        playImageView.isEnabled = false
-        playImageView.setImageDrawable(
-            AppCompatResources.getDrawable(
-                requireContext(),
-                R.drawable.ic_play_button
+            playImage.isEnabled = false
+            playImage.setImageDrawable(
+                AppCompatResources.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_play_button
+                )
             )
-        )
-
-        trackName.text = track.trackName
-        artistName.text = track.artistName
-        trackDuration.text = track.duration
-        trackGenre.text = track.genre
-        trackCountry.text = track.country
-        trackYear.text = track.releaseYear
+            trackName.text = track.trackName
+            artistName.text = track.artistName
+            trackDuration.text = DateUtils.formatTime(track.duration)
+            trackGenre.text = track.genre
+            trackCountry.text = track.country
+            trackYear.text = track.releaseYear
+        }
 
         if (track.album == "") {
-            trackAlbum.visibility = View.GONE
-            album.visibility = View.GONE
+            binding.trackAlbum.visibility = View.GONE
+            binding.album.visibility = View.GONE
         } else {
-            trackAlbum.text = track.album
+            binding.trackAlbum.text = track.album
         }
 
         setFavoriteButton(track.isFavorite)
 
         val artworkUriHighRes = track.highResArtworkUri
-        Glide.with(coverImageView)
+        Glide.with(binding.coverImage)
             .load(artworkUriHighRes)
-            .centerCrop()
             .transform(
+                CenterCrop(),
                 RoundedCorners(
-                    coverImageView.resources
+                    binding.coverImage.resources
                         .getDimensionPixelSize(R.dimen.rounded_corners_album)
                 )
             )
             .placeholder(R.drawable.ic_track_placeholder_small)
-            .into(coverImageView)
+            .into(binding.coverImage)
 
         viewModel.observeState().observe(viewLifecycleOwner) {
-            playImageView.isEnabled = it.isPlayButtonEnabled
-            currentPlaybackTime.text = it.progress
+            binding.playImage.isEnabled = it.isPlayButtonEnabled
+            binding.currentPlaybackTime.text = it.progress
             setPlayOrPauseImage(it.buttonText)
         }
         viewModel.observeToastState().observe(viewLifecycleOwner) { toastState ->
@@ -155,34 +134,34 @@ class PlayerFragment : Fragment() {
             when (it) {
                 is PlaylistsInPlayerState.DisplayPlaylists -> {
                     bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
-                    greyOverlay.visibility = View.VISIBLE
+                    binding.playerOverlay.visibility = View.VISIBLE
                     displayPlaylists(it.playlists)
                 }
 
                 is PlaylistsInPlayerState.HidePlaylists -> {
                     bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-                    greyOverlay.visibility = View.GONE
+                    binding.playerOverlay.visibility = View.GONE
                 }
             }
         }
         viewModel.preparePlayer()
-        playImageView.setOnClickListener {
+        binding.playImage.setOnClickListener {
             viewModel.onPlayPressed()
         }
 
-        toolbar.setNavigationOnClickListener {
+        binding.playerToolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
-        favoriteImageView.setOnClickListener {
+        binding.favoriteImage.setOnClickListener {
             viewModel.onFavoriteClicked()
         }
 
-        addToPlaylist.setOnClickListener {
+        binding.addToPlaylist.setOnClickListener {
             viewModel.addToPlaylistClicked()
         }
 
-        createPlaylist.setOnClickListener {
+        binding.createPlaylist.setOnClickListener {
             findNavController().navigate(R.id.action_playerFragment_to_playlistCreationFragment)
         }
     }
@@ -204,7 +183,7 @@ class PlayerFragment : Fragment() {
     private fun setPlayOrPauseImage(buttonText: String) {
         when (buttonText) {
             PLAY_BUTTON ->
-                playImageView.setImageDrawable(
+                binding.playImage.setImageDrawable(
                     AppCompatResources.getDrawable(
                         requireContext(),
                         R.drawable.ic_play_button
@@ -212,7 +191,7 @@ class PlayerFragment : Fragment() {
                 )
 
             else ->
-                playImageView.setImageDrawable(
+                binding.playImage.setImageDrawable(
                     AppCompatResources.getDrawable(
                         requireContext(),
                         R.drawable.ic_pause_button
@@ -223,14 +202,14 @@ class PlayerFragment : Fragment() {
 
     private fun setFavoriteButton(isFavorite: Boolean) {
         if (isFavorite) {
-            favoriteImageView.setImageDrawable(
+            binding.favoriteImage.setImageDrawable(
                 AppCompatResources.getDrawable(
                     requireContext(),
                     R.drawable.ic_remove_from_favorites
                 )
             )
         } else {
-            favoriteImageView.setImageDrawable(
+            binding.favoriteImage.setImageDrawable(
                 AppCompatResources.getDrawable(
                     requireContext(),
                     R.drawable.ic_add_to_favorites
