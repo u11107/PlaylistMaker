@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.practicum.playlistmaker.favorites.domain.api.FavoritesInteractor
 import com.practicum.playlistmaker.search.domain.model.Track
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FavoritesViewModel(private val interactor: FavoritesInteractor) :
@@ -19,7 +20,7 @@ class FavoritesViewModel(private val interactor: FavoritesInteractor) :
     }
 
     private fun fillData() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             interactor.getFavorites().collect { tracks ->
                 processResult(tracks)
             }

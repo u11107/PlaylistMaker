@@ -8,8 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.practicum.playlistmaker.R
-import com.practicum.playlistmaker.playlists_creation.domain.model.Playlist
-import com.practicum.playlistmaker.utils.TextUtils
+import com.practicum.playlistmaker.playlist_creation.domain.model.Playlist
 
 
 class PlaylistsSmallViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -28,6 +27,11 @@ class PlaylistsSmallViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
             .placeholder(R.drawable.ic_track_placeholder_small)
             .into(coverImage)
         name.text = playlist.name
-        numberOfTracks.text = TextUtils.numberOfTracksString(playlist.numberOfTracks)
+        numberOfTracks.text =
+            itemView.resources.getQuantityString(
+                R.plurals.plurals_tracks,
+                playlist.numberOfTracks,
+                playlist.numberOfTracks
+            )
     }
 }

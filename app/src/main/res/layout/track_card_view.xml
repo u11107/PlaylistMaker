@@ -16,8 +16,8 @@
         android:contentDescription="@string/artwork_content_description" />
 
     <TextView
-        style="@style/TrackName_TrackCardVIew"
         android:id="@+id/track_name"
+        style="@style/TrackName_TrackCardVIew"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_68"
@@ -40,6 +40,7 @@
             android:layout_marginEnd="@dimen/size_4"
             android:ellipsize="end"
             android:maxWidth="@dimen/size_224"
+            android:maxLength="40"
             android:maxLines="1"
             android:textColor="@color/settings_icons"
             android:textSize="@dimen/small_text_size" />

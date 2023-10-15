@@ -45,7 +45,7 @@ class LocalStorageImpl(private val sharedPreferences: SharedPreferences, private
 
     private fun saveSearchHistory(searchHistory: List<Track>) {
         sharedPreferences.edit()
-            .putString(SEARCH_HISTORY, Gson().toJson(searchHistory))
+            .putString(SEARCH_HISTORY, gson.toJson(searchHistory))
             .apply()
     }
 

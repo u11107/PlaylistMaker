@@ -1,6 +1,5 @@
 package com.practicum.playlistmaker.search.data.network
 
-import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import com.practicum.playlistmaker.search.data.NetworkClient
 import com.practicum.playlistmaker.search.data.dto.Response
@@ -11,7 +10,7 @@ import org.koin.core.component.KoinComponent
 
 class RetrofitNetworkClient(
     private val itunesService: ItunesService,
-    private val connectivityManager: ConnectivityManager
+    private val capabilities: NetworkCapabilities?
 ) : NetworkClient, KoinComponent {
 
     override suspend fun doRequest(dto: Any): Response {
@@ -32,8 +31,6 @@ class RetrofitNetworkClient(
     }
 
     private fun isConnected(): Boolean {
-        val capabilities =
-            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
         if (capabilities != null) {
             when {
                 capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> return true

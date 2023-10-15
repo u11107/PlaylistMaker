@@ -29,13 +29,19 @@ SearchFragment : Fragment() {
 
     private val viewModel: SearchViewModel by viewModel()
 
-    private val searchResultAdapter = TrackAdapter {
-        onCLickDebounce(it)
-    }
+    private val searchResultAdapter =
+        TrackAdapter<TrackViewHolder>(object : TrackAdapter.TrackClickListener {
+            override fun onTrackClickListener(track: Track) {
+                onCLickDebounce(track)
+            }
+        })
 
-    private val searchHistoryAdapter = TrackAdapter {
-        onCLickDebounce(it)
-    }
+    private val searchHistoryAdapter =
+        TrackAdapter<TrackViewHolder>(object : TrackAdapter.TrackClickListener {
+            override fun onTrackClickListener(track: Track) {
+                onCLickDebounce(track)
+            }
+        })
 
     private lateinit var binding: FragmentSearchBinding
     private lateinit var onCLickDebounce: (Track) -> Unit
@@ -135,8 +141,10 @@ SearchFragment : Fragment() {
     }
 
     private fun clearSearchText() {
-        binding.searchEditText.text.clear()
-        binding.clearTextImage.visibility = View.GONE
+        with(binding) {
+            searchEditText.text.clear()
+            clearTextImage.visibility = View.GONE
+        }
     }
 
     private fun hideKeyboard() {
@@ -149,7 +157,7 @@ SearchFragment : Fragment() {
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
 
         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            viewModel.onTextChanged(p0.toString() ?: "")
+            viewModel.onTextChanged(p0.toString())
         }
 
         override fun afterTextChanged(editable: Editable?) {
@@ -162,71 +170,83 @@ SearchFragment : Fragment() {
     }
 
     private fun showEmptyScreen() {
-        binding.searchRecyclerView.visibility = View.GONE
-        binding.progressBar.visibility = View.GONE
-        binding.searchErrorLayout.visibility = View.GONE
-        binding.searchHistoryLayout.visibility = View.GONE
+        with(binding) {
+            searchRecyclerView.visibility = View.GONE
+            progressBar.visibility = View.GONE
+            searchErrorLayout.visibility = View.GONE
+            searchHistoryLayout.visibility = View.GONE
+        }
     }
 
     private fun showSearchResult(tracks: List<Track>) {
-        binding.searchRecyclerView.visibility = View.VISIBLE
-        binding.progressBar.visibility = View.GONE
-        binding.searchErrorLayout.visibility = View.GONE
-        binding.searchHistoryLayout.visibility = View.GONE
+        with(binding) {
+            searchRecyclerView.visibility = View.VISIBLE
+            progressBar.visibility = View.GONE
+            searchErrorLayout.visibility = View.GONE
+            searchHistoryLayout.visibility = View.GONE
+        }
         searchResultAdapter.trackList.clear()
         searchResultAdapter.trackList.addAll(tracks)
         searchResultAdapter.notifyDataSetChanged()
     }
 
     private fun showSearchHistoryLayout(searchHistory: List<Track>) {
-        binding.searchRecyclerView.visibility = View.GONE
-        binding.progressBar.visibility = View.GONE
-        binding.searchErrorLayout.visibility = View.GONE
-        binding.searchHistoryLayout.visibility = View.VISIBLE
+        with(binding) {
+            searchRecyclerView.visibility = View.GONE
+            progressBar.visibility = View.GONE
+            searchErrorLayout.visibility = View.GONE
+            searchHistoryLayout.visibility = View.VISIBLE
+        }
         searchHistoryAdapter.trackList.clear()
         searchHistoryAdapter.trackList.addAll(searchHistory)
         searchHistoryAdapter.notifyDataSetChanged()
     }
 
     private fun showEmptySearch(emptySearchMessage: String) {
-        binding.searchRecyclerView.visibility = View.GONE
-        binding.progressBar.visibility = View.GONE
-        binding.searchErrorLayout.visibility = View.VISIBLE
-        binding.searchHistoryLayout.visibility = View.GONE
-        binding.refreshSearchButton.visibility = View.GONE
+        with(binding) {
+            searchRecyclerView.visibility = View.GONE
+            progressBar.visibility = View.GONE
+            searchErrorLayout.visibility = View.VISIBLE
+            searchHistoryLayout.visibility = View.GONE
+            refreshSearchButton.visibility = View.GONE
+            searchErrorText.text = emptySearchMessage
+            searchErrorImage.setImageDrawable(
+                AppCompatResources.getDrawable(
+                    requireContext(),
+                    R.drawable.nothing_is_found
+                )
+            )
+        }
         searchResultAdapter.trackList.clear()
         searchResultAdapter.notifyDataSetChanged()
-        binding.searchErrorText.text = emptySearchMessage
-        binding.searchErrorImage.setImageDrawable(
-            AppCompatResources.getDrawable(
-                requireContext(),
-                R.drawable.nothing_is_found
-            )
-        )
     }
 
     private fun showSearchError(errorMessage: String) {
-        binding.searchRecyclerView.visibility = View.GONE
-        binding.progressBar.visibility = View.GONE
-        binding.searchErrorLayout.visibility = View.VISIBLE
-        binding.searchHistoryLayout.visibility = View.GONE
-        binding.refreshSearchButton.visibility = View.VISIBLE
+        with(binding) {
+            searchRecyclerView.visibility = View.GONE
+            progressBar.visibility = View.GONE
+            searchErrorLayout.visibility = View.VISIBLE
+            searchHistoryLayout.visibility = View.GONE
+            refreshSearchButton.visibility = View.VISIBLE
+            searchErrorText.text = errorMessage
+            searchErrorImage.setImageDrawable(
+                AppCompatResources.getDrawable(
+                    requireContext(),
+                    R.drawable.no_internet_connection
+                )
+            )
+        }
         searchResultAdapter.trackList.clear()
         searchResultAdapter.notifyDataSetChanged()
-        binding.searchErrorText.text = errorMessage
-        binding.searchErrorImage.setImageDrawable(
-            AppCompatResources.getDrawable(
-                requireContext(),
-                R.drawable.no_internet_connection
-            )
-        )
     }
 
     private fun showProgressBar() {
-        binding.searchRecyclerView.visibility = View.GONE
-        binding.progressBar.visibility = View.VISIBLE
-        binding.searchErrorLayout.visibility = View.GONE
-        binding.searchHistoryLayout.visibility = View.GONE
+        with(binding) {
+            searchRecyclerView.visibility = View.GONE
+            progressBar.visibility = View.VISIBLE
+            searchErrorLayout.visibility = View.GONE
+            searchHistoryLayout.visibility = View.GONE
+        }
     }
 
     companion object {

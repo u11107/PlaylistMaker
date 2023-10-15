@@ -1,6 +1,6 @@
 package com.practicum.playlistmaker.playlists.view_model
 
-import com.practicum.playlistmaker.playlists_creation.domain.model.Playlist
+import com.practicum.playlistmaker.playlist_creation.domain.model.Playlist
 
 sealed interface PlaylistsState {
     object DisplayEmptyPlaylists : PlaylistsState
