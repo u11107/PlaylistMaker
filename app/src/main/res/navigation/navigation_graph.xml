@@ -6,72 +6,23 @@
     app:startDestination="@id/mediaFragment">
 
     <fragment
-        android:id="@+id/favoritesFragment"
-        android:name="com.practicum.playlistmaker.favorites.ui.FavoritesFragment"
-        android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        android:id="@+id/mediaFragment"
+        android:name="com.example.playlistmaker.media.ui.fragment.MediaFragment"
+        android:label="fragment_media"
+        tools:layout="@layout/fragment_media" />
     <fragment
-        android:id="@+id/playlistsFragment"
-        android:name="com.practicum.playlistmaker.playlists.ui.PlaylistsFragment"
-        android:label="fragment_playlists"
-        tools:layout="@layout/fragment_playlists" />
+        android:id="@+id/settingFragment"
+        android:name="com.example.playlistmaker.setting.ui.activity.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.practicum.playlistmaker.search.ui.SearchFragment"
+        android:name="com.example.playlistmaker.search.ui.fragment.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search">
-        <action
-            android:id="@+id/action_searchFragment_to_playerFragment"
-            app:destination="@id/playerFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/mediaFragment"
-        android:name="com.practicum.playlistmaker.media.ui.MediaFragment"
-        android:label="fragment_media"
-        tools:layout="@layout/fragment_media" >
-        <action
-            android:id="@+id/action_mediaFragment_to_playlistCreationFragment"
-            app:destination="@id/playlistCreationFragment" />
-        <action
-            android:id="@+id/action_mediaFragment_to_playerFragment"
-            app:destination="@id/playerFragment" />
-        <action
-            android:id="@+id/action_mediaFragment_to_playlistDetailsFragment"
-            app:destination="@id/playlistDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.practicum.playlistmaker.settings.ui.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
-    <fragment
-        android:id="@+id/playlistCreationFragment"
-        android:name="com.practicum.playlistmaker.playlist_creation.ui.PlaylistCreationFragment"
-        android:label="fragment_playlist_creation"
-        tools:layout="@layout/fragment_playlist_creation" />
-    <fragment
-        android:id="@+id/playerFragment"
-        android:name="com.practicum.playlistmaker.player.ui.PlayerFragment"
-        android:label="fragment_player"
-        tools:layout="@layout/fragment_player" >
-        <action
-            android:id="@+id/action_playerFragment_to_playlistCreationFragment"
-            app:destination="@id/playlistCreationFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/playlistDetailsFragment"
-        android:name="com.practicum.playlistmaker.playlist_details.ui.PlaylistDetailsFragment"
-        android:label="fragment_playlist_details"
-        tools:layout="@layout/fragment_playlist_details" >
-        <action
-            android:id="@+id/action_playlistDetailsFragment_to_playerFragment"
-            app:destination="@id/playerFragment" />
-        <action
-            android:id="@+id/action_playlistDetailsFragment_to_playlistEditFragment"
-            app:destination="@id/playlistEditFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/playlistEditFragment"
-        android:name="com.practicum.playlistmaker.playlist_edit.ui.PlaylistEditFragment"
-        android:label="PlaylistEditFragment" />
+        tools:layout="@layout/fragment_search" />
+    <activity
+        android:id="@+id/audioPlayerActivity"
+        android:name="com.example.playlistmaker.player.ui.activity.PlayerActivity"
+        android:label="activity_audio_player"
+        tools:layout="@layout/activity_audio_player" />
 </navigation>
