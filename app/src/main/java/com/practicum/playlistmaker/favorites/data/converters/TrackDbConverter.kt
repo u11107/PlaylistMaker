@@ -1,12 +1,12 @@
 package com.practicum.playlistmaker.favorites.data.converters
 
-import com.practicum.playlistmaker.favorites.data.db.entity.FavoritesTrackEntity
-import com.practicum.playlistmaker.playlist_creation.data.db.entity.TrackInPlEntity
+import com.practicum.playlistmaker.favorites.data.db.entity.TrackEntity
+import com.practicum.playlistmaker.playlists_creation.data.db.entity.TrackInPlEntity
 import com.practicum.playlistmaker.search.domain.model.Track
 
 class TrackDbConverter {
 
-    fun map(track: FavoritesTrackEntity): Track =
+    fun map(track: TrackEntity): Track =
         Track(
             track.trackId,
             track.trackName,
@@ -16,7 +16,6 @@ class TrackDbConverter {
             track.releaseYear,
             track.duration,
             track.lowResArtworkUri,
-            track.midResArtworkUri,
             track.highResArtworkUri,
             track.genre,
             track.album,
@@ -24,8 +23,8 @@ class TrackDbConverter {
             true
         )
 
-    fun map(track: Track, addingTime: Long): FavoritesTrackEntity =
-        FavoritesTrackEntity(
+    fun map(track: Track, addingTime: Long): TrackEntity =
+        TrackEntity(
             track.trackId,
             track.trackName,
             track.artistName,
@@ -34,7 +33,6 @@ class TrackDbConverter {
             track.releaseYear,
             track.duration,
             track.lowResArtworkUri,
-            track.midResArtworkUri,
             track.highResArtworkUri,
             track.genre,
             track.album,
@@ -42,7 +40,7 @@ class TrackDbConverter {
             addingTime
         )
 
-    fun map(track: TrackInPlEntity, isFavorite: Boolean): Track =
+    fun map(track: TrackInPlEntity): Track =
         Track(
             track.trackId,
             track.trackName,
@@ -52,12 +50,11 @@ class TrackDbConverter {
             track.releaseYear,
             track.duration,
             track.lowResArtworkUri,
-            track.midResArtworkUri,
             track.highResArtworkUri,
             track.genre,
             track.album,
             track.previewUrl,
-            isFavorite
+            true
         )
 
     fun map(track: Track): TrackInPlEntity =
@@ -70,7 +67,6 @@ class TrackDbConverter {
             track.releaseYear,
             track.duration,
             track.lowResArtworkUri,
-            track.midResArtworkUri,
             track.highResArtworkUri,
             track.genre,
             track.album,

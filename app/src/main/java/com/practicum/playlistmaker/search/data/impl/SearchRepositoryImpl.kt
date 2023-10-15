@@ -8,6 +8,7 @@ import com.practicum.playlistmaker.search.data.api.SearchRepository
 import com.practicum.playlistmaker.search.data.dto.SearchRequest
 import com.practicum.playlistmaker.search.data.dto.SearchResponse
 import com.practicum.playlistmaker.search.domain.model.Track
+import com.practicum.playlistmaker.utils.DateUtils.formatTime
 import com.practicum.playlistmaker.utils.DateUtils.getYear
 import com.practicum.playlistmaker.utils.Resource
 import com.practicum.playlistmaker.utils.ResourceProvider
@@ -17,6 +18,7 @@ import kotlinx.coroutines.flow.flow
 import org.koin.core.component.KoinComponent
 import org.koin.core.parameter.parametersOf
 
+
 class SearchRepositoryImpl(
     private val localStorage: LocalStorage,
     private val appDatabase: AppDatabase,
@@ -24,9 +26,7 @@ class SearchRepositoryImpl(
     private val resourceProvider: ResourceProvider
 ) : SearchRepository, KoinComponent {
 
-    override fun searchTracks(
-        query: String
-    ): Flow<Resource<List<Track>>> = flow {
+    override fun searchTracks(query: String): Flow<Resource<List<Track>>> = flow {
         val searchRequest: SearchRequest = getKoin().get {
             parametersOf(query)
         }
@@ -46,8 +46,7 @@ class SearchRepositoryImpl(
                         it.country,
                         it.releaseDate ?: "",
                         getYear(it.releaseDate) ?: "",
-                        it.duration ?: 0,
-                        TextUtils.getLowResArtwork(it.artworkUri),
+                        formatTime(it.duration),
                         it.artworkUri,
                         TextUtils.getHighResArtwork(it.artworkUri),
                         it.genre,

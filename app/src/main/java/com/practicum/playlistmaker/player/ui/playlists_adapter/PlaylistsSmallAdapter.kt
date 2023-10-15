@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.practicum.playlistmaker.R
-import com.practicum.playlistmaker.playlist_creation.domain.model.Playlist
+import com.practicum.playlistmaker.playlists_creation.domain.model.Playlist
 
 class PlaylistsSmallAdapter(private val clickListener: PlaylistSmallClickListener) : RecyclerView.Adapter<PlaylistsSmallViewHolder>() {
 

@@ -4,9 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.practicum.playlistmaker.playlist_creation.domain.api.db.PlaylistsDbInteractor
-import com.practicum.playlistmaker.playlist_creation.domain.model.Playlist
-import kotlinx.coroutines.Dispatchers
+import com.practicum.playlistmaker.playlists_creation.domain.api.db.PlaylistsDbInteractor
+import com.practicum.playlistmaker.playlists_creation.domain.model.Playlist
 import kotlinx.coroutines.launch
 
 class PlaylistsViewModel(private val interactor: PlaylistsDbInteractor) : ViewModel() {
@@ -19,7 +18,7 @@ class PlaylistsViewModel(private val interactor: PlaylistsDbInteractor) : ViewMo
     }
 
     private fun fillData() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             interactor.getPlaylists().collect {
                 processResult(it)
             }

@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
-    id("com.google.devtools.ksp")
+    id("com.google.devtools.ksp") 
 }
 
 android {
@@ -20,15 +20,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-
-        debug {
-            applicationIdSuffix = ".debug"
-            minifyEnabled false
-        }
     }
+
 
     buildFeatures {
         viewBinding true

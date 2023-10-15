@@ -58,7 +58,7 @@
         style="@style/SettingsTextStyle"
         android:paddingEnd="@dimen/size_16"
         android:text="@string/share_app"
-        app:drawableEndCompat="@drawable/ic_share_settings"
+        app:drawableEndCompat="@drawable/ic_share"
         tools:ignore="RtlSymmetry" />
 
     <TextView

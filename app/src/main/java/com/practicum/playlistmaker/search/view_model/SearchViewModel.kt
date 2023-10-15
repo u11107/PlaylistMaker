@@ -8,7 +8,6 @@ import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.search.domain.api.SearchInteractor
 import com.practicum.playlistmaker.search.domain.model.Track
 import com.practicum.playlistmaker.utils.ResourceProvider
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -70,7 +69,7 @@ class SearchViewModel(
 
     fun onResume() {
         if (stateLiveData.value is SearchState.HistoryContent) showSearchHistory()
-        else if (stateLiveData.value is SearchState.SearchContent) searchRequest(latestSearchText ?: "")
+        else if (stateLiveData.value is SearchState.SearchContent) searchRequest(latestSearchText!!)
     }
 
     fun onDestroy() {
@@ -78,7 +77,7 @@ class SearchViewModel(
     }
 
     private fun showSearchHistory() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             interactor.getSearchHistory().collect {
                 if (it.isNotEmpty()) renderState(SearchState.HistoryContent(it))
                 else renderState(SearchState.EmptyScreen)
@@ -101,7 +100,7 @@ class SearchViewModel(
     private fun searchRequest(searchText: String) {
         if (searchText.isNotEmpty()) {
             renderState(SearchState.Loading)
-            viewModelScope.launch(Dispatchers.IO) {
+            viewModelScope.launch {
                 interactor
                     .searchTracks(searchText)
                     .collect { pair ->

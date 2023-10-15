@@ -14,6 +14,5 @@
     <color name="media_play_button">@color/white</color>
     <color name="media_icons_background">#FFFFFF</color>
     <color name="tab_indicator">@color/white</color>
-    <color name="black_alt">#1A1B22</color>
 
 </resources>

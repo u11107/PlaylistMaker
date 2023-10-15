@@ -104,12 +104,6 @@
         <item name="fontWeight">400</item>
     </style>
 
-    <style name="NumberOfTracks_TrackCardVIew">
-        <item name="android:textSize">@dimen/small_text_size</item>
-        <item name="fontFamily">@font/ys_display_regular</item>
-        <item name="fontWeight">400</item>
-    </style>
-
     <!-- Dialog -->
     <style name="AppTheme_MyMaterialAlertDialog" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="materialAlertDialogTitleTextStyle">
@@ -158,36 +152,6 @@
         <item name="android:singleLine">true</item>
         <item name="android:maxLines">1</item>
         <item name="android:imeOptions">actionDone|flagNoExtractUi</item>
-    </style>
-
-    <style name="PlaylistDetailsTextStyle">
-        <item name="android:textSize">@dimen/playlist_details_text_size</item>
-        <item name="fontFamily">@font/ys_display_regular</item>
-        <item name="fontWeight">@dimen/font_weight_playlist_other</item>
-        <item name="android:textColor">@color/black_alt</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="PlaylistNameTextStyle">
-        <item name="android:textSize">@dimen/playlist_name_text_size</item>
-        <item name="fontFamily">@font/ys_display_bold</item>
-        <item name="fontWeight">@dimen/font_weight_playlist_name</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:layout_width">@dimen/size_0</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="PlaylistMenuTextStyle">
-        <item name="android:textSize">@dimen/playlist_menu_text_size</item>
-        <item name="fontFamily">@font/ys_display_regular</item>
-        <item name="fontWeight">@dimen/font_weight_playlist_menu</item>
-        <item name="android:textColor">@color/black_light_white_night</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">@dimen/vertical_padding_playlist_menu_items</item>
-        <item name="android:paddingBottom">@dimen/vertical_padding_playlist_menu_items</item>
-        <item name="android:paddingStart">@dimen/start_padding_playlist_menu_items</item>
     </style>
 
 </resources>

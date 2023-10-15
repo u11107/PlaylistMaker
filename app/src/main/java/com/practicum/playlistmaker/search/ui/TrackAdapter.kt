@@ -6,25 +6,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.search.domain.model.Track
 
-open class TrackAdapter<T : TrackViewHolder>(private val clickListener: TrackClickListener) :
-    RecyclerView.Adapter<T>() {
+class TrackAdapter(private val clickListener: TrackClickListener) :
+    RecyclerView.Adapter<TrackViewHolder>() {
 
     var trackList = ArrayList<Track>()
 
-    @Suppress("UNCHECKED_CAST")
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): T =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewHolder =
         TrackViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.track_card_view, parent, false)
-        ) as T
+        )
 
     override fun getItemCount() = trackList.size
 
-    override fun onBindViewHolder(holder: T, position: Int) {
+    override fun onBindViewHolder(holder: TrackViewHolder, position: Int) {
         holder.bind(trackList[position])
         holder.itemView.setOnClickListener { clickListener.onTrackClickListener(trackList[position]) }
     }
 
-    interface TrackClickListener {
+    fun interface TrackClickListener {
         fun onTrackClickListener(track: Track)
     }
 

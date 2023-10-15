@@ -9,9 +9,9 @@ import com.practicum.playlistmaker.sharing.domain.model.EmailData
 
 class ExternalNavigatorImpl(private val context: Context) : ExternalNavigator {
 
-    override fun shareString(stringToShare: String) {
+    override fun shareLink(shareAppLink: String) {
         Intent(Intent.ACTION_SEND).apply {
-            putExtra(Intent.EXTRA_TEXT, stringToShare)
+            putExtra(Intent.EXTRA_TEXT, shareAppLink)
             type = "text/plain"
             addFlags(FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(this)

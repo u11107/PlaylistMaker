@@ -15,7 +15,6 @@ import com.practicum.playlistmaker.favorites.view_model.FavoritesViewModel
 import com.practicum.playlistmaker.player.ui.PlayerFragment
 import com.practicum.playlistmaker.search.domain.model.Track
 import com.practicum.playlistmaker.search.ui.TrackAdapter
-import com.practicum.playlistmaker.search.ui.TrackViewHolder
 import com.practicum.playlistmaker.utils.debounce
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -24,12 +23,9 @@ class FavoritesFragment : Fragment() {
     private val viewModel: FavoritesViewModel by viewModel()
     private lateinit var favoritesRecyclerView: RecyclerView
     private lateinit var emptyFavoritesLayout: ViewGroup
-    private val favoritesAdapter =
-        TrackAdapter<TrackViewHolder>(object : TrackAdapter.TrackClickListener {
-            override fun onTrackClickListener(track: Track) {
-                onClickDebounce(track)
-            }
-        })
+    private val favoritesAdapter = TrackAdapter {
+        onClickDebounce(it)
+    }
 
     private lateinit var onClickDebounce: (Track) -> Unit
 
@@ -54,7 +50,7 @@ class FavoritesFragment : Fragment() {
             render(it)
         }
 
-        onClickDebounce = debounce(
+        onClickDebounce = debounce<Track>(
             CLICK_DEBOUNCE_DELAY,
             viewLifecycleOwner.lifecycleScope,
             false

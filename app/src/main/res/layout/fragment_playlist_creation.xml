@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".playlist_creation.ui.PlaylistCreationFragment">
+    tools:context=".playlists_creation.ui.PlaylistCreationFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/left_guideline"
@@ -37,7 +37,7 @@
         app:navigationIcon="@drawable/ic_arrow_back">
 
         <TextView
-            android:id="@+id/screen_name"
+            android:id="@+id/new_playlist_screen_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
