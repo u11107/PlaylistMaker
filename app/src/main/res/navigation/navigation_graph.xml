@@ -6,72 +6,77 @@
     app:startDestination="@id/mediaFragment">
 
     <fragment
-        android:id="@+id/favoritesFragment"
-        android:name="com.practicum.playlistmaker.favorites.ui.FavoritesFragment"
-        android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
-    <fragment
-        android:id="@+id/playlistsFragment"
-        android:name="com.practicum.playlistmaker.playlists.ui.PlaylistsFragment"
-        android:label="fragment_playlists"
-        tools:layout="@layout/fragment_playlists" />
-    <fragment
         android:id="@+id/searchFragment"
-        android:name="com.practicum.playlistmaker.search.ui.SearchFragment"
+        android:name="com.practicum.playlistmaker.search.presentation.ui.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search">
+        tools:layout="@layout/fragment_search" >
         <action
-            android:id="@+id/action_searchFragment_to_playerFragment"
-            app:destination="@id/playerFragment" />
+            android:id="@+id/action_searchFragment_to_playerActivity"
+            app:destination="@id/playerActivity" />
     </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.practicum.playlistmaker.settings.presentation.ui.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/mediaFragment"
-        android:name="com.practicum.playlistmaker.media.ui.MediaFragment"
+        android:name="com.practicum.playlistmaker.media.presentation.ui.MediaFragment"
         android:label="fragment_media"
         tools:layout="@layout/fragment_media" >
         <action
-            android:id="@+id/action_mediaFragment_to_playlistCreationFragment"
-            app:destination="@id/playlistCreationFragment" />
+            android:id="@+id/action_mediaFragment_to_playerActivity"
+            app:destination="@id/playerActivity" />
         <action
-            android:id="@+id/action_mediaFragment_to_playerFragment"
-            app:destination="@id/playerFragment" />
+            android:id="@+id/action_mediaFragment_to_playlistFragment"
+            app:destination="@id/playlistFragment" />
         <action
             android:id="@+id/action_mediaFragment_to_playlistDetailsFragment"
             app:destination="@id/playlistDetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.practicum.playlistmaker.settings.ui.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        android:id="@+id/favouritesFragment"
+        android:name="com.practicum.playlistmaker.media.presentation.ui.favourites.FavouritesFragment"
+        android:label="FavouritesFragment"
+        tools:layout="@layout/fragment_favourites"/>
     <fragment
-        android:id="@+id/playlistCreationFragment"
-        android:name="com.practicum.playlistmaker.playlist_creation.ui.PlaylistCreationFragment"
-        android:label="fragment_playlist_creation"
-        tools:layout="@layout/fragment_playlist_creation" />
+        android:id="@+id/playlistsFragment"
+        android:name="com.practicum.playlistmaker.media.presentation.ui.playlists.PlaylistsFragment"
+        android:label="PlaylistsFragment"
+        tools:layout="@layout/fragment_playlists" />
     <fragment
-        android:id="@+id/playerFragment"
-        android:name="com.practicum.playlistmaker.player.ui.PlayerFragment"
-        android:label="fragment_player"
-        tools:layout="@layout/fragment_player" >
-        <action
-            android:id="@+id/action_playerFragment_to_playlistCreationFragment"
-            app:destination="@id/playlistCreationFragment" />
-    </fragment>
+        android:id="@+id/playlistFragment"
+        android:name="com.practicum.playlistmaker.media.presentation.ui.playlist.PlaylistFragment"
+        android:label="PlaylistFragment"
+        tools:layout="@layout/fragment_playlist" />
+
+    <activity
+        android:id="@+id/playerActivity"
+        android:name="com.practicum.playlistmaker.player.presentation.ui.PlayerActivity"
+        android:label="PlayerActivity" />
     <fragment
         android:id="@+id/playlistDetailsFragment"
-        android:name="com.practicum.playlistmaker.playlist_details.ui.PlaylistDetailsFragment"
-        android:label="fragment_playlist_details"
-        tools:layout="@layout/fragment_playlist_details" >
+        android:name="com.practicum.playlistmaker.media.presentation.ui.playlist_details.PlaylistDetailsFragment"
+        android:label="PlaylistDetailsFragment"
+        tools:layout="@layout/fragment_playlist_details">
+        <argument
+            android:name="playlist_id"
+            app:argType="long" />
         <action
-            android:id="@+id/action_playlistDetailsFragment_to_playerFragment"
-            app:destination="@id/playerFragment" />
+            android:id="@+id/action_playlistDetailsFragment_to_playerActivity"
+            app:destination="@id/playerActivity" />
         <action
             android:id="@+id/action_playlistDetailsFragment_to_playlistEditFragment"
             app:destination="@id/playlistEditFragment" />
     </fragment>
     <fragment
         android:id="@+id/playlistEditFragment"
-        android:name="com.practicum.playlistmaker.playlist_edit.ui.PlaylistEditFragment"
-        android:label="PlaylistEditFragment" />
+        android:name="com.practicum.playlistmaker.media.presentation.ui.playlist.PlaylistEditFragment"
+        android:label="PlaylistEditFragment"
+        tools:layout="@layout/fragment_playlist" >
+        <argument
+            android:name="playlist"
+            app:argType="com.practicum.playlistmaker.media.presentation.models.ParcelablePlaylist" />
+    </fragment>
 </navigation>

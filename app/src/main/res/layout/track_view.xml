@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/TrackItemLayoutStyle"
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/trackImage"
+        style="@style/TrackImageViewStyle"
+        android:src="@drawable/ic_track"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/trackName"
+        style="@style/TrackNameTextStyle"
+        android:layout_toEndOf = "@+id/trackImage"
+        android:layout_toStartOf = "@+id/trackArrow"
+        tools:text="Без названия"/>
+
+    <TextView
+        android:id="@+id/trackInfo"
+        style="@style/TrackInfoTextStyle"
+        android:layout_below="@id/trackName"
+        android:layout_toEndOf = "@+id/trackImage"
+        android:layout_toStartOf = "@+id/trackArrow"
+        android:text="@string/track_info" />
+
+    <ImageView
+        android:id="@+id/trackArrow"
+        style="@style/TrackArrowImageViewStyle"
+        android:src="@drawable/ic_arrow_forward"
+        tools:ignore="ContentDescription" />
+</RelativeLayout>

@@ -1,29 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="blue_000">#9FC8F9</color>
+    <color name="blue">#3772E7</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="grey_100">#E6E8E8</color>
+    <color name="grey_150">#E6E8EB</color>
+    <color name="grey_200">#AEAFB4</color>
     <color name="black">#FF000000</color>
+    <color name="black_100">#1A1B22</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blue">#3772E7</color>
-    <color name="track_color">#E6E8EB</color>
-    <color name="thumb_tint">#AEAFB4</color>
-    <color name="ripple_color">#1f000000</color>
-    <color name="settings_icons">#AEAFB4</color>
-    <color name="background">@color/white</color>
-    <color name="toolbar_text_color">@color/black</color>
-    <color name="search_view_background">#E6E8EB</color>
-    <color name="search_hint_color">#AEAFB4</color>
-    <color name="black_light_white_night">#FF000000</color>
-    <color name="white_light_black_night">#FFFFFFFF</color>
-    <color name="media_play_button">#1A1B22</color>
-    <color name="black_alt">#1A1B22</color>
-    <color name="gray">#AEAFB4</color>
-    <color name="media_icons_background">#1A1B22</color>
-    <color name="tab_indicator">#1A1B22</color>
-    <color name="light_gray">#E6E8EB</color>
-    <color name="gray_overlay">#801A1B22</color>
-
+    <color name="white_alpha">#FFFFFFFF</color>
+    <color name="red">#FD0303</color>
 </resources>

@@ -1,30 +1,56 @@
 package com.practicum.playlistmaker.di
 
-import com.practicum.playlistmaker.favorites.data.FavoritesRepositoryImpl
-import com.practicum.playlistmaker.favorites.data.converters.TrackDbConverter
-import com.practicum.playlistmaker.favorites.domain.api.FavoritesRepository
-import com.practicum.playlistmaker.playlist_details.data.PlaylistRepositoryImpl
-import com.practicum.playlistmaker.playlist_details.domain.api.PlaylistRepository
-import com.practicum.playlistmaker.playlist_creation.data.converters.PlaylistDbConverter
-import com.practicum.playlistmaker.playlist_creation.data.db.PlaylistsRepositoryImpl
-import com.practicum.playlistmaker.playlist_creation.data.local_files.PlaylistsFilesRepositoryImpl
-import com.practicum.playlistmaker.playlist_creation.domain.api.db.PlaylistsRepository
-import com.practicum.playlistmaker.playlist_creation.domain.api.local_files.PlaylistsFilesRepository
-import com.practicum.playlistmaker.search.data.api.SearchRepository
-import com.practicum.playlistmaker.search.data.impl.SearchRepositoryImpl
-import com.practicum.playlistmaker.settings.data.api.SettingsRepository
+import com.practicum.playlistmaker.media.data.impl.FavouritesRepositoryImpl
+import com.practicum.playlistmaker.media.data.impl.PlaylistRepositoryImpl
+import com.practicum.playlistmaker.media.data.mapper.PlaylistDbMapper
+import com.practicum.playlistmaker.media.data.mapper.PlaylistTrackDbMapper
+import com.practicum.playlistmaker.media.data.mapper.TrackDbMapper
+import com.practicum.playlistmaker.media.domain.api.FavouritesRepository
+import com.practicum.playlistmaker.media.domain.api.PlaylistRepository
+import com.practicum.playlistmaker.player.data.MediaPlayerRepositoryImpl
+import com.practicum.playlistmaker.player.domain.api.MediaPlayerRepository
+import com.practicum.playlistmaker.search.data.impl.HistoryRepositoryImpl
+import com.practicum.playlistmaker.search.data.impl.TrackRepositoryImpl
+import com.practicum.playlistmaker.search.domain.api.HistoryRepository
+import com.practicum.playlistmaker.search.domain.api.TrackRepository
 import com.practicum.playlistmaker.settings.data.impl.SettingsRepositoryImpl
-import org.koin.core.module.dsl.singleOf
-import org.koin.dsl.bind
+import com.practicum.playlistmaker.settings.domain.SettingsRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    singleOf(::SearchRepositoryImpl) bind SearchRepository::class
-    singleOf(::SettingsRepositoryImpl) bind SettingsRepository::class
-    singleOf(::TrackDbConverter)
-    singleOf(::FavoritesRepositoryImpl) bind FavoritesRepository::class
-    singleOf(::PlaylistDbConverter)
-    singleOf(::PlaylistsRepositoryImpl) bind PlaylistsRepository::class
-    singleOf(::PlaylistsFilesRepositoryImpl) bind PlaylistsFilesRepository::class
-    singleOf(::PlaylistRepositoryImpl) bind PlaylistRepository::class
+    factory<MediaPlayerRepository> {
+        MediaPlayerRepositoryImpl(get())
+    }
+
+    single<HistoryRepository> {
+        HistoryRepositoryImpl(get(), get())
+    }
+
+    single<TrackRepository> {
+        TrackRepositoryImpl(get(), get())
+    }
+
+    single<SettingsRepository> {
+        SettingsRepositoryImpl(get())
+    }
+
+    single<FavouritesRepository> {
+        FavouritesRepositoryImpl(get(), get())
+    }
+
+    single<PlaylistRepository> {
+        PlaylistRepositoryImpl(get(), get(), get())
+    }
+
+    factory {
+        TrackDbMapper()
+    }
+
+    factory {
+        PlaylistDbMapper(get())
+    }
+
+    factory {
+        PlaylistTrackDbMapper()
+    }
 }

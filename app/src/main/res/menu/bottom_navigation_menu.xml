@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
         android:id="@+id/searchFragment"
         android:icon="@drawable/ic_search"
-        android:title="@string/search" />
+        android:title="@string/button_search"/>
 
     <item
         android:id="@+id/mediaFragment"
         android:icon="@drawable/ic_media"
-        android:title="@string/media" />
+        android:title="@string/button_media"/>
 
     <item
         android:id="@+id/settingsFragment"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/settings" />
-
+        android:icon="@drawable/ic_tune"
+        android:title="@string/button_tune"/>
 </menu>

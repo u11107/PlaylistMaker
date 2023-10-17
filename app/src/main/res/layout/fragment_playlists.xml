@@ -1,55 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/size_12"
-    tools:context=".playlists.ui.PlaylistsFragment">
+    android:layout_height="wrap_content"
+    tools:context=".media.presentation.ui.playlists.PlaylistsFragment">
 
-    <TextView
-        android:id="@+id/new_playlist_button"
-        style="@style/SearchScreenSupportButtons"
-        android:layout_marginTop="@dimen/size_12"
-        android:background="@drawable/bg_rounded_button"
-        android:text="@string/new_playlist" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/playlists_recycler_view"
-        android:layout_width="match_parent"
+    <ProgressBar android:id="@+id/progressBar"
+        android:layout_width="@dimen/progress_bar_size"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/size_16" />
+        android:indeterminateTint="@color/blue"
+        android:visibility="gone"/>
 
-    <FrameLayout
-        android:id="@+id/empty_playlists_layout"
+    <include
+        layout="@layout/ph_playlists_empty_view"
+        android:id="@+id/playlistsEmpty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_46"
-        app:fontFamily="@font/ys_display_medium">
+        android:visibility="gone"/>
 
-        <ImageView
-            android:id="@+id/no_playlists_image"
-            android:layout_width="@dimen/size_120"
-            android:layout_height="@dimen/size_120"
-            android:layout_gravity="center_horizontal"
-            android:contentDescription="@string/no_playlists_image"
-            android:src="@drawable/nothing_is_found" />
-
-        <TextView
-            android:id="@+id/no_playlists_text"
-            android:layout_width="@dimen/size_312"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/size_166"
-            android:fontFamily="@font/ys_display_medium"
-            android:gravity="center_horizontal"
-            android:text="@string/no_playlists"
-            android:textSize="19sp"
-            app:fontWeight="@dimen/font_weight_settings" />
-
-    </FrameLayout>
-
-</LinearLayout>
+    <include
+        layout="@layout/playlist_grid_view"
+        android:id="@+id/playlistsGridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:visibility="visible"/>
+</FrameLayout>

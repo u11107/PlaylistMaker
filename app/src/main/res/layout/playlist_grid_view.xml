@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btNewPlaylist"
+        style="@style/NewPlaylistStyle"
+        android:layout_marginTop="@dimen/large_margin"
+        android:text="@string/button_new_playlist"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPlaylistGrid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:visibility="visible"
+        tools:itemCount="4"
+        tools:listitem="@layout/playlist_grid_item" />
+
+</LinearLayout>

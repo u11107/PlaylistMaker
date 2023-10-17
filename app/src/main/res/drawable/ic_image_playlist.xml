@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/rounded_image_frame"
+        android:height="312dp"
+        android:width="312dp"/>
+    <item android:drawable="@drawable/ic_add_image"
+        android:height="100dp"
+        android:width="100dp"
+        android:gravity="center"/>
+</layer-list>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="vClickable"
+            type="java.lang.Boolean" />
+    </data>
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        style="@style/TrackItemLayoutStyle"
+        android:clickable="@{vClickable}"
+        android:foreground="?attr/selectableItemBackground">
+
+
+        <ImageView
+            android:id="@+id/playlistListItemImage"
+            style="@style/PlaylistListItemImageView"
+            android:background="@drawable/bg_playlist_item_image"
+            android:src="@drawable/ic_playlist"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/playlistListItemName"
+            style="@style/PlaylistListItemNameTextStyle"
+            android:layout_toEndOf="@+id/playlistListItemImage"
+            tools:text="Без названия" />
+
+        <TextView
+            android:id="@+id/playlistListItemTrackCount"
+            style="@style/PlaylistListItemTrackCountTextStyle"
+            android:layout_below="@id/playlistListItemName"
+            android:layout_toEndOf="@+id/playlistListItemImage"
+            tools:text="0 треков" />
+    </RelativeLayout>
+</layout>

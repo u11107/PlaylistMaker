@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/HeaderSearchHistoryStyle"
+        android:text="@string/search_history_header"/>
+
+    <LinearLayout
+        style="@style/VerticalMainLayoutStyle"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/SearchList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="vertical"
+            android:visibility="visible"
+            tools:itemCount="4"
+            tools:listitem="@layout/track_view" />
+
+        <Button
+            android:id="@+id/btClearSearchHistory"
+            style="@style/ClearHistoryButtonStyle"
+            android:text="@string/button_search_history_clear"/>
+    </LinearLayout>
+</LinearLayout>
