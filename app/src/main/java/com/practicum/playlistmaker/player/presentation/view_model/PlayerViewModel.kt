@@ -33,7 +33,6 @@ class PlayerViewModel(
     private val stateLiveData = MutableLiveData<PlayerScreenState>()
     fun observeState(): LiveData<PlayerScreenState> = stateLiveData
 
-
     private val favouriteLiveData = MutableLiveData<Boolean>()
     fun observeFavourite(): LiveData<Boolean> = favouriteLiveData
 
@@ -159,20 +158,6 @@ class PlayerViewModel(
         viewModelScope.launch {
             try {
                 playlistInteractor.addTrackToPlaylist(track, playlistId)
-
-                // Получите плейлист по ID (предполагается, что у вас есть такой метод)
-                val currentPlaylist = getPlaylist(playlistId)
-
-                // Проверьте, существует ли плейлист
-                if (currentPlaylist != null) {
-                    // Получите текущий список треков
-                    val currentTrackList = currentPlaylist.trackList.toMutableList()
-                    // Добавьте новый трек в начало списка
-                    currentTrackList.add(0, track.trackId ?: 0)
-                    // Обновите список треков в плейлисте
-                    currentPlaylist.trackList = currentTrackList as ArrayList<Long>
-                }
-
                 setAddProcessStatus(TrackAddProcessStatus.Added(playlistName))
             } catch (e: Exception) {
                 setAddProcessStatus(TrackAddProcessStatus.Error(playlistName))
@@ -180,17 +165,6 @@ class PlayerViewModel(
         }
         setMode(PlayerScreenMode.Player)
     }
-
-
-
-
-    private suspend fun getPlaylist(playlistId: Long): Playlist? {
-        return playlistInteractor.getPlaylistById(playlistId)
-    }
-
-
-
-
 
     fun addTrackToPlaylist(playlist: Playlist) {
         if (playlist.trackList.indexOf(track.trackId) == -1) {

@@ -12,7 +12,6 @@ import com.practicum.playlistmaker.utils.SingleEventLiveData
 import com.practicum.playlistmaker.utils.debounce
 import kotlinx.coroutines.launch
 
-
 class PlaylistsViewModel(private val playlistInteractor: PlaylistInteractor) : ViewModel(), DefaultLifecycleObserver {
 
     private val stateLiveData = MutableLiveData<PlaylistsScreenState>()
@@ -45,9 +44,7 @@ class PlaylistsViewModel(private val playlistInteractor: PlaylistInteractor) : V
         if (playlists.isEmpty()) {
             setState(PlaylistsScreenState.Empty)
         } else {
-            // Сортируем плейлисты в порядке добавления (последний вверху)
-            val sortedPlaylists = playlists.reversed()
-            setState(PlaylistsScreenState.Content(sortedPlaylists))
+            setState(PlaylistsScreenState.Content(playlists))
         }
     }
 

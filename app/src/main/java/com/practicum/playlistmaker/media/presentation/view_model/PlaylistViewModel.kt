@@ -81,9 +81,6 @@ open class PlaylistViewModel(
         }
     }
 
-
-
-
     fun onAddPlaylistClick() {
         if (clickDebounce()) {
             addPlaylistTrigger.value = playlist
@@ -156,4 +153,3 @@ open class PlaylistViewModel(
         private const val COMPRESS_QUALITY_DEGREE = 30
     }
 }
-
