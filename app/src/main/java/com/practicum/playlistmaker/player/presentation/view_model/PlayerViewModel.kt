@@ -166,6 +166,9 @@ class PlayerViewModel(
         setMode(PlayerScreenMode.Player)
     }
 
+
+
+
     fun addTrackToPlaylist(playlist: Playlist) {
         if (playlist.trackList.indexOf(track.trackId) == -1) {
             addTrackToPlaylist(playlist.id, playlist.name)

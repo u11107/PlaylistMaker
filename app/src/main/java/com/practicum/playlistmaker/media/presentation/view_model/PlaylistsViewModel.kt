@@ -12,6 +12,7 @@ import com.practicum.playlistmaker.utils.SingleEventLiveData
 import com.practicum.playlistmaker.utils.debounce
 import kotlinx.coroutines.launch
 
+
 class PlaylistsViewModel(private val playlistInteractor: PlaylistInteractor) : ViewModel(), DefaultLifecycleObserver {
 
     private val stateLiveData = MutableLiveData<PlaylistsScreenState>()
@@ -47,6 +48,8 @@ class PlaylistsViewModel(private val playlistInteractor: PlaylistInteractor) : V
             setState(PlaylistsScreenState.Content(playlists))
         }
     }
+
+
 
     private fun setState(state: PlaylistsScreenState) {
         stateLiveData.postValue(state)
