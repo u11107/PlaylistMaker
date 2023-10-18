@@ -51,10 +51,6 @@ class PlaylistsViewModel(private val playlistInteractor: PlaylistInteractor) : V
         }
     }
 
-
-
-
-
     private fun setState(state: PlaylistsScreenState) {
         stateLiveData.postValue(state)
     }

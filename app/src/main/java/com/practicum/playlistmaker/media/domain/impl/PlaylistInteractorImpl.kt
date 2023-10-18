@@ -54,4 +54,8 @@ class PlaylistInteractorImpl(
     override fun sharePlaylist(playlistInfo: String) {
         externalNavigatorMedia.sharePlaylist(playlistInfo)
     }
+
+    override suspend fun getPlaylistById(playlistId: Long): Playlist? {
+        return playlistRepository.getPlaylistById(playlistId)
+    }
 }

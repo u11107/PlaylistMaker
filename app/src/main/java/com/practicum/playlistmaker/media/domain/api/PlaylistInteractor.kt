@@ -23,4 +23,6 @@ interface PlaylistInteractor {
     fun getPlaylistInfo(playlist: Playlist, trackList: List<Track>): String
 
     fun sharePlaylist(playlistInfo: String)
+
+    suspend fun getPlaylistById(playlistId: Long): Playlist?
 }
