@@ -89,14 +89,6 @@ class PlaylistRepositoryImpl(
         return appDatabase.playlistTrackDao().getPlaylistTracks().map { playlistTrackEntity -> playlistTrackDbMapper.map(playlistTrackEntity)}
     }
 
-//    override suspend fun getPlaylistTracksByTrackIdList(trackIdList: List<Long>): List<Track> {
-//        return if (trackIdList.isEmpty())
-//            listOf()
-//        else {
-//            val allPlaylistTracks = getPlaylistTracks()
-//            allPlaylistTracks.filter { trackIdList.indexOf(it.trackId) > -1 }
-//        }
-//    }
 
     override suspend fun getPlaylistTracksByTrackIdList(trackIdList: List<Long>): List<Track> {
         return if (trackIdList.isEmpty())
