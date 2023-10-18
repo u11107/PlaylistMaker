@@ -45,9 +45,12 @@ class PlaylistsViewModel(private val playlistInteractor: PlaylistInteractor) : V
         if (playlists.isEmpty()) {
             setState(PlaylistsScreenState.Empty)
         } else {
-            setState(PlaylistsScreenState.Content(playlists))
+            // Сортируем плейлисты в порядке добавления (последний вверху)
+            val sortedPlaylists = playlists.reversed()
+            setState(PlaylistsScreenState.Content(sortedPlaylists))
         }
     }
+
 
 
 

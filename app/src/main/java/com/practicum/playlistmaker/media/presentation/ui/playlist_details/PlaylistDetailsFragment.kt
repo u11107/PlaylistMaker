@@ -77,7 +77,7 @@ class PlaylistDetailsFragment: Fragment() {
         bottomSheetMenuBehavior = BottomSheetBehavior.from(binding.llPlaylistBottomSheetMenu)
         bottomSheetBehavior = BottomSheetBehavior.from(binding.playlistDetailsTracksBottomSheet)
 
-        binding.rvPlaylistTrackList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, true)
+        binding.rvPlaylistTrackList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvPlaylistTrackList.adapter = trackListBottomSheetAdapter
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedOnMenuCallback)
